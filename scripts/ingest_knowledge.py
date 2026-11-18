@@ -27,6 +27,11 @@ logger = logging.getLogger("KnowledgeIngestion")
 # Portails officiels documentaires de référence au Mali
 OFFICIAL_SOURCES_MALI = [
     {
+        "name": "Portail National des Démarches Administratives",
+        "url": "https://demarchesadministratives.gouv.ml",
+        "description": "Portail interministériel officiel recensant les procédures citoyennes (CNI, état civil, permis, passeport).",
+    },
+    {
         "name": "Portail des Services Publics du Mali",
         "url": "https://servicespublics.gov.ml",
         "description": "Fiches officielles des démarches administratives et ministérielles.",

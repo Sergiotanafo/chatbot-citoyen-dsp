@@ -9,21 +9,24 @@
       "questions_fr": [
         "Comment faire ma carte d'identité ?",
         "Combien coûte la carte d'identité biométrique ?",
+        "Pourquoi on paye 5000 pour la carte d'identité ?",
+        "Est-ce que la carte d'identité est à 5000 FCFA ?",
         "Quels sont les documents pour la CNI ?",
         "Où faire la carte d'identité à Bamako ?"
       ],
       "questions_bm": [
         "N bɛ se ka fasodenya sariyasɛbɛn sɔrɔ cogo di ?",
         "CNI biométrique sɔngɔ ye joli ye ?",
+        "Mun na mɔgɔw bɛ 5000 sara fasodenya sɛbɛn la ?",
         "Sɛbɛn jumɛnw de wajibiyalen don CNI kama ?",
         "Joyoro seben bɛ kɛ yɔrɔ jumɛn ?"
       ],
-      "answer_fr": "La CNI biométrique est STRICTEMENT GRATUITE (0 FCFA) pour la première délivrance au Mali. Pièces à fournir : extrait d'acte de naissance ou jugement supplétif, certificat de résidence, 2 photos d'identité fond blanc, certificat de nationalité si demandé. Dépôt : Commissariats de police d'arrondissement ou brigade de gendarmerie. Délai : 2 à 4 semaines.",
-      "answer_bm": "Fasodenya sariyasɛbɛn (CNI) kura delili sɔngɔ ye FU DE YE (0 FCFA). Sɛbɛn minnu bɛ ɲini : wolosɛbɛn, sigiyɔrɔ sɛbɛn, fɔtɔ 2 ja jɛman kan. A bɛ dabila polisiso la walima zandarimuso la. A bɛ bɔ dɔgɔkun 2 ka taa 4 kɔnɔ.",
-      "pieces_fr": "1. Extrait d'acte de naissance (ou jugement supplétif)\n2. Certificat de résidence récent\n3. Deux (2) photos d'identité fond blanc\n4. Certificat de nationalité malienne si nécessaire.",
-      "pieces_bm": "1. Wolosɛbɛn (walima kitikɛsɛbɛn)\n2. Sigiyɔrɔ sɛbɛn\n3. Ja fɔtɔ 2 ja jɛman kan\n4. Malidenya sɛbɛn n'a wajibiyara.",
-      "cout_fr": "Gratuit (0 FCFA) pour la première délivrance officielle. En cas de perte ou duplicata, prévoir un timbre fiscal de 1 000 FCFA.",
-      "cout_bm": "A sɔngɔ ye FU YE (0 FCFA) fɔlɔ deli kama. N'a tun filila, tanburuwari bɛ se FCFA 1 000 ma.",
+      "answer_fr": "Selon le Décret n°2022-0639/PT-RM, la première délivrance de la Carte Nationale d'Identité Biométrique Sécurisée CEDEAO est STRICTEMENT GRATUITE (0 FCFA) pour tout citoyen malien sur présentation de son NINA. Cependant, pour monter le dossier, des frais annexes s'appliquent : certificat de résidence (timbre de 500 à 1 000 FCFA) et photos d'identité (1 000 à 1 500 FCFA), ce qui porte souvent la dépense globale entre 2 500 et 5 000 FCFA. En cas de duplicata (perte ou renouvellement), un timbre fiscal de 1 000 FCFA est requis. Dépôt : Commissariats de police ou brigades de gendarmerie. Délai : 2 à 4 semaines.",
+      "answer_bm": "Fasodenya sariyasɛbɛn (CNI) kura delili sɔngɔ ye FU DE YE (0 FCFA) Mali sariya kɔnɔ (Décret 2022). Nka dosiye labɛnni fɛ, sigiyɔrɔ sɛbɛn tanburu (FCFA 500-1 000) ni ja fɔtɔw (FCFA 1 000-1 500) bɛ se ka sɔngɔ bɛɛ lajɛlen bila FCFA 2 500 fo 5 000 cɛ. N'a tun filila, tanburuwari bɛ FCFA 1 000 ye. A bɛ dabila polisiso la walima zandarimuso la. A bɛ bɔ dɔgɔkun 2 ka taa 4 kɔnɔ.",
+      "pieces_fr": "1. Extrait d'acte de naissance (ou jugement supplétif)\n2. Fiche NINA ou récépissé RAVEC\n3. Certificat de résidence récent\n4. Deux (2) photos d'identité fond blanc\n5. Certificat de nationalité malienne si nécessaire.",
+      "pieces_bm": "1. Wolosɛbɛn (walima kitikɛsɛbɛn)\n2. NINA sɛbɛn walima RAVEC\n3. Sigiyɔrɔ sɛbɛn\n4. Ja fɔtɔ 2 ja jɛman kan\n5. Malidenya sɛbɛn n'a wajibiyara.",
+      "cout_fr": "Gratuit (0 FCFA) pour la première délivrance officielle de la CNI biométrique (Décret 2022). En cas de perte ou duplicata, prévoir un timbre fiscal de 1 000 FCFA. Les frais annexes (photos d'identité ~1 500 FCFA, timbre du certificat de résidence ~500 à 1 000 FCFA) expliquent pourquoi certains citoyens déboursent au total entre 2 500 et 5 000 FCFA.",
+      "cout_bm": "A sɔngɔ ye FU YE (0 FCFA) fɔlɔ deli kama (Décret 2022). N'a tun filila, tanburuwari bɛ se FCFA 1 000 ma. Nka dosiye fɛn wɛrɛw (ja fɔtɔw ni sigiyɔrɔ sɛbɛn tanburu) bɛ se ka bɛɛ lajɛlen kɛ FCFA 2 500 fo 5 000.",
       "delai_fr": "Le délai moyen est de 2 à 4 semaines après le dépôt de la demande.",
       "delai_bm": "A bɛ taa dɔgɔkun 2 ka bila dɔgɔkun 4 la."
     },
