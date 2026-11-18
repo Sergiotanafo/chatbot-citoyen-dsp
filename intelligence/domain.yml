@@ -1,0 +1,1125 @@
+version: "3.1"
+
+intents:
+  - saluer
+  - au_revoir
+  - changer_langue
+  - carte_identite
+  - demande_passeport
+  - demande_acte_naissance
+  - urgence
+  - remerciement
+  - acte_deces
+  - acte_mariage
+  - passeport_mali
+  - passeport_etranger
+  - certificat_residence
+  - casier_judiciaire
+  - carte_nina
+  - permis_conduire
+  - titre_foncier
+  - assurance_maladie
+  - creation_entreprise
+  - inscription_universitaire
+  - attestation_reussite
+  # Nouveaux intents
+  - declaration_impots
+  - pension_retraite
+  - aide_juridique
+  - etat_civil
+  - carte_electeur
+  - visa_voyage
+  - legalisation_documents
+  - adoption
+  - divorce
+  - nationalite
+  - aide_sociale
+  - plainte
+  - horaires_services
+  - cout_demarche
+  - capacites_chatbot
+  - fallback
+  - nlu_fallback
+  # Intents de suivi contextuel
+  - demander_documents
+  - demander_cout
+  - demander_delai
+  - frustration
+  - clarification
+
+entities:
+  - langue
+
+slots:
+  langue:
+    type: categorical
+    influence_conversation: true
+    values:
+      - français
+      - bambara
+    initial_value: "français"
+    mappings:
+      - type: from_entity
+        entity: langue
+
+  demarche:
+    type: categorical
+    influence_conversation: true
+    values:
+      - carte_identite
+      - demande_passeport
+      - passeport_mali
+      - passeport_etranger
+      - demande_acte_naissance
+      - acte_mariage
+      - acte_deces
+      - casier_judiciaire
+      - carte_nina
+      - permis_conduire
+      - certificat_residence
+      - titre_foncier
+    initial_value: null
+    mappings:
+      - type: custom
+
+responses:
+
+  utter_salutation_fr:
+    - text: "Bonjour ! Je suis le Chatbot Citoyen du Mali. Je peux vous guider pour vos démarches administratives : acte de naissance, passeport, CNI, mariage, impôts, casier judiciaire, carte NINA et plus encore. Quelle démarche vous intéresse ?"
+    - text: "Bienvenue sur le service d'assistance aux citoyens. Dites-moi simplement le document ou la démarche que vous cherchez, et je vous répondrai étape par étape."
+    - text: "Bonjour ! Comment puis-je vous aider aujourd'hui ? Demandez-moi comment obtenir un document ou une information administrative."
+
+  utter_salutation_bm:
+    - text: "I ni sogoma ! 👋 Ne ye Mali deme baga don. Ne be se ka i deme ka wolo seben, pasipɔri, joyoro seben, furu seben, nisɔngɔ sara, ani wele wele kow la. I be mun ɲini ?"
+    - text: "I ni tile ! Ne ye yen i ka dajuru kow la deme na. I ka ñini mun ?"
+    - text: "Aw ni ce ! I ka ñininkali kɛ Mali ka baarakɛyɔrɔ kow la, ne be se ka i deme."
+
+  utter_acte_naissance_fr:
+    - text: |
+        📄 *Acte de naissance au Mali*
+
+        *Où aller :*
+        • À la mairie ou au centre d'état civil du lieu de naissance
+
+        *Pour obtenir une copie :*
+        • Apportez votre carte nationale d'identité ou un ancien extrait
+        • Délai habituel : 1 à 3 jours
+        • Coût : souvent gratuit, avec parfois un timbre de 500 à 2 000 FCFA
+
+        *Pour déclarer une naissance :*
+        • Délai légal : 30 jours après l'accouchement
+        • Pièces utiles : certificat de l'hôpital, carte d'identité des parents, 2 témoins
+        • Après 30 jours : jugement supplétif au tribunal
+
+  utter_acte_naissance_bm:
+    - text: |
+        ✨ I ni ce i ka ɲininkali la ! Wolo seben ye sɛbɛn nafamanba ye Mali kɔnɔ. N b'i dɛmɛ ka a sɔrɔn cogo ɲɛfɔ i ye dɔɔnin dɔɔnin.
+        
+        👶 *Wolo seben Mali la*
+        
+        *Wolo seben kura sɔrɔn na :*
+        • I bɛ taa mairie (Centre d'État Civil) la den wolola dugu min na.
+        • I bɛ joyoro seben walima a kɔrɔ copie jira.
+        • Lasɔrɔ waati : tile 1 fo tile 3 kɔnɔ. A FOU (timbre hakɛ bɛ kɛ FCFA 500 fo 2 000).
+        
+        *Wolo dajuru kɛ na (Déclaration) :*
+        • Waati sariya : den wolola, i ka kan k'a dajuru kɛ tile 30 kɔnɔ.
+        • Sɛbɛn minw bɛ ɲini : dɔgɔtɔrɔ sɔrɔn sɛbɛn, faa walima baa ka joyoro seben, ani seere fila.
+        • Ni tile 30 tɛmɛna : i bɛ taa jugement supplétif ɲini tribunal la.
+        
+        💡 Ni ɲininkali wɛrɛ b'i fɛ, i mako bɛ n na waati o waati !
+
+  utter_acte_deces_fr:
+    - text: |
+        ⚰️ *Acte de décès au Mali*
+
+        *Où aller :*
+        • À la mairie ou au centre d'état civil du lieu du décès
+
+        *Pour déclarer le décès :*
+        • Faites la démarche dans les 30 jours
+        • Apportez le certificat médical de décès, la CNI du défunt, votre CNI et 2 témoins
+
+        *Coût et délai :*
+        • Première délivrance : généralement gratuite
+        • Copies certifiées : souvent 500 à 2 000 FCFA
+        • Délai habituel : 1 à 3 jours
+
+  utter_acte_deces_bm:
+    - text: |
+        ⚰️ *Sara seben Mali la*
+
+        *Sara dajuru ke na :*
+        • Waati : tile 30 sara ko kono
+        • Ka taa mairie la sara kera yoro la
+        • Seben minew : dougoutoro sara seben, sara mogo ka joyoro seben, dajuru ke mogo ka joyoro seben, seerenyogon fila
+
+        *Wari & Waati :*
+        • A FOU folo kera (copie certifiée : FCFA 500-2 000)
+        • Lasoro : tile 1-3
+
+  utter_acte_mariage_fr:
+    - text: |
+        💍 *Acte de mariage au Mali*
+
+        *Pour le mariage civil :*
+        • Adressez-vous à la mairie où le mariage doit être célébré
+        • Attendez en général 15 jours après la publication des bans
+        • Préparez : acte de naissance récent, carte nationale d'identité, certificat de célibat, témoins et photos
+
+        *Pour une copie de l'acte :*
+        • Retournez à la mairie du mariage
+        • Prenez votre carte d'identité et les informations des époux
+        • Délai habituel : 1 à 3 jours
+
+  utter_acte_mariage_bm:
+    - text: |
+        ✨ Aw ni ce ! Furu ye ko duman ye, n bɛna aw dɛmɛ ka furu sɛbɛn sɔrɔn cogo ɲɛfɔ aw ye.
+        
+        💍 *Furu seben Mali la*
+        
+        *Mairie la furu kɛ na :*
+        • Waati sariya : aw bɛ bans bɔ folo, ka tile 15 kɔnɔ.
+        • Sɛbɛn minw bɛ ɲini : cɛ ni muso ka wolo sɛbɛn kuraw, joyoro sɛbɛn, celibat sɛbɛn, seere naani (fila fila), ani photo.
+        
+        *Furu sɛbɛn sɔrɔn na (copie) :*
+        • I bɛ taa mairie la furu kɛra yɔrɔ min na.
+        • Ka joyoro sɛbɛn ani furu mɔgɔw kunnafoniw ɲini o la.
+        • Lasɔrɔ waati : tile 1 fo 3.
+        
+        💡 Ala ka furu ɲɛ ! Ni ɲininkali wɛrɛ bɛ yen, i k'a fɔ n ye.
+
+  utter_carte_identite_fr:
+    - text: |
+        🪺 *Carte Nationale d'Identité biométrique*
+
+        *Où aller :*
+        • Commissariats de police (Bamako) ou préfectures/sous-préfectures (Régions)
+
+        *Pièces à préparer :*
+        • Acte de naissance original ou jugement supplétif
+        • 2 photos d'identité sur fond blanc
+        • Justificatif de résidence (ou présence d'un chef de quartier)
+
+        *Coût :* GRATUIT pour la première demande
+        *Délai :* 15 à 30 jours
+        *Validité :* 10 ans
+
+  utter_carte_identite_bm:
+    - text: |
+        🪺 *Joyoro seben biométrique*
+
+        *Yoro :*
+        • Commissariat minén la walima préfecture/sous-préfecture
+
+        *Seben minew :*
+        • Wolo seben walima jugement supplétif
+        • Photo 2 fond blanc
+        • Yoro jirali seben
+
+        *Wari & Waati :*
+        • A FOU folo kera
+        • Lasoro : tile 15-30 (reçu bé di i ma)
+        • Waati : san 10
+
+  utter_passeport_mali_fr:
+    - text: |
+        🛂 *Passeport malien — Bamako*
+
+        *Où aller :*
+        • Direction Générale de la Police Nationale (DGPN) ou commissariats habilités (ex: 3ème, 5ème arrondissement)
+
+        *Pièces utiles :*
+        • Acte de naissance ou jugement supplétif
+        • CNI en cours de validité
+        • 2 photos fond blanc (4x4)
+        • Ancien passeport (si renouvellement)
+
+        *Coût :* environ 50 000 FCFA
+        *Délai :* 15 à 30 jours (gardez votre reçu)
+
+  utter_passeport_mali_bm:
+    - text: |
+        🛂 *Passeport malien — Bamako*
+
+        *Yoro :*
+        • DGPN walima commissariat minén la (i n'a fo 3ème, 5ème)
+
+        *Seben minew :*
+        • Wolo seben walima jugement supplétif
+        • Joyoro seben dogniman
+        • Photo 2 fond blanc (4x4)
+        • Koro pasipori ni yélema kera
+
+        *Wari & Waati :*
+        • Wari : FCFA 50 000 cémancé
+        • Lasoro : tile 15-30 (kalo 1-2 kɛñɛ kan)
+
+  utter_passeport_etranger_fr:
+    - text: |
+        🌍 *Passeport malien depuis l'étranger*
+
+        *Où aller :*
+        • Ambassade ou consulat général du Mali de votre pays de résidence
+
+        *Pièces demandées :*
+        • Acte de naissance
+        • CNI malienne ou preuve de nationalité
+        • Photos d'identité
+        • Ancien passeport (si renouvellement)
+        • Carte consulaire ou justificatif de résidence
+
+        *Délai :* 2 à 3 mois (les dossiers sont souvent envoyés à Bamako pour impression)
+
+  utter_passeport_etranger_bm:
+    - text: |
+        🌍 *Passeport malien laada la*
+
+        *Yoro :*
+        • Mali ambassade walima consulat général i ka laada la
+
+        *Seben minew :*
+        • Wolo seben
+        • Joyoro seben walima nationalité jirali seben
+        • Photo
+        • Koro pasipɔri ni yélema kera
+        • Carte consulaire walima yoro jirali
+
+        *Waati :* Kalo 2-3 (dossier bé ci Bamako)
+
+  utter_certificat_residence_fr:
+    - text: |
+        🏠 *Certificat de résidence*
+
+        *Où aller :*
+        • Mairie de votre commune ou bureau du chef de quartier
+
+        *Pièces à apporter :*
+        • CNI
+        • Une facture (eau, électricité) à votre nom OU le témoignage de votre logeur/chef de quartier
+
+        *Coût :* 500 à 2 000 FCFA
+        *Délai :* Le jour même ou 24h
+
+  utter_certificat_residence_bm:
+    - text: |
+        🏠 *Yoro jirali seben*
+
+        *Yoro :*
+        • I ka yoro dugu mairie la walima chef de quartier fe
+
+        *Seben minew :*
+        • Joyoro seben dogniman
+        • Yoro jirali seben (facture walima bugutigi ka seree)
+
+        *Wari & Waati :*
+        • FCFA 500-2 000 commune kan bé yélema
+        • Lasoro : tile kelen walima tile 2
+
+  utter_casier_judiciaire_fr:
+    - text: |
+        📜 *Casier judiciaire (Bulletin n°3)*
+
+        *Où aller :*
+        • Greffe du Tribunal de Grande Instance (TGI) de votre lieu de naissance. (À Bamako : TGI de la Commune III)
+
+        *Pièces à apporter :*
+        • CNI ou passeport
+        • Acte de naissance récent
+        • Demande sur place et timbre fiscal (200 à 500 FCFA)
+
+        *Délai :* 1 à 3 jours ouvrés
+
+  utter_casier_judiciaire_bm:
+    - text: |
+        📜 *Casier judiciaire (Bulletin n°3)*
+
+        *Yoro :*
+        • Tribunal de Grande Instance (TGI) greffe la (Bamako : Commune III TGI)
+
+        *Seben minew :*
+        • Joyoro seben walima pasipɔri
+        • Wolo seben dogniman
+        • Timbre wari reçu
+
+        *Wari & Waati :*
+        • FCFA 200-500
+        • Lasoro : tile 1-3 i yéré taa tuma la
+
+  utter_carte_nina_fr:
+    - text: |
+        🧾 *Carte NINA et RAVEC*
+
+        *Où s'enregistrer :*
+        • Centres d'enrôlement RAVEC (souvent dans les mairies, gouvernorats ou sous-préfectures)
+
+        *Pièces :*
+        • Acte de naissance
+        • Présence physique obligatoire (prise de photo et empreintes)
+
+        *Coût :* L'enrôlement est GRATUIT.
+        *Note :* La carte NINA physique est progressivement remplacée par la nouvelle carte biométrique qui intègre le Numéro d'Identification Nationale.
+
+  utter_carte_nina_bm:
+    - text: |
+        🧾 *Carte NINA ani RAVEC*
+
+        *Enrôlement yoro :*
+        • RAVEC enrôlement yoro (mairie, gouvernorat walima sous-préfecture)
+
+        *Seben minew :*
+        • Wolo seben
+        • I yéré ka taga yoro la (photo ani empreintes kama)
+
+        *Wari :* A FOU — te ké wari la !
+        *Aw ye a dɔn :* Joyoro seben biométrique kura bé Nina nimoro ta sisan.
+
+  utter_permis_conduire_fr:
+    - text: |
+        🚗 *Permis de conduire au Mali*
+
+        *Étapes :*
+        1. S'inscrire dans une auto-école agréée par l'État
+        2. Obtenir un certificat d'aptitude médicale
+        3. Réussir l'examen du Code de la route (DNTTM)
+        4. Réussir l'examen pratique de conduite (DNTTM)
+
+        *Pièces pour le dossier :* Carte d'identité, extrait de naissance, photos, groupe sanguin.
+        *Coût et Délai :* Varie selon l'auto-école (généralement 2 à 4 mois).
+
+  utter_permis_conduire_bm:
+    - text: |
+        🚗 *Permis de conduire Mali la*
+
+        *Daw :*
+        1. Auto-école agréée la sebeni ke
+        2. Kéneya seben soron dougoutoro fe
+        3. DNTTM la théorie examen ke
+        4. DNTTM la kondoro examen ke
+
+        *Seben minew :* Joyoro seben, wolo seben, photo, joli kulu.
+        *Waati :* Kalo 2-4 (auto-école kan).
+
+  utter_titre_foncier_fr:
+    - text: |
+        🏘️ *Titre foncier au Mali*
+
+        *Où aller :*
+        • Direction Nationale des Domaines et du Cadastre (DNDC) ou ses antennes régionales.
+
+        *Étapes simplifiées :*
+        1. Dépôt de la demande avec les documents d'attribution du terrain
+        2. Enquête publique et vérification foncière
+        3. Bornage par les services du Cadastre ou géomètre expert
+        4. Inscription au livre foncier
+
+        ⚠️ C'est une démarche complexe. Il est fortement conseillé de passer par un notaire.
+
+  utter_titre_foncier_bm:
+    - text: |
+        🏘️ *Titre foncier Mali la*
+
+        *Yoro :*
+        • Direction Nationale des Domaines et du Cadastre (DNDC)
+
+        *Daw :*
+        1. Dossier di (dugukolo sɔrɔli sebenw)
+        2. Ñininkali ani cadastre filɛli
+        3. Bornage kɛ
+        4. Sebeni kɛ titre foncier livuru kɔnɔ
+
+        ⚠️ Baara gɛlɛn don. A ka fisa ka baara kɛ ni notaire ye.
+
+  utter_assurance_maladie_fr:
+    - text: |
+        🏥 *Assurance Maladie Obligatoire (AMO)*
+
+        *Où s'inscrire :*
+        • Guichets de la CANAM (Caisse Nationale d'Assurance Maladie) ou de la CMSS/INPS.
+
+        *Pour qui :*
+        • Les fonctionnaires (gérés par CMSS)
+        • Les travailleurs du secteur privé formel (gérés par INPS)
+
+        *Pièces :* Formulaire d'immatriculation, CNI, photos, justificatif d'emploi.
+        *Avantage :* L'AMO prend en charge 70% à 80% des frais de santé conventionnés.
+
+  utter_assurance_maladie_bm:
+    - text: |
+        🏥 *Bana dɛmɛ (AMO)*
+
+        *Yoro :*
+        • CANAM, CMSS walima INPS bureaux.
+
+        *Jɔn ma :*
+        • Fonctionnaires (CMSS)
+        • Privé baarakɛlaw (INPS)
+
+        *Seben minew :* Formulaire, joyoro seben, photo, baara jirali seben.
+        *Nafaw :* AMO bɛ 70% ka se 80% musaka sara.
+
+  utter_creation_entreprise_fr:
+    - text: |
+        🏢 *Création d'entreprise au Mali*
+
+        *Où aller :*
+        • Le Guichet Unique de l'API-Mali (Agence pour la Promotion des Investissements)
+
+        *Documents de base (Personne physique) :*
+        • Formulaire unique de création
+        • CNI ou Passeport
+        • Certificat de résidence
+        • Extrait de casier judiciaire (souvent remplacé par une déclaration sur l'honneur)
+
+        L'API s'occupe de l'enregistrement au Registre du Commerce (RCCM) et de l'obtention du Numéro d'Identification Fiscale (NIF).
+
+  utter_creation_entreprise_bm:
+    - text: |
+        🏢 *Baara yoro kura kɛ Mali la*
+
+        *Yoro :*
+        • API-Mali Guichet Unique
+
+        *Seben minew :*
+        • Formulaire dafalen
+        • Joyoro seben walima Pasipɔri
+        • Yoro jirali seben
+        • Casier judiciaire (walima seree seben)
+
+        API bɛ i dɛmɛ RCCM (Commerce) ani NIF sɔrɔli la.
+
+  utter_inscription_universitaire_fr:
+    - text: |
+        🎓 *Inscription à l'Université publique*
+
+        *Où :* Campusflow.ml (pré-inscription en ligne souvent requise) puis au service scolarité de la Faculté.
+
+        *Pièces typiques :*
+        • Attestation de réussite au Baccalauréat
+        • Relevé de notes du Bac
+        • Extrait d'acte de naissance
+        • CNI
+        • Photos d'identité
+        • Quittance de paiement des frais d'inscription.
+
+  utter_inscription_universitaire_bm:
+    - text: |
+        🎓 *Université la sebeni*
+
+        *Yoro :* Campusflow.ml (internet kan) o kɔ faculté scolarité la.
+
+        *Seben minew :*
+        • BAC réussite seben ani notes
+        • Wolo seben
+        • Joyoro seben
+        • Photo
+        • Sebeni wari sara reçu.
+
+  utter_attestation_reussite_fr:
+    - text: |
+        🎓 *Attestation de réussite (Diplômes)*
+
+        • *Pour le DEF :* Adressez-vous à l'Académie d'Enseignement ou à la Direction Régionale (DREN) de votre centre d'examen.
+        • *Pour le BAC :* Adressez-vous à la Direction Nationale des Examens et Concours (DNEC).
+        • *Pour l'Université :* Allez au service de la scolarité ou au rectorat de votre université.
+
+        Prévoyez votre CNI et votre numéro de place/matricule.
+
+  utter_attestation_reussite_bm:
+    - text: |
+        🎓 *Kemerén seben (Diplômes)*
+
+        • *DEF :* Académie d'Enseignement walima DREN.
+        • *BAC :* DNEC (Direction Nationale des Examens et Concours).
+        • *Université :* Scolarité walima rectorat.
+
+        I ka joyoro seben ani i ka numéro de place ta.
+
+  # ---------------------------------------------------------
+  # NOUVEAUX SUJETS
+  # ---------------------------------------------------------
+
+  utter_declaration_impots_fr:
+    - text: |
+        💰 *Paiement des Impôts et Taxes*
+
+        *Où aller :*
+        • Direction Générale des Impôts (DGI) ou Centres des Impôts de votre commune.
+
+        *Numéro d'Identification Fiscale (NIF) :*
+        Obligatoire pour toute démarche fiscale. Vous pouvez l'obtenir à la DGI.
+
+        *Taxes courantes :*
+        • TDRL (Taxe de Développement Régional et Local) : à payer à la mairie.
+        • Impôt sur les revenus fonciers : au centre des impôts.
+        • Patente / Synthétique : pour les petits commerçants.
+
+  utter_declaration_impots_bm:
+    - text: |
+        💰 *Nisɔngɔ ani wari sara*
+
+        *Yoro :*
+        • DGI (Impôts) walima i ka commune impôts centre.
+
+        *NIF :*
+        NIF nimoro ka kan k'i bolo.
+
+        *Wari sifa :*
+        • TDRL : mairie la.
+        • Patente : baarakɛlaw ye.
+
+  utter_pension_retraite_fr:
+    - text: |
+        👴🏽 *Pension de Retraite*
+
+        *Où aller :*
+        • Fonctionnaires : CMSS (Caisse Malienne de Sécurité Sociale)
+        • Travailleurs du secteur privé : INPS (Institut National de Prévoyance Sociale)
+
+        *Documents pour demander sa retraite :*
+        • Copie de la carte d'assuré
+        • Acte de naissance
+        • Certificat de cessation de service / licenciement
+        • 2 photos d'identité
+        • Relevé d'identité bancaire (RIB)
+
+  utter_pension_retraite_bm:
+    - text: |
+        👴🏽 *Kɔrɔ wari (Retraite)*
+
+        *Yoro :*
+        • Fonctionnaires : CMSS
+        • Privé baarakɛlaw : INPS
+
+        *Seben minew :*
+        • Assuré carte
+        • Wolo seben
+        • Baara ban seben
+        • Photo 2
+        • Banque RIB
+
+  utter_aide_juridique_fr:
+    - text: |
+        ⚖️ *Assistance Juridique*
+
+        Si vous n'avez pas les moyens de payer un avocat :
+        1. *L'Aide Juridictionnelle :* Demandez-la au niveau du greffe du tribunal. L'État peut prendre en charge les frais d'avocat.
+        2. *Les Cliniques Juridiques :* Plusieurs ONG (comme l'AMDH) offrent des consultations juridiques gratuites.
+        3. *Bureau de Consultation Gratuite du Barreau :* À la Cour d'Appel de Bamako.
+
+  utter_aide_juridique_bm:
+    - text: |
+        ⚖️ *Sariya dɛmɛ (Aide juridique)*
+
+        Ni wari t'i bolo avoka kama :
+        1. *Aide Juridictionnelle :* Ñininkali kɛ tribunal greffe la.
+        2. *Cliniques Juridiques :* ONG caman (i n'a fo AMDH) bɛ dɛmɛ kɛ a fou.
+        3. *Barreau ka dɛmɛ :* Cour d'Appel Bamako.
+
+  utter_etat_civil_fr:
+    - text: |
+        🏛️ *L'État Civil au Mali*
+
+        L'état civil enregistre les événements majeurs de la vie des citoyens :
+        • Naissances
+        • Mariages
+        • Décès
+
+        *Où s'adresser :*
+        Aux mairies (Centres principaux d'état civil) ou aux Centres secondaires (villages, quartiers).
+        En cas d'erreur sur un acte, il faut demander une *rectification d'état civil* auprès du Tribunal de Grande Instance.
+
+  utter_etat_civil_bm:
+    - text: |
+        🏛️ *État Civil Mali la*
+
+        État civil bɛ mogo ka ɲɛnamaya kow seben :
+        • Wololi
+        • Furuli
+        • Sarali
+
+        *Yoro :* Mairie walima quartier/village centres.
+        Ni fili kɛra seben kan, i bɛ rectification ñini Tribunal la.
+
+  utter_carte_electeur_fr:
+    - text: |
+        🗳️ *Carte d'Électeur biométrique*
+
+        La nouvelle carte biométrique sécurisée tient lieu de carte d'électeur.
+
+        *Comment l'obtenir :*
+        • Être inscrit à la base de données RAVEC.
+        • Si vous êtes majeur, votre carte est imprimée lors des phases de distribution annoncées par le Ministère de l'Administration Territoriale.
+        • Retrait : dans votre mairie, centre de vote ou commissariat avec un récépissé RAVEC ou une ancienne pièce.
+
+  utter_carte_electeur_bm:
+    - text: |
+        🗳️ *Kalata carte (Carte d'Électeur)*
+
+        Joyoro seben biométrique kura bɛ kɛ kalata carte ye.
+
+        *Cogo di :*
+        • I ka kan ka kɛ RAVEC kɔnɔ.
+        • Ni i san sera, carte bɛ di mairie walima vote yoro la.
+        • Taali : ni RAVEC reçu walima koro seben ye.
+
+  utter_visa_voyage_fr:
+    - text: |
+        ✈️ *Visa pour voyager à l'étranger*
+
+        Le processus dépend du pays de destination :
+        • *Espace CEDEAO :* Pas de visa nécessaire pour les Maliens, la carte d'identité ou le passeport suffit.
+        • *Espace Schengen (France, Espagne...) :* Les demandes se font via les centres TLS Contact ou Capago à Bamako.
+        • *Autres pays :* Contactez l'ambassade du pays concerné au Mali.
+
+        *Documents génériques :* Passeport valide (>6 mois), photos, assurance voyage, justificatifs financiers et hébergement.
+
+  utter_visa_voyage_bm:
+    - text: |
+        ✈️ *Visa taali laada la*
+
+        A bɛ bɔ dugu kan :
+        • *CEDEAO :* Visa tɛ fɛ. Joyoro seben walima pasipɔri bɛ se.
+        • *Schengen (Erɔpu) :* TLS Contact walima Capago Bamako.
+        • *Dugu wɛrɛw :* O dugu ambassade Mali la.
+
+        *Sebenw :* Passeport, photo, assurance, wari jirali seben.
+
+  utter_legalisation_documents_fr:
+    - text: |
+        🖋️ *Légalisation de documents*
+
+        *1. Légalisation simple (copie certifiée conforme) :*
+        • À la mairie ou au commissariat.
+        • Apportez l'original et la photocopie. Coût : souvent 200 à 500 FCFA.
+
+        *2. Légalisation de signature :*
+        • L'intéressé doit signer devant le maire ou l'officier de police.
+
+        *3. Pour l'étranger (Apostille/Légalisation) :*
+        • Ministère des Affaires Étrangères (Koulouba) pour authentifier les documents maliens destinés à l'extérieur.
+
+  utter_legalisation_documents_bm:
+    - text: |
+        🖋️ *Seben siri (Légalisation)*
+
+        *1. Copie certifiée :* Mairie walima police. Original ani copie. FCFA 200-500.
+        *2. Tɛgɛnɔ siri (Signature) :* I yéré ka kan ka tɛgɛnɔ kɛ maire nyɛ.
+        *3. Laada la (Étranger) :* Ministère des Affaires Étrangères (Koulouba).
+
+  utter_adoption_fr:
+    - text: |
+        👨‍👩‍👧 *Adoption d'enfant au Mali*
+
+        L'adoption est régie par le Code des Personnes et de la Famille.
+        *Deux types :*
+        1. Adoption filiation (pleine)
+        2. Adoption protection (simple)
+
+        *Où s'adresser :*
+        • Direction Nationale de la Promotion de l'Enfant et de la Famille (DNPEF)
+        • Tribunal Civil compétent
+        Une enquête sociale et psychologique sera réalisée avant toute décision du juge.
+
+  utter_adoption_bm:
+    - text: |
+        👨‍👩‍👧 *Den ta ka kɛ i ta ye (Adoption)*
+
+        Sariya bɛ adoption kow ɲɛnabɔ.
+        *Yoro :*
+        • Direction Nationale de la Promotion de l'Enfant et de la Famille
+        • Tribunal Civil
+        Enquête sociale bɛ kɛ sani juge ka a di i ma.
+
+  utter_divorce_fr:
+    - text: |
+        💔 *Procédure de Divorce*
+
+        *Où s'adresser :* Tribunal Civil de votre domicile.
+        
+        *Types :*
+        • Par consentement mutuel (les deux sont d'accord, procédure plus rapide).
+        • Pour faute ou contentieux (nécessite des preuves).
+
+        *Conseil :* Prenez un avocat pour vous assister. Des tentatives de conciliation seront d'abord organisées par le juge.
+
+  utter_divorce_bm:
+    - text: |
+        💔 *Furu tɛgɛli (Divorce)*
+
+        *Yoro :* Tribunal Civil.
+        
+        A bɛ kɛ cogo fila :
+        • Bɛnkan (aw fila bɛnna a kan).
+        • Kɛlɛ (dalilu bɛ ɲini).
+        
+        *Ladili :* Avoka dɛmɛ bɛ ɲini. Juge bɛ ɲini ka aw bɛn fɔlɔ.
+
+  utter_nationalite_fr:
+    - text: |
+        🇲🇱 *Nationalité Malienne*
+
+        *Certificat de Nationalité :*
+        • Délivré par le Tribunal Civil.
+        • Pièces : Acte de naissance, actes de naissance des parents, pièces d'identité.
+
+        *Acquisition de la nationalité :*
+        • Par naissance (filiation)
+        • Par mariage (après un certain délai)
+        • Par naturalisation (demande au Ministère de la Justice, décret présidentiel).
+
+  utter_nationalite_bm:
+    - text: |
+        🇲🇱 *Mali den ya (Nationalité)*
+
+        *Certificat de Nationalité :* Tribunal Civil bɛ a di. I ka wolo seben ani bangebagaw ta bɛ ɲini.
+        
+        *Mali den ya sɔrɔli :*
+        • Wololi fɛ.
+        • Furuli fɛ (waati dɔ kɔ).
+        • Naturalisation fɛ (Ministère de la Justice).
+
+  utter_aide_sociale_fr:
+    - text: |
+        🤝 *Aide Sociale et Solidarité*
+
+        Le Mali dispose de plusieurs programmes pour les populations vulnérables :
+        • *Jigisemejiri (Filets sociaux) :* Transferts monétaires aux foyers très pauvres.
+        • *Développement Social :* Allez à la Direction Régionale ou Locale du Développement Social pour vous inscrire ou obtenir une attestation d'indigence (permettant la gratuité de certains soins).
+
+  utter_aide_sociale_bm:
+    - text: |
+        🤝 *Dɛsɛbagaw dɛmɛ*
+
+        Dɛmɛ bɛ sɔrɔ Mali la :
+        • *Jigisemejiri :* Wari dɛmɛ fantanw ma.
+        • *Développement Social :* I bɛ se ka taa u ka bureau la ka attestation d'indigence ɲini (bana dɛmɛ a fou kama).
+
+  utter_plainte_fr:
+    - text: |
+        ⚖️ *Déposer une plainte*
+
+        Si vous êtes victime d'une infraction (vol, agression, escroquerie) :
+        1. *Au Commissariat de Police ou à la Gendarmerie :* Demandez à faire une déposition. Un procès-verbal sera dressé.
+        2. *Directement au Tribunal :* Vous pouvez déposer une plainte simple par écrit adressée au Procureur de la République.
+
+        L'assistance d'un avocat n'est pas obligatoire pour déposer plainte.
+
+  utter_plainte_bm:
+    - text: |
+        ⚖️ *Plainte kɛ (Porter plainte)*
+
+        Ni i tɔɔrɔla (sonya, kɛlɛ, nkalon) :
+        1. *Police walima Gendarmerie :* Taa a ɲɛfɔ yen. U bɛ procès-verbal kɛ.
+        2. *Tribunal :* I bɛ se ka sɛbɛn ci Procureur ma.
+        
+        Avoka tɛ wajibiya fɔlɔ plainte kɛli la.
+
+  utter_horaires_services_fr:
+    - text: |
+        🕒 *Horaires des Services Publics au Mali*
+
+        En général, l'administration malienne est ouverte :
+        • *Lundi au Jeudi :* de 07h30 à 16h00
+        • *Vendredi :* de 07h30 à 12h30 et de 14h30 à 17h30
+        • Les services publics sont fermés le Samedi et le Dimanche, ainsi que les jours fériés.
+
+        *Note :* Certains commissariats et urgences hôpitaux fonctionnent 24h/24.
+
+  utter_horaires_services_bm:
+    - text: |
+        🕒 *Mara yorow dayɛlɛ waati*
+
+        Mali mara yorow bɛ dayɛlɛ :
+        • *Ntɛnɛn ka se Alamisa :* 07:30 - 16:00
+        • *Juma :* 07:30 - 12:30 ani 14:30 - 17:30
+        • Sibiri ani Kari u bɛ datugu.
+
+        *Aw ye a dɔn :* Police ani dɔgɔtɔrɔso dɔw bɛ baara kɛ 24h/24.
+
+  utter_cout_demarche_fr:
+    - text: |
+        💵 *Coût des démarches courantes*
+
+        • *Carte Nina :* Gratuit
+        • *Joyoro seben folo :* Gratuit (timbre ou frais de photo parfois demandés)
+        • *Passeport :* ~50.000 FCFA (timbre fiscal)
+        • *Extrait de Naissance :* Gratuit à 500 FCFA
+        • *Casier judiciaire :* 200 à 500 FCFA
+        • *Certificat de résidence :* 500 à 2.000 FCFA selon les mairies.
+
+  utter_cout_demarche_bm:
+    - text: |
+        💵 *Baara dɔw wari sɔngɔ*
+
+        • *Carte Nina :* A FOU
+        • *Joyoro seben fɔlɔ :* A FOU
+        • *Pasipɔri :* ~FCFA 50.000
+        • *Wolo seben :* A FOU - FCFA 500
+        • *Casier judiciaire :* FCFA 200 - 500
+        • *Yoro jirali seben :* FCFA 500 - 2.000.
+
+  utter_capacites_chatbot_fr:
+    - text: |
+        🤖 *Ce que je peux faire*
+
+        Je peux vous renseigner sur la quasi-totalité des démarches administratives au Mali, telles que :
+        • Joyoro seben, Passeport, Actes (Naissance, Mariage, Décès)
+        • Casier judiciaire, Certificat de résidence, Carte NINA
+        • Titre foncier, Permis de conduire, Création d'entreprise
+        • Impôts, Retraite, Aide juridique, Visa, Divorce
+        • Et bien d'autres (Assurance maladie, Université, Urgences...)
+
+        Dites-moi simplement ce que vous cherchez !
+
+  utter_capacites_chatbot_bm:
+    - text: |
+        🤖 *Ne bɛ se ka mun kɛ*
+
+        Ne bɛ se ka i dɛmɛ Mali mara baara caman na, i n'a fo :
+        • Joyoro seben, Pasipɔri, Wolo seben, Furu seben
+        • Casier judiciaire, Carte Nina, Titre foncier
+        • Permis de conduire, Baara yoro kura kɛ, Nisɔngɔ sara, Kɔrɔ wari
+        • Sariya dɛmɛ, Visa, Bana dɛmɛ, Université...
+
+        I bɛ mun ɲini ? A fɔ n ma !
+
+  # ---------------------------------------------------------
+
+  utter_urgence_fr:
+    - text: |
+        🚨 *Numéros d'urgence au Mali*
+
+        • 🚔 Police / Secours : **17** ou **80 00 11 15**
+        • 🚑 SAMU (Urgences médicales) : **15**
+        • 🚒 Pompiers : **18** ou **80 00 12 01**
+        • ☎️ Gendarmerie : **80 00 11 12**
+        • 🦺 Protection Civile : **19**
+
+  utter_urgence_bm:
+    - text: |
+        🚨 *Deme telefono Mali la*
+
+        • 🚔 Police / Secours : **17** walima **80 00 11 15**
+        • 🚑 SAMU : **15**
+        • 🚒 Pompiers : **18** walima **80 00 12 01**
+        • ☎️ Gendarmerie : **80 00 11 12**
+        • 🦺 Protection Civile : **19**
+
+  utter_changer_langue_fr:
+    - text: "Langue changée en français. Vous pouvez maintenant poser votre question."
+
+  utter_changer_langue_bm:
+    - text: "✅ Kan mara bé bamanankan na. N bé sé k'i deme wa ?"
+
+  utter_remerciement_fr:
+    - text: "Avec plaisir ! Si vous avez une autre démarche, je suis là."
+    - text: "Je vous en prie. N'hésitez pas si vous avez d'autres questions."
+
+  utter_remerciement_bm:
+    - text: "A ka diya ! 😊 Ni ñininkali wéré bé i fe, i ka na."
+    - text: "I ni ce ! Ka taa kéné."
+
+  utter_au_revoir_fr:
+    - text: "Au revoir et bonne journée !"
+    - text: "À bientôt ! Je reste disponible si besoin."
+
+  utter_au_revoir_bm:
+    - text: "Kan bén ! Tile héré la. 👋"
+    - text: "Soni ! Ni ñininkali wéré bé i fe, i ka na."
+
+  utter_default_fr:
+    - text: "Je n'ai pas bien compris votre demande. Reformulez en indiquant directement le document ou la démarche recherchée (ex: acte de naissance, impôts, retraite, carte d'identité)."
+    - text: "Pouvez-vous préciser votre besoin ? Je peux vous aider pour plus de 20 démarches différentes."
+
+  utter_default_bm:
+    - text: "😅 N t'a minen. I ka ɲininkali wéré cogoya la ke ? Ne bé sé ka i deme kow caman na (wolo seben, joyoro seben, nisɔngɔ sara...)."
+    - text: "N t'a faham. Misali : *'Wolo seben soron cogo di ?'* walima *'Joyoro seben ke yoro juman ?'*"
+
+  # ─────────────────────────────────────────────────────
+  # Réponses contextuelles (documents, coût, délai)
+  # ─────────────────────────────────────────────────────
+
+  utter_documents_carte_identite_fr:
+    - text: |
+        📋 *Documents pour la Carte Nationale d'Identité*
+
+        • Acte de naissance original ou jugement supplétif
+        • 2 photos d'identité sur fond blanc
+        • Justificatif de résidence (ou présence du chef de quartier)
+
+        *Rappel :* La première délivrance est **gratuite**.
+
+  utter_documents_carte_identite_bm:
+    - text: |
+        📋 *Joyoro seben — seben minw*
+
+        • Wolo seben walima jugement supplétif
+        • Photo 2 fond blanc
+        • Yoro jirali seben (walima chef de quartier ka seree)
+
+        *Hakili :* Fɔlɔ kera **A FOU** (ceman).
+
+  utter_documents_passeport_mali_fr:
+    - text: |
+        📋 *Documents pour le Passeport (au Mali)*
+
+        • Acte de naissance ou jugement supplétif
+        • CNI en cours de validité
+        • 2 photos fond blanc (4x4)
+        • Ancien passeport (si renouvellement)
+        • Reçu de paiement (~50 000 FCFA)
+
+  utter_documents_passeport_mali_bm:
+    - text: |
+        📋 *Pasipɔri seben minw (Mali la)*
+
+        • Wolo seben walima jugement supplétif
+        • Joyoro seben dogniman
+        • Photo 2 fond blanc (4x4)
+        • Koro pasipɔri ni yélema kera
+        • Wari sara reçu (~50 000 FCFA)
+
+  utter_documents_passeport_etranger_fr:
+    - text: |
+        📋 *Documents pour le Passeport depuis l'étranger*
+
+        • Acte de naissance
+        • CNI malienne ou preuve de nationalité
+        • Photos d'identité
+        • Ancien passeport (si renouvellement)
+        • Carte consulaire ou justificatif de résidence
+
+        *Où :* Ambassade ou consulat général du Mali de votre pays.
+
+  utter_documents_passeport_etranger_bm:
+    - text: |
+        📋 *Pasipɔri seben minw (laada la)*
+
+        • Wolo seben
+        • Joyoro seben walima nationalité jirali seben
+        • Photo
+        • Koro pasipɔri ni yélema kera
+        • Carte consulaire walima yoro jirali
+
+        *Yoro :* Mali ambassade walima consulat i ka laada la.
+
+  utter_documents_acte_naissance_fr:
+    - text: |
+        📋 *Documents pour l'Acte de Naissance*
+
+        *Pour une copie :*
+        • Votre CNI (ou un ancien extrait)
+
+        *Pour une déclaration de naissance :*
+        • Certificat médical de l'hôpital
+        • Carte d'identité des parents
+        • 2 témoins
+
+  utter_documents_acte_naissance_bm:
+    - text: |
+        📋 *Wolo seben — seben minw*
+
+        *Copie ɲini na :*
+        • I ka joyoro seben (walima koro seben)
+
+        *Wolo dajuru kɛ na :*
+        • Dɔgɔtɔrɔ wolo seben
+        • Faa walima baa ka joyoro seben
+        • Seere fila
+
+  utter_documents_generique_fr:
+    - text: "Les documents dépendent de la démarche souhaitée. Précisez d'abord le document voulu (CNI, passeport, acte de naissance...) et je vous indiquerai les pièces nécessaires."
+
+  utter_documents_generique_bm:
+    - text: "Seben minw bɛ ɲini, o bɛ bɔ i b'a fɛ ka mun kɛ. I bɛ mun ɲini (joyoro seben, pasipɔri, wolo seben...) ? A fɔ n ma."
+
+  utter_cout_carte_identite_fr:
+    - text: "La première délivrance de la CNI est **GRATUITE**. Pour un renouvellement, des frais de timbre (environ 500 FCFA) peuvent être demandés selon les communes."
+
+  utter_cout_carte_identite_bm:
+    - text: "Joyoro seben fɔlɔ kera **A FOU** (ceman). Yélema tuma na, commune dɔw bɛ timbre ɲini (FCFA 500 cɛmancɛ)."
+
+  utter_cout_passeport_fr:
+    - text: "Le passeport coûte environ **50 000 FCFA** (timbre fiscal). Ce montant peut varier selon la catégorie."
+
+  utter_cout_passeport_bm:
+    - text: "Pasipɔri wari ye **50 000 FCFA** cɛmancɛ (timbre fiscal). A bɛ se ka yɛlɛma."
+
+  utter_cout_acte_naissance_fr:
+    - text: "L'acte de naissance est généralement **GRATUIT**. Certaines mairies demandent un timbre fiscal de **500 à 2 000 FCFA**."
+
+  utter_cout_acte_naissance_bm:
+    - text: "Wolo seben kera **A FOU** cɛmancɛ. Mairie dɔw bɛ timbre ɲini : **FCFA 500 - 2 000**."
+
+  utter_cout_generique_fr:
+    - text: |
+        💵 *Coût des démarches courantes*
+
+        • CNI (première délivrance) : Gratuit
+        • Passeport : ~50 000 FCFA
+        • Acte de naissance : Gratuit à 500 FCFA
+        • Casier judiciaire : 200 à 500 FCFA
+        • Certificat de résidence : 500 à 2 000 FCFA
+        • Carte NINA : Gratuit
+
+  utter_cout_generique_bm:
+    - text: |
+        💵 *Baara dɔw wari sɔngɔ*
+
+        • Joyoro seben fɔlɔ : A FOU
+        • Pasipɔri : ~FCFA 50 000
+        • Wolo seben : A FOU - FCFA 500
+        • Casier judiciaire : FCFA 200 - 500
+        • Yoro jirali seben : FCFA 500 - 2 000
+        • Carte Nina : A FOU
+
+  utter_delai_carte_identite_fr:
+    - text: "Le délai habituel pour la CNI est de **15 à 30 jours**. Un récépissé vous est remis immédiatement."
+
+  utter_delai_carte_identite_bm:
+    - text: "Joyoro seben lasɔrɔ waati ye **tile 15 fo 30**. Reçu bɛ di i ma joona."
+
+  utter_delai_passeport_fr:
+    - text: "Le délai pour un passeport à Bamako est de **15 à 30 jours**. Depuis l'étranger, comptez **2 à 3 mois** (dossier envoyé à Bamako pour impression)."
+
+  utter_delai_passeport_bm:
+    - text: "Pasipɔri lasɔrɔ waati (Bamako) : **tile 15-30**. Laada la (hors Mali) : **kalo 2-3** (dossier bɛ ci Bamako)."
+
+  utter_delai_acte_naissance_fr:
+    - text: "Un acte de naissance à la mairie est délivré en **1 à 3 jours** ouvrables."
+
+  utter_delai_acte_naissance_bm:
+    - text: "Wolo seben bɛ sɔrɔ **tile 1 fo 3** kɔnɔ."
+
+  utter_delai_generique_fr:
+    - text: "Les délais varient selon la démarche : CNI (15-30 jours), Passeport (15-30 jours), Acte de naissance (1-3 jours). Précisez votre démarche pour un délai exact."
+
+  utter_delai_generique_bm:
+    - text: "Waati bɛ yɛlɛma baara kan : Joyoro seben (tile 15-30), Pasipɔri (tile 15-30), Wolo seben (tile 1-3). I ka démarche fɔ n ma ka a ɲɛfɔ i ye."
+
+  utter_frustration_fr:
+    - text: "Je comprends votre déception et je vous prie de m'excuser. Je suis un assistant administratif en cours d'apprentissage continu. Vous pouvez reformuler simplement votre question (ex: 'Passeport', 'Acte de naissance') ou laisser votre question pour qu'un agent administratif vous réponde."
+
+  utter_frustration_bm:
+    - text: "Hakɛto, n'i ma faamuya sɔrɔ. Ne ye dɛmɛbaga ye min bɛ baara kɛ ka ɲɛsin kura ma. I bɛ se ka i ka ɲininkali labɛn dɔɔnin (misali: 'Pasipɔri', 'Wolo sɛbɛn') walima ka to admin k'a jaabi."
+
+  utter_clarification_fr:
+    - text: "Je suis à votre disposition. Pouvez-vous préciser le document administratif ou la démarche que vous recherchez ?"
+
+  utter_clarification_bm:
+    - text: "Aw bismila. I bɛ se k'a ɲɛfɔ dɔɔnin, sɛbɛn walima dɛmɛ jumɛn de b'i fɛ ?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - action_detecter_et_gerer_salutation
+  - action_changer_langue
+  - action_repondre_changement_langue
+  - action_default_fallback
+  - action_set_demarche
+  - action_repondre_documents
+  - action_repondre_cout
+  - action_repondre_delai

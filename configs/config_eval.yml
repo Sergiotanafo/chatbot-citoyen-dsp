@@ -1,0 +1,66 @@
+version: "3.1"
+
+recipe: default.v1
+
+# ─────────────────────────────────────────
+# CONFIG DE TEST — Pipeline sans CamemBERT
+# (LanguageModelFeaturizer incompatible avec transformers >= 5.0)
+# Pipeline: WhitespaceTokenizer + CountVectors + CharNgrams + BambaraEmbeddings + DIET
+# ─────────────────────────────────────────
+language: fr
+
+pipeline:
+
+  # 1. Tokenisation par espace
+  - name: WhitespaceTokenizer
+
+  # 2. Détection de patterns regex
+  - name: RegexFeaturizer
+
+  # 3. Synonymes d'entités
+  - name: EntitySynonymMapper
+
+  # 4. Features lexicales et syntaxiques
+  - name: LexicalSyntacticFeaturizer
+
+  # 5. Embeddings Bambara (Custom FastText via .vec)
+  - name: custom_components.bambara_featurizer.BambaraEmbeddingFeaturizer
+
+  # 6. Sac de mots (niveau mot entier)
+  - name: CountVectorsFeaturizer
+
+  # 7. N-grammes de caractères (TRÈS IMPORTANT pour bambara)
+  - name: CountVectorsFeaturizer
+    alias: char_ngram
+    analyzer: char_wb
+    min_ngram: 2
+    max_ngram: 5
+
+  # 8. Classifieur principal DIET
+  - name: DIETClassifier
+    epochs: 30
+    constrain_similarities: true
+    entity_recognition: true
+    BILOU_flag: false
+
+  # 9. Fallback quand le bot n'est pas sûr
+  - name: FallbackClassifier
+    threshold: 0.40
+    ambiguity_threshold: 0.1
+
+policies:
+
+  - name: MemoizationPolicy
+    max_history: 5
+
+  - name: RulePolicy
+    core_fallback_threshold: 0.30
+    core_fallback_action_name: "action_default_fallback"
+    enable_fallback_prediction: true
+
+  - name: TEDPolicy
+    max_history: 8
+    epochs: 30
+    constrain_similarities: true
+
+assistant_id: chatbot-citoyen-mali-v3

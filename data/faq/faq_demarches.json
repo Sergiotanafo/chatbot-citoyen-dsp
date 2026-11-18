@@ -1,0 +1,193 @@
+{
+  "version": "1.2",
+  "updated_at": "2026-11-17",
+  "categories": [
+    {
+      "id": "carte_identite",
+      "title_fr": "Carte Nationale d'Identité Biométrique (CNI)",
+      "title_bm": "Fasodenya sariyasɛbɛn (CNI)",
+      "questions_fr": [
+        "Comment faire ma carte d'identité ?",
+        "Combien coûte la carte d'identité biométrique ?",
+        "Quels sont les documents pour la CNI ?",
+        "Où faire la carte d'identité à Bamako ?"
+      ],
+      "questions_bm": [
+        "N bɛ se ka fasodenya sariyasɛbɛn sɔrɔ cogo di ?",
+        "CNI biométrique sɔngɔ ye joli ye ?",
+        "Sɛbɛn jumɛnw de wajibiyalen don CNI kama ?",
+        "Joyoro seben bɛ kɛ yɔrɔ jumɛn ?"
+      ],
+      "answer_fr": "La CNI biométrique est STRICTEMENT GRATUITE (0 FCFA) pour la première délivrance au Mali. Pièces à fournir : extrait d'acte de naissance ou jugement supplétif, certificat de résidence, 2 photos d'identité fond blanc, certificat de nationalité si demandé. Dépôt : Commissariats de police d'arrondissement ou brigade de gendarmerie. Délai : 2 à 4 semaines.",
+      "answer_bm": "Fasodenya sariyasɛbɛn (CNI) kura delili sɔngɔ ye FU DE YE (0 FCFA). Sɛbɛn minnu bɛ ɲini : wolosɛbɛn, sigiyɔrɔ sɛbɛn, fɔtɔ 2 ja jɛman kan. A bɛ dabila polisiso la walima zandarimuso la. A bɛ bɔ dɔgɔkun 2 ka taa 4 kɔnɔ.",
+      "pieces_fr": "1. Extrait d'acte de naissance (ou jugement supplétif)\n2. Certificat de résidence récent\n3. Deux (2) photos d'identité fond blanc\n4. Certificat de nationalité malienne si nécessaire.",
+      "pieces_bm": "1. Wolosɛbɛn (walima kitikɛsɛbɛn)\n2. Sigiyɔrɔ sɛbɛn\n3. Ja fɔtɔ 2 ja jɛman kan\n4. Malidenya sɛbɛn n'a wajibiyara.",
+      "cout_fr": "Gratuit (0 FCFA) pour la première délivrance officielle. En cas de perte ou duplicata, prévoir un timbre fiscal de 1 000 FCFA.",
+      "cout_bm": "A sɔngɔ ye FU YE (0 FCFA) fɔlɔ deli kama. N'a tun filila, tanburuwari bɛ se FCFA 1 000 ma.",
+      "delai_fr": "Le délai moyen est de 2 à 4 semaines après le dépôt de la demande.",
+      "delai_bm": "A bɛ taa dɔgɔkun 2 ka bila dɔgɔkun 4 la."
+    },
+    {
+      "id": "demande_passeport",
+      "title_fr": "Passeport biométrique malien",
+      "title_bm": "Mali jamana pasan (Passeport)",
+      "questions_fr": [
+        "Comment obtenir un passeport malien ?",
+        "Quel est le prix du passeport ?",
+        "Quels documents pour le passeport adulte et mineur ?",
+        "Où déposer la demande de passeport ?",
+        "Où trouver et faire une autorisation parentale pour mineur ?"
+      ],
+      "questions_bm": [
+        "N bɛ se ka pasan sɔrɔ cogo di ?",
+        "Pasan sɔngɔ ye joli ye ?",
+        "Denmisɛn pasan ɲinini sɛbɛnw ye jumɛn ye ?",
+        "Pasan bɛ bila yɔrɔ jumɛn ?",
+        "Denmisɛn ka yamaruya sɛbɛn bɛ sɔrɔ cogo di ?"
+      ],
+      "answer_fr": "Le passeport ordinaire coûte environ 50 000 FCFA à 55 000 FCFA pour les adultes. Dépôt à la Direction Générale de la Police Nationale (DGPN / Direction de la Police aux Frontières). Pièces adulte : CNI biométrique ou fiche NINA, extrait d'acte de naissance, certificat de nationalité, 2 photos biométriques. Pour les mineurs : l'autorisation parentale est rédigée et signée par le père ou tuteur légal, puis légalisée à la mairie ou au commissariat avec sa pièce d'identité. Délai : 1 à 3 semaines.",
+      "answer_bm": "Mali pasan sɔngɔ bɛ FCFA 50 000 ka taa 55 000 cɛ. A bɛ bila Polisiba DPF yɔrɔ la. Sɛbɛn minnu bɛ ɲini : CNI walima NINA sɛbɛn, wolosɛbɛn, malidenya sɛbɛn, fɔtɔ 2. Denmisɛn teliya kama, bangebaga ka yamaruya sɛbɛn bɛ sɛbɛn ka latikɛ mɛri la walima polisiso la. A bɛ bɔ dɔgɔkun 1 ka taa 3 kɔnɔ.",
+      "pieces_fr": "1. Extrait d'acte de naissance délivré par la mairie\n2. Carte d'identité biométrique ou fiche NINA\n3. Certificat de nationalité malienne\n4. Deux photos d'identité biométriques\n5. Pour mineur : autorisation parentale légalisée à la mairie ou au commissariat + pièce d'identité du père/tuteur.",
+      "pieces_bm": "1. Wolosɛbɛn\n2. CNI biométrique walima NINA sɛbɛn\n3. Malidenya sɛbɛn\n4. Fɔtɔ 2 biométrique\n5. Denmisɛn teliya kama : bangebaga ka yamaruya sɛbɛn.",
+      "cout_fr": "Environ 50 000 à 55 000 FCFA (frais d'enrôlement et timbre fiscal inclus).",
+      "cout_bm": "FCFA 50 000 ka taa FCFA 55 000 tanburuwari kɔnɔ.",
+      "delai_fr": "Le délai de délivrance est généralement de 1 à 3 semaines selon l'affluence.",
+      "delai_bm": "Dɔgɔkun 1 ka taa dɔgɔkun 3 kɔnɔ."
+    },
+    {
+      "id": "jugement_suppletif",
+      "title_fr": "Jugement Supplétif d'Acte de Naissance",
+      "title_bm": "Kiti kɔnɔna wolosɛbɛn (Jugement supplétif)",
+      "questions_fr": [
+        "C'est quoi un jugement supplétif ?",
+        "Qu'est-ce qu'un jugement supplétif ?",
+        "Comment faire ou obtenir un jugement supplétif au Mali ?",
+        "Où faire le jugement supplétif ?",
+        "Délai et coût du jugement supplétif"
+      ],
+      "questions_bm": [
+        "Kiti kɔnɔna wolosɛbɛn ye mun ye ?",
+        "Jugement supplétif bɛ sɔrɔ cogo di kititigɛso la ?"
+      ],
+      "answer_fr": "Le jugement supplétif est une décision de justice délivrée par le Tribunal d'Instance (ou Tribunal de Grande Instance) qui remplace l'acte de naissance officiel lorsque la déclaration de naissance n'a pas été faite à la mairie dans le délai légal de 30 jours après l'accouchement. Il a exactement la même valeur juridique que l'acte de naissance et permet d'obtenir la CNI, la carte NINA et le passeport. Dépôt : Greffe du Tribunal du lieu de naissance. Pièces : certificat d'âge apparent délivré par un médecin ou volet de maternité, 2 témoins majeurs munis de leur pièce d'identité. Coût : 2 500 à 5 000 FCFA selon les frais de greffe et timbres. Délai : 1 à 2 semaines.",
+      "answer_bm": "Kiti kɔnɔna wolosɛbɛn (jugement supplétif) ye kititigɛso ka sariya sɛbɛn ye min bɛ bila wolosɛbɛn nɔrɔ la, ni den wololen kɔ tile 30 tɛmɛna ka sɔrɔ a ma sɛbɛn mɛri la. A ni wolosɛbɛn nafa bɛɛ kelen pe don. A bɛ sɔrɔ kititigɛso (tribunal) la ni seere 2 ye. A bɛ bɔ dɔgɔkun 1 ka taa 2 kɔnɔ.",
+      "pieces_fr": "1. Certificat d'âge apparent ou attestation de naissance de la maternité\n2. Présence de deux (2) témoins majeurs avec leurs pièces d'identité\n3. Demande timbrée adressée au Président du Tribunal.",
+      "pieces_bm": "1. Dɔgɔtɔrɔso ka sɛbɛn walima si hakɛ sɛbɛn\n2. Seere mɔgɔba 2 ni u ka joyoro sɛbɛnw\n3. Kititigɛba ka ɲinini sɛbɛn.",
+      "cout_fr": "2 500 à 5 000 FCFA (frais de justice et timbres fiscaux).",
+      "cout_bm": "FCFA 2 500 ka taa 5 000 cɛ.",
+      "delai_fr": "1 à 2 semaines selon les audiences du tribunal.",
+      "delai_bm": "Dɔgɔkun 1 ka taa 2 kɔnɔ."
+    },
+    {
+      "id": "voyage_etranger",
+      "title_fr": "Formalités et Documents pour Voyager à l'Étranger (Chine, Europe, etc.)",
+      "title_bm": "Mali kɔkan taama kow ni sɛbɛnw",
+      "questions_fr": [
+        "Je dois aller en Chine il me faut quel document ?",
+        "Quels documents pour voyager à l'étranger hors du Mali ?",
+        "Faut-il un passeport et un visa ?",
+        "Quelles formalités pour voyager hors d'Afrique ?"
+      ],
+      "questions_bm": [
+        "N bɛ taa jamana wɛrɛ la sɛbɛn jumɛn bɛ ɲini ?",
+        "Mali kɔkan taama kama sɛbɛnw ye jumɛn ye ?"
+      ],
+      "answer_fr": "Pour voyager hors du Mali (notamment vers la Chine, l'Europe ou l'Asie), vous devez réunir : 1. Un passeport biométrique malien valide (au moins 6 mois avant sa date d'expiration). 2. Un visa de séjour ou d'affaires délivré par l'Ambassade ou le Consulat du pays de destination (ex: Ambassade de Chine à Bamako). 3. Un billet d'avion aller-retour ou justificatif de voyage. 4. Un carnet de vaccination international (vaccin fièvre jaune obligatoire). 5. Pour un mineur (< 18 ans) : autorisation parentale légalisée du père ou tuteur légal + copie de sa pièce d'identité.",
+      "answer_bm": "Mali kɔkan taama kama (i n'a fɔ Chine walima Tubabudugu), sɛbɛn minnu wajibiyalen don : 1. Mali jamana pasan kura (kalo 6 ka kan ka to a la sani a ka ban). 2. Visa sɛbɛn min bɛ bɔ jamana ambasadiso la Bamako. 3. Sanpɛrɛntigi ka paji sɛbɛn. 4. Furabɔ sɛbɛn zɔnzelo kama. 5. Denmisɛn kama : bangebaga ka yamaruya sɛbɛn latikɛlen mɛri la.",
+      "pieces_fr": "1. Passeport malien biométrique valide d'au moins 6 mois\n2. Visa délivré par l'Ambassade du pays de destination\n3. Carnet de vaccination international (fièvre jaune)\n4. Justificatif d'hébergement ou réservation d'hôtel\n5. Pour mineur : autorisation parentale légalisée.",
+      "pieces_bm": "1. Pasan sɛbɛn baarakɛlen\n2. Visa min bɔra ambasadiso la\n3. Furabɔ sɛbɛn jɛman\n4. Sigiyɔrɔ jiralisɛbɛn yen\n5. Denmisɛn yamaruya sɛbɛn.",
+      "cout_fr": "Passeport : ~50 000 FCFA. Les frais de visa varient selon l'ambassade (ex: 20 000 à 60 000 FCFA).",
+      "cout_bm": "Pasan ye ~50 000 FCFA. Visa sɔngɔ bɛ bɔ ambasadiso ka sariyaw fɛ.",
+      "delai_fr": "Passeport : 1 à 3 semaines. Visa : 3 à 15 jours ouvrés selon l'ambassade.",
+      "delai_bm": "Pasan dɔgɔkun 1-3. Visa tile 3-15 ambasadiso la."
+    },
+    {
+      "id": "demande_acte_naissance",
+      "title_fr": "Acte de naissance / Volet d'état civil",
+      "title_bm": "Wolosɛbɛn",
+      "questions_fr": [
+        "Comment faire un acte de naissance ?",
+        "Quel est le délai légal de déclaration de naissance ?",
+        "Où déclarer une naissance ?"
+      ],
+      "questions_bm": [
+        "Wolosɛbɛn bɛ sɔrɔ cogo di ?",
+        "Den wololen bɛ labila mɛri la tile joli kɔnɔ ?",
+        "Wolosɛbɛn bɛ bɔ mɛri jumɛn na ?"
+      ],
+      "answer_fr": "La déclaration de naissance est GRATUITE si elle est faite dans les 30 jours suivant l'accouchement à la mairie ou au centre secondaire d'état civil. Pièces : volet d'accouchement délivré par la maternité, pièces d'identité des parents, livret de famille si mariés. Passé 30 jours, un jugement supplétif au tribunal d'instance est nécessaire.",
+      "answer_bm": "Den wololen kɔ, a sɛbɛnli mɛri la ye FU YE n'a kɛra tile 30 kɔnɔ dɔgɔtɔrɔso ka sɛbɛn fɛ. Tile 30 tɛmɛnen kɔ, kiti kɔnɔna sɛbɛn (jugement supplétif) de bɛ ɲini.",
+      "pieces_fr": "1. Volet d'accouchement délivré par la maternité ou certificat médical\n2. Pièce d'identité officielle du déclarant et de la mère\n3. Livret de famille ou acte de mariage des parents le cas échéant.",
+      "pieces_bm": "1. Dɔgɔtɔrɔso ka wolo kɔnɔna sɛbɛn\n2. Bangebagaw ka joyoro sɛbɛn\n3. Furu sɛbɛn n'u furanen don.",
+      "cout_fr": "Gratuit dans le délai légal des 30 jours. Des frais de légalisation ou timbre de 200 à 500 FCFA peuvent s'appliquer pour des copies supplémentaires.",
+      "cout_bm": "A ye FU YE tile 30 kɔnɔ. Kɔpi wɛrɛw la, tanburu sɔngɔ bɛ FCFA 200 ka taa 500 cɛ.",
+      "delai_fr": "Délivrance immédiate ou sous 24 à 48 heures au centre d'état civil.",
+      "delai_bm": "O yɔrɔnin bɛɛ walima tile 1 ka taa 2 kɔnɔ."
+    },
+    {
+      "id": "carte_nina",
+      "title_fr": "Numéro d'Identification Nationale (NINA) / RAVEC",
+      "title_bm": "NINA nimɔrɔ ni sɛbɛn / RAVEC",
+      "questions_fr": [
+        "Comment avoir son numéro NINA ?",
+        "La fiche NINA est-elle payante ?",
+        "Où se faire enrôler pour le RAVEC ?"
+      ],
+      "questions_bm": [
+        "N bɛ se ka NINA sɛbɛn sɔrɔ cogo di ?",
+        "RAVEC bɛ kɛ yɔrɔ jumɛn ?",
+        "NINA sɛbɛn bɛ sara wa ?"
+      ],
+      "answer_fr": "L'enrôlement au RAVEC et l'obtention de la fiche individuelle NINA sont TOTALEMENT GRATUITS (0 FCFA). Rendez-vous dans les centres de RAVEC, mairies ou sous-préfectures avec un extrait d'acte de naissance.",
+      "answer_bm": "NINA sɛbɛn bɛ bɔ RAVEC yɔrɔ la, mɛriw la walima surefɛkitiw la. A tɛ sara (0 FCFA). Wolosɛbɛn de bɛ bila a la.",
+      "pieces_fr": "1. Extrait d'acte de naissance authentique ou jugement supplétif\n2. Présence physique pour la prise d'empreintes et photo biométrique.",
+      "pieces_bm": "1. Wolosɛbɛn sɛbɛntikɛlen\n2. I yɛrɛ ka se yen bolokɔni ni ja ta kama.",
+      "cout_fr": "Strictement gratuit (0 FCFA).",
+      "cout_bm": "FU DƆRƆN (0 FCFA).",
+      "delai_fr": "Attribution selon la synchronisation des données (1 à 3 semaines pour la fiche d'identification).",
+      "delai_bm": "Dɔgɔkun 1 ka taa 3 kɔnɔ."
+    },
+    {
+      "id": "casier_judiciaire",
+      "title_fr": "Casier Judiciaire (Bulletin n°3)",
+      "title_bm": "Kiti yɔrɔ ka sɛbɛn (Casier judiciaire)",
+      "questions_fr": [
+        "Comment obtenir un casier judiciaire au Mali ?",
+        "Où demander le bulletin numéro 3 ?",
+        "Combien coûte le casier judiciaire ?"
+      ],
+      "questions_bm": [
+        "Casier judiciaire bɛ sɔrɔ cogo di ?",
+        "Kiti yɔrɔ sɛbɛn sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "Le bulletin n°3 du casier judiciaire s'obtient au greffe du Tribunal de Grande Instance du lieu de naissance. Pièces : extrait d'acte de naissance ou copie de la carte d'identité, timbre fiscal de 500 FCFA. Délai : 24 à 48 heures.",
+      "answer_bm": "Kiti yɔrɔ sɛbɛn bɛ sɔrɔ kititigɛso la i wololen yɔrɔ min na. Sɛbɛn : wolosɛbɛn walima CNI, tanburu FCFA 500. A bɛ bɔ tile 1 walima 2 kɔnɔ.",
+      "pieces_fr": "1. Copie d'extrait d'acte de naissance\n2. Pièce d'identité ou fiche NINA\n3. Timbre fiscal légal.",
+      "pieces_bm": "1. Wolosɛbɛn kɔpi\n2. CNI walima NINA sɛbɛn\n3. Tanburu sariyasɛbɛn.",
+      "cout_fr": "Timbre fiscal de 500 FCFA (tarif réglementé).",
+      "cout_bm": "Tanburu sɔngɔ ye FCFA 500 ye.",
+      "delai_fr": "24 heures à 48 heures ouvrées.",
+      "delai_bm": "Tile 1 ka taa tile 2 kɔnɔ."
+    },
+    {
+      "id": "certificat_residence",
+      "title_fr": "Certificat de résidence",
+      "title_bm": "Sigiyɔrɔ sɛbɛn",
+      "questions_fr": [
+        "Comment obtenir un certificat de résidence ?",
+        "Quels papiers pour le certificat de résidence ?"
+      ],
+      "questions_bm": [
+        "Sigiyɔrɔ sɛbɛn bɛ sɔrɔ cogo di mɛri la ?"
+      ],
+      "answer_fr": "Le certificat de résidence est délivré par le commissariat de police de votre quartier ou la mairie/chef de quartier. Pièces : pièce d'identité, facture EDM/SOMAGEP ou attestation de domicile du logeur, timbre fiscal de 500 à 1 000 FCFA. Délai : le jour même.",
+      "answer_bm": "Sigiyɔrɔ sɛbɛn bɛ bɔ dugutigi fɛ walima polisiso la. Sɛbɛn : joyoro sɛbɛn, EDM walima dugu fɛ sɛbɛn, tanburu FCFA 500 ka taa 1000. O don bɛɛ a bɛ bɔ.",
+      "pieces_fr": "1. Pièce d'identité du demandeur (CNI, NINA ou passeport)\n2. Facture EDM ou quittance de loyer ou attestation du chef de quartier\n3. Timbre municipal/fiscal.",
+      "pieces_bm": "1. Joyoro sɛbɛn\n2. EDM faktiri walima dugutigi ka dɛmɛsɛbɛn\n3. Tanburu.",
+      "cout_fr": "500 à 1 000 FCFA selon la commune.",
+      "cout_bm": "FCFA 500 ka bila FCFA 1 000 la kominiw kɔnɔ.",
+      "delai_fr": "Délivrance immédiate le jour même.",
+      "delai_bm": "O don bɛɛ (joona kosɛbɛ)."
+    }
+  ]
+}

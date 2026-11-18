@@ -1,0 +1,557 @@
+version: "3.1"
+
+rules:
+
+  # ─────────────────────────────────────────
+  # SALUTATION
+  # ─────────────────────────────────────────
+  - rule: Salutation FR
+    steps:
+      - intent: saluer
+      - action: action_detecter_et_gerer_salutation
+      - slot_was_set:
+          - langue: français
+      - action: utter_salutation_fr
+
+  - rule: Salutation BM
+    steps:
+      - intent: saluer
+      - action: action_detecter_et_gerer_salutation
+      - slot_was_set:
+          - langue: bambara
+      - action: utter_salutation_bm
+
+  # ─────────────────────────────────────────
+  # CHANGER LANGUE
+  # ─────────────────────────────────────────
+  - rule: Changer langue FR
+    steps:
+      - intent: changer_langue
+      - action: action_changer_langue
+      - slot_was_set:
+          - langue: français
+      - action: utter_changer_langue_fr
+
+  - rule: Changer langue BM
+    steps:
+      - intent: changer_langue
+      - action: action_changer_langue
+      - slot_was_set:
+          - langue: bambara
+      - action: utter_changer_langue_bm
+
+  # ─────────────────────────────────────────
+  # ANCIENS INTENTS ADMINISTRATIFS (Gérés par stories.yml)
+  # ─────────────────────────────────────────
+  - rule: Acte deces FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: acte_deces
+      - action: utter_acte_deces_fr
+
+  - rule: Acte deces BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: acte_deces
+      - action: utter_acte_deces_bm
+
+  - rule: Acte mariage FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: acte_mariage
+      - action: utter_acte_mariage_fr
+
+  - rule: Acte mariage BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: acte_mariage
+      - action: utter_acte_mariage_bm
+
+  - rule: Carte NINA FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: carte_nina
+      - action: utter_carte_nina_fr
+
+  - rule: Carte NINA BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: carte_nina
+      - action: utter_carte_nina_bm
+
+  - rule: Permis conduire FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: permis_conduire
+      - action: utter_permis_conduire_fr
+
+  - rule: Permis conduire BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: permis_conduire
+      - action: utter_permis_conduire_bm
+
+  - rule: Titre foncier FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: titre_foncier
+      - action: utter_titre_foncier_fr
+
+  - rule: Titre foncier BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: titre_foncier
+      - action: utter_titre_foncier_bm
+
+  - rule: Assurance maladie FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: assurance_maladie
+      - action: utter_assurance_maladie_fr
+
+  - rule: Assurance maladie BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: assurance_maladie
+      - action: utter_assurance_maladie_bm
+
+  - rule: Creation entreprise FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: creation_entreprise
+      - action: utter_creation_entreprise_fr
+
+  - rule: Creation entreprise BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: creation_entreprise
+      - action: utter_creation_entreprise_bm
+
+  - rule: Inscription universitaire FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: inscription_universitaire
+      - action: utter_inscription_universitaire_fr
+
+  - rule: Inscription universitaire BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: inscription_universitaire
+      - action: utter_inscription_universitaire_bm
+
+  - rule: Attestation reussite FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: attestation_reussite
+      - action: utter_attestation_reussite_fr
+
+  - rule: Attestation reussite BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: attestation_reussite
+      - action: utter_attestation_reussite_bm
+
+  # ─────────────────────────────────────────
+  # NOUVEAUX INTENTS
+  # ─────────────────────────────────────────
+  - rule: Impots FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: declaration_impots
+      - action: utter_declaration_impots_fr
+
+  - rule: Impots BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: declaration_impots
+      - action: utter_declaration_impots_bm
+
+  - rule: Retraite FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: pension_retraite
+      - action: utter_pension_retraite_fr
+
+  - rule: Retraite BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: pension_retraite
+      - action: utter_pension_retraite_bm
+
+  - rule: Aide juridique FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: aide_juridique
+      - action: utter_aide_juridique_fr
+
+  - rule: Aide juridique BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: aide_juridique
+      - action: utter_aide_juridique_bm
+
+  - rule: Etat civil FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: etat_civil
+      - action: utter_etat_civil_fr
+
+  - rule: Etat civil BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: etat_civil
+      - action: utter_etat_civil_bm
+
+  - rule: Carte electeur FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: carte_electeur
+      - action: utter_carte_electeur_fr
+
+  - rule: Carte electeur BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: carte_electeur
+      - action: utter_carte_electeur_bm
+
+  - rule: Visa voyage FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: visa_voyage
+      - action: utter_visa_voyage_fr
+
+  - rule: Visa voyage BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: visa_voyage
+      - action: utter_visa_voyage_bm
+
+  - rule: Legalisation FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: legalisation_documents
+      - action: utter_legalisation_documents_fr
+
+  - rule: Legalisation BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: legalisation_documents
+      - action: utter_legalisation_documents_bm
+
+  - rule: Adoption FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: adoption
+      - action: utter_adoption_fr
+
+  - rule: Adoption BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: adoption
+      - action: utter_adoption_bm
+
+  - rule: Divorce FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: divorce
+      - action: utter_divorce_fr
+
+  - rule: Divorce BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: divorce
+      - action: utter_divorce_bm
+
+  - rule: Nationalite FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: nationalite
+      - action: utter_nationalite_fr
+
+  - rule: Nationalite BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: nationalite
+      - action: utter_nationalite_bm
+
+  - rule: Aide sociale FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: aide_sociale
+      - action: utter_aide_sociale_fr
+
+  - rule: Aide sociale BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: aide_sociale
+      - action: utter_aide_sociale_bm
+
+  - rule: Plainte FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: plainte
+      - action: utter_plainte_fr
+
+  - rule: Plainte BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: plainte
+      - action: utter_plainte_bm
+
+  - rule: Horaires FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: horaires_services
+      - action: utter_horaires_services_fr
+
+  - rule: Horaires BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: horaires_services
+      - action: utter_horaires_services_bm
+
+  - rule: Cout FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: cout_demarche
+      - action: utter_cout_demarche_fr
+
+  - rule: Cout BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: cout_demarche
+      - action: utter_cout_demarche_bm
+
+  - rule: Capacites FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: capacites_chatbot
+      - action: utter_capacites_chatbot_fr
+
+  - rule: Capacites BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: capacites_chatbot
+      - action: utter_capacites_chatbot_bm
+
+  # ─────────────────────────────────────────
+  # GENERAL
+  # ─────────────────────────────────────────
+  - rule: Urgence FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: urgence
+      - action: utter_urgence_fr
+
+  - rule: Urgence BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: urgence
+      - action: utter_urgence_bm
+
+  - rule: Remerciement FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: remerciement
+      - action: utter_remerciement_fr
+
+  - rule: Remerciement BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: remerciement
+      - action: utter_remerciement_bm
+
+  - rule: Au revoir FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: au_revoir
+      - action: utter_au_revoir_fr
+
+  - rule: Au revoir BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: au_revoir
+      - action: utter_au_revoir_bm
+
+  # ─────────────────────────────────────────
+  # FALLBACK
+  # ─────────────────────────────────────────
+  - rule: Fallback FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: fallback
+      - action: utter_default_fr
+
+  - rule: Fallback BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: fallback
+      - action: utter_default_bm
+
+  - rule: Fallback global sans langue
+    steps:
+      - intent: fallback
+      - action: utter_default_fr
+
+  - rule: NLU fallback FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: nlu_fallback
+      - action: action_default_fallback
+
+  - rule: NLU fallback BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: nlu_fallback
+      - action: action_default_fallback
+
+  # ─────────────────────────────────────────
+  # FRUSTRATION & CLARIFICATION
+  # ─────────────────────────────────────────
+  - rule: Frustration FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: frustration
+      - action: utter_frustration_fr
+
+  - rule: Frustration BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: frustration
+      - action: utter_frustration_bm
+
+  - rule: Clarification FR
+    condition:
+      - slot_was_set:
+          - langue: français
+    steps:
+      - intent: clarification
+      - action: utter_clarification_fr
+
+  - rule: Clarification BM
+    condition:
+      - slot_was_set:
+          - langue: bambara
+    steps:
+      - intent: clarification
+      - action: utter_clarification_bm

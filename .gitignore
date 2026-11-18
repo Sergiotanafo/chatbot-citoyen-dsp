@@ -218,3 +218,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Rasa models, cache & results
+models/
+results/
+.rasa/
+*.tar.gz
+
+# Local model weights / embeddings (.vec / .bin)
+*.vec
+*.bin
+

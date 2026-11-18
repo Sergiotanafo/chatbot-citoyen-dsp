@@ -1,0 +1,19 @@
+version: "3.1"
+
+nlu:
+  - intent: frustration
+    examples: |
+      - c'est de la merde tu ne me comprends pas
+      - ça m'énerve vraiment, le bot est trop bête
+      - pourquoi tu ne réponds pas comme ChatGPT
+      - ce chatbot est nul
+      - tu ne sais rien, arrête
+      - je suis frustré, le bot ne comprend pas
+
+  - intent: clarification
+    examples: |
+      - je ne comprends pas, peux‑tu préciser?
+      - peux‑tu reformuler ta question?
+      - que veux‑tu dire exactement?
+      - pouvez‑vous clarifier votre demande?
+      - je n’ai pas saisi, répète s’il te plaît

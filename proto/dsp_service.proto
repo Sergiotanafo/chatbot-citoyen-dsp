@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package dsp;
+
+service DspService {
+  // Compréhension du langage naturel (Rasa NLU)
+  rpc PredictIntent (TextRequest) returns (IntentResponse);
+  
+  // Recherche sémantique / FAQ
+  rpc SearchKnowledge (SearchRequest) returns (SearchResponse);
+  
+  // Traitement vocal : Reconnaissance vocale (ASR)
+  rpc TranscribeAudio (AudioRequest) returns (TranscriptionResponse);
+  
+  // Traitement vocal : Synthèse vocale (TTS)
+  rpc SynthesizeSpeech (SynthesizeRequest) returns (AudioResponse);
+}
+
+message TextRequest {
+  string text = 1;
+  string language = 2; // "fr" ou "bm"
+  string session_id = 3;
+}
+
+message Entity {
+  string entity = 1;
+  string value = 2;
+  double confidence = 3;
+}
+
+message IntentResponse {
+  string intent = 1;
+  double confidence = 2;
+  repeated Entity entities = 3;
+  string text = 4;
+}
+
+message SearchRequest {
+  string query = 1;
+  string language = 2;
+  int32 top_k = 3;
+}
+
+message SearchResultItem {
+  string topic = 1;
+  string title = 2;
+  string content = 3;
+  double score = 4;
+}
+
+message SearchResponse {
+  repeated SearchResultItem results = 1;
+}
+
+message AudioRequest {
+  bytes audio_data = 1;
+  string format = 2; // "wav", "mp3", "ogg"
+  string language = 3; // "bm" ou "fr"
+}
+
+message TranscriptionResponse {
+  string text = 1;
+  string detected_language = 2;
+  double confidence = 3;
+}
+
+message SynthesizeRequest {
+  string text = 1;
+  string language = 2; // "bm" ou "fr"
+  string voice_speed = 3;
+}
+
+message AudioResponse {
+  bytes audio_data = 1;
+  string format = 2;
+}

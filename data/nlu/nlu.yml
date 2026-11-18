@@ -1,0 +1,1056 @@
+version: "3.1"
+
+nlu:
+
+# ═══════════════════════════════════════════════════════
+# REGEX ET SYNONYMES
+# ═══════════════════════════════════════════════════════
+
+- regex: langue
+  examples: |
+    - (?i)\b(francais|français|bambara|bamanankan|tubabukan)\b
+
+- lookup: langue
+  examples: |
+    - français
+    - francais
+    - bambara
+    - bamanankan
+    - tubabukan
+
+- synonym: carte d'identité
+  examples: |
+    - carte nationale d identite
+    - carte identite
+    - joyoro seben
+    - sugandikan
+    - kart identite
+
+- synonym: passeport
+  examples: |
+    - pasipɔri
+    - pasipori
+    - passport
+    - paspori
+    - pasipori mali
+
+- synonym: acte de naissance
+  examples: |
+    - wolo seben
+    - extrait de naissance
+    - sɛbɛn dɔgɔkun
+    - seben dogokun
+    - wolon seben
+    - certificat naissance
+
+- synonym: frais
+  examples: |
+    - wari
+    - wari joli
+    - prix
+    - coût
+    - cout
+    - tarif
+    - combien
+    - a wari joli
+    - a joli
+
+- synonym: mairie
+  examples: |
+    - commune
+    - mairi
+    - meri
+    - mairie bamako
+    - centre etat civil
+
+# ═══════════════════════════════════════════════════════
+# INTENTS DE BASE (salutations, langue, remerciements)
+# ═══════════════════════════════════════════════════════
+
+- intent: saluer
+  examples: |
+    - bonjour
+    - salut
+    - coucou
+    - bonsoir
+    - bonjour le chatbot
+    - salut assistant
+    - hey
+    - bonjour comment vas-tu
+    - salut comment ça va
+    - hello
+    - bonjour à tous
+    - bonsoir le bot
+    - salut le chatbot citoyen
+    - bonjour est-ce que tu peux m'aider
+    - bonjour je cherche de l'aide
+    - salut j'ai besoin d'information
+    - yo
+    - bonsoir à vous
+    - bonjour monsieur le chatbot
+    - i ni sogoma
+    - i ni tile
+    - i ni su
+    - aw ni sogoma
+    - aw ni tile
+    - n be se ka kɛ wa
+    - i ka kene wa
+    - aw ni ce
+    - hɛrɛ sira
+    - i ni wula
+    -comment vas tu ?
+
+- intent: au_revoir
+  examples: |
+    - au revoir
+    - à plus tard
+    - à bientôt
+    - bye
+    - merci au revoir
+    - bonne journée
+    - on se reparle
+    - bonne soirée
+    - à la prochaine
+    - bye bye
+    - tchao
+    - je te laisse
+    - c'est bon merci au revoir
+    - bonne continuation
+    - je m'en vais merci
+    - ka kɛnɛ
+    - n b'a taa
+    - aw ka kɛnɛ
+    - n be taa wa
+    - taa ka kene
+    - kan ben
+    - tile here la
+    - ala k'an to here la
+
+- intent: remerciement
+  examples: |
+    - merci
+    - merci beaucoup
+    - je te remercie
+    - c'est gentil
+    - merci pour l'aide
+    - d'accord merci
+    - ok merci
+    - super merci
+    - parfait merci
+    - je vous remercie
+    - merci infiniment
+    - merci pour cette information
+    - merci c'est très utile
+    - c'est noté merci
+    - excellent merci beaucoup
+    - i ni ce
+    - a barika
+    - barika
+    - i ni ce kosébé
+    - ala i sara
+    - i ni ce kɔsɛbɛ
+
+- intent: changer_langue
+  examples: |
+    - parle en [bambara](langue)
+    - parle en [bamabara](langue)
+    - change la langue en [bambara](langue)
+    - change la langue en [bamabara](langue)
+    - je veux parler [bambara](langue)
+    - mets le chatbot en [bambara](langue)
+    - réponds en [bambara](langue)
+    - reponds en [bamabara](langue)
+    - passe en [bambara](langue)
+    - communique en [bambara](langue)
+    - je préfère le [bambara](langue)
+    - parle en [français](langue)
+    - mets le [français](langue)
+    - change la langue en [français](langue)
+    - je veux parler [français](langue)
+    - réponds en [français](langue)
+    - passe en [français](langue)
+    - communique en [français](langue)
+    - je préfère le [français](langue)
+    - n b'a fɔ [bamanankan](langue)
+    - n b'a fɔ [tubabukan](langue)
+    - kan mara [bambara](langue) la
+    - kan mara [français](langue) la
+    - [bambara](langue) la kuma
+    - [tubabukan](langue) la kuma
+
+# ═══════════════════════════════════════════════════════
+# INTENTS ADMINISTRATIFS EXISTANTS (enrichis)
+# ═══════════════════════════════════════════════════════
+
+- intent: carte_identite
+  examples: |
+    - Où faire ma carte d'identité ?
+    - Comment obtenir ma carte nationale ?
+    - Où aller pour faire ma carte nationale d'identité ?
+    - carte d'identité mali
+    - comment renouveler ma carte d'identité
+    - je veux la carte biométrique
+    - quelles pièces pour la carte d'identité
+    - délai carte nationale d'identité
+    - CNI s'il te plaît
+    - où demander ma CNI
+    - documents nécessaires pour la carte nationale
+    - carte biométrique comment faire
+    - prix de la carte d'identité
+    - carte d'identité perdue que faire
+    - comment refaire ma carte d'identité
+    - Je dois refaire ma pièce d'identité
+    - Je dois refaire ma piece d'identite
+    - Je dois refaire ma pièce d'identité.
+    - Je viens de perdre ma pièce officielle et je dois en refaire une.
+    - pièce d'identité
+    - piece d'identite
+    - ma pièce d'identité
+    - refaire ma pièce d'identité
+    - Je veu refaire ma piece didentité
+    - N ka joyoro seben banna, n b'a fɛ ka kura sɔrɔ.
+    - ma carte nationale est expirée
+    - où retirer ma carte d'identité
+    - commissariat carte d'identité
+    - pièces à fournir carte identité
+    - je n'ai jamais eu de carte d'identité
+    - première demande carte d'identité
+    - renouvellement carte nationale
+    - carte identité obligatoire à quel âge
+    - validité carte d'identité
+    - n bɛ se ka joyoro seben kɛ wa ?
+    - sugandikan la n be taa wa ?
+    - n b'a kɛ sugandikan kɔnɔ wa ?
+    - joyoro seben ɲini
+    - joyoro seben kɛli yoro juman
+    - joyoro seben banna n bɛ mun kɛ
+    - n be se ka joyoro seben ke wa
+    - sugandikan la n be taa wa
+    - joyoro seben keli yoro
+    - joyoro seben keli cogo di
+    - joyoro seben wari joli ye
+    - joyoro seben keli waati joli
+    - n ka joyoro seben banna
+    - joyoro seben ɲini yoro
+    - didan ci tɛ n bɛ mun kɛ
+    - didan ci te
+    - se ni ke seben
+    - sugandikan keli cogo
+    - joyoro seben bé soro yoro di
+    - joyoro seben bé soro togo di
+    - joyo seben be soro yoro
+    - joyoro seben soɔɔn yoro
+    - carti d identite be soro yoro juman
+    - carte identite be soro yoro
+    - joyoro seben soron cogo di
+    - joyoro seben ta yoro juman
+    - n be se ka joyoro ke
+    - n be taa joyoro seben yoro
+    - joyoro seben kɛ yoro juman
+    - sugandikan soron yoro
+    - i se ka joyoro seben soron yoro
+    - joyoro seben minini yoro
+    - joyoro kɛ yoro juman
+    - jɛharɔ sɛbɛm bɛ kɛ toko di
+    - ka tididanti tɛ kau ɲiwmda
+
+- intent: demande_passeport
+  examples: |
+    - Comment faire un passeport ?
+    - Où obtenir un passeport ?
+    - Demande de passeport
+    - je veux faire mon passeport
+    - quelles sont les pièces pour le passeport
+    - délai passeport malien
+    - comment renouveler mon passeport
+    - passeport expiré que faire
+    - pièces nécessaires passeport
+    - dossier passeport
+    - formulaire passeport
+    - frais passeport mali
+    - passeport biométrique
+    - nouveau passeport comment faire
+    - je veux voyager il me faut un passeport
+    - passeport pour enfant mineur
+    - où déposer dossier passeport
+    - durée validité passeport
+    - n bɛ se ka passeport kɛ wa ?
+    - passeport ɲini
+    - passeport dɔnkoɲɛ
+    - pasipɔri kɛli cogo di
+    - pasipɔri wari joli ye
+    - pasipɔri kɛli yoro
+    - pasipori keli cogo di
+    - pasipori wari joli ye
+    - pasipori keli yoro
+    - n be se ka pasipori ke wa
+    - pasipori donkonye
+    - pasipori keli waati
+    - manspor kɛnɛyɔrɔ
+    - batɔɛe jraami  ɔɔ ɔɔɔg
+    - pakɔr bɛ sɔrɔ yɔrɔ jiri
+    - pasipori seben minew
+    - n be se ka paspori ke
+    - pasipori minini cogo
+    - pasipori banna n be mun ke
+    - pasɔr kɛnɛ yɔrɔ
+    - pastɔr bɛ biɲabi ge
+    - pantɔr bɛ sɔrɔ yɔrɔ jiru
+
+- intent: passeport_mali
+  examples: |
+    - passeport malien à Bamako
+    - passeport au Mali
+    - faire passeport à Bamako
+    - où déposer le dossier passeport au Mali
+    - documents pour passeport malien
+    - renouvellement passeport au Mali
+    - passeport biométrique Mali
+    - DGPN passeport
+    - commissariat passeport Bamako
+    - comment faire le passeport à Bamako
+    - procédure passeport Bamako
+    - je suis à Bamako je veux un passeport
+    - Je veux faire mon passeport à Bamako.
+    - Comment obtenir un passeport au Mali ?
+    - Où faire mon passeport à Bamako ?
+    - Je veux demander mon passeport au Mali.
+    - Quelle est la procédure pour le passeport au Mali ?
+    - Mali pasipɔri Bamako
+    - pasipɔri kɛli Mali
+    - Bamako la passeport
+    - DGPN la pasipɔri
+    - N bɛ Bamako la, n b'a fɛ ka pasipɔri kɛ.
+    - Mali la pasipɔri bɛ kɛ cogo di ?
+    - N bɛ Mali la, pasipɔri bɛ sɔrɔ yoro min ?
+
+- intent: passeport_etranger
+  examples: |
+    - passeport depuis l'étranger
+    - passeport à l'ambassade
+    - consulat passeport
+    - je suis en France je veux un passeport malien
+    - renouveler mon passeport à l'étranger
+    - laissez-passer consulaire
+    - passeport malien hors du Mali
+    - ambassade du Mali passeport
+    - je suis en Europe comment avoir mon passeport
+    - consulat Mali Paris passeport
+    - passeport malien depuis l'Afrique
+    - je vis à l'étranger passeport
+    - Je veux faire mon passeport malien depuis la France.
+    - Je suis à Paris et mon passeport malien est expiré.
+    - Je vis au Canada, comment renouveler mon passeport malien ?
+    - Je suis hors du Mali et je dois refaire mon passeport.
+    - Comment renouveler mon passeport à l'ambassade du Mali en France ?
+    - pasipɔri ɲɛmɔgɔw la
+    - anbasadi pasipɔri
+    - laada la passeport
+    - France la pasipɔri
+    - N bɛ France la, n b'a fɛ ka Mali pasipɔri kura sɔrɔ.
+    - N bɛ Paris la, n ka Mali pasipɔri banna.
+    - N bɛ Mali kɔfɛ, n b'a fɛ ka pasipɔri kura kɛ.
+    - n bɛ etats unis pasipɔri sɔrɔ cogo di
+
+- intent: demande_acte_naissance
+  examples: |
+    - Acte de naissance
+    - Comment obtenir un acte de naissance ?
+    - Extrait d'acte de naissance
+    - j'ai perdu mon acte de naissance
+    - comment déclarer une naissance
+    - copie d'acte de naissance
+    - pièces pour acte de naissance
+    - mairie acte de naissance
+    - déclaration de naissance
+    - acte de naissance en retard
+    - jugement supplétif naissance
+    - naissance non déclarée
+    - délai acte de naissance
+    - acte de naissance gratuit
+    - extrait intégral de naissance
+    - certificat de naissance
+    - naissance à l'hôpital déclaration
+    - acte de naissance pour mon enfant
+    - duplicata acte de naissance
+    - centre d'état civil naissance
+    - wolo seben
+    - wolo seben soron di ?
+    - sɛbɛn dɔgɔkun ɲini
+    - dɔgɔkun sɛbɛn
+    - wolo dajuru ke
+    - den wolola n b'a seben ɲini
+    - wolo seben ɲini yoro
+    - wolo seben keli cogo
+    - seben dogokun nini
+    - wolo seben soron di
+    - den wolo seben ɲini
+    - wolon seben keli
+    - wolo seben waati joli
+    - wolo seben wari joli
+    - jugement supletif ɲini
+    - wolo dajuru ma ke tile 30 kono
+    - wolo seben be kai togo juman
+    - wolo seben be soro yoro juman
+    - wolo seben soron yoro
+    - wolo seben ke yoro di
+    - wolo seben ta yoro
+    - n be taa wolo seben ta yoro
+    - wolo siralan bɛ gɛ togodi ga
+    - n be se ka wolo seben soron
+    - wolo seben soron cogo
+    - wolo sanman be soro yoro
+    - den wolo seben be soro yoro di
+    - wolo seben minini yoro juman
+    - wolo seben ke cogo juman
+
+- intent: acte_deces
+  examples: |
+    - acte de décès
+    - Comment obtenir un acte de décès ?
+    - déclaration de décès
+    - copie acte de décès
+    - décès mairie
+    - pièces pour déclarer un décès
+    - délai acte de décès
+    - mon parent est décédé que faire
+    - déclaration décès hôpital
+    - certificat de décès
+    - où déclarer un décès
+    - acte de décès perdu
+    - copie certifiée décès
+    - sa sɛbɛn
+    - sa sɛbɛn ɲini
+    - ni mɔgɔw sankami bɛ min kɛ
+    - sa jira sɛbɛn
+    - sara seben
+    - mogo sara n bɛ mun kɛ
+    - sara dajuru ke
+
+- intent: acte_mariage
+  examples: |
+    - acte de mariage
+    - extrait d'acte de mariage
+    - mariage civil
+    - comment se marier à la mairie
+    - pièces pour le mariage civil
+    - copie d'acte de mariage
+    - délai bans mariage
+    - je veux me marier civilement
+    - dossier mariage mairie
+    - livret de famille
+    - certificat de célibat
+    - publication des bans
+    - mariage légal au Mali
+    - comment officialiser mon mariage
+    - mariage devant le maire
+    - furusa sɛbɛn
+    - furu seben
+    - furusa jira sɛbɛn
+    - mairie la furu
+    - furu kɛli cogo
+    - n b'a fɛ ka furu mairie la
+    - kɛi denkɛ tɔgɔ di jigi
+
+- intent: certificat_residence
+  examples: |
+    - certificat de résidence
+    - comment obtenir un certificat de résidence
+    - où faire mon certificat de résidence
+    - justificatif de résidence mairie
+    - prix certificat de résidence
+    - délai certificat de résidence
+    - justificatif de domicile
+    - attestation de résidence
+    - certificat d'hébergement
+    - preuve de domicile
+    - je n'ai pas de facture comment prouver mon adresse
+    - commune certificat résidence
+    - yoro jirali seben
+    - ka yoro jira
+    - yoro jira sɛbɛn
+    - sigida jirali
+    - n sigida seben ɲini
+    - yoro jirali seben keli
+    - yoro seben keli yoro
+    - n sigida jira seben ɲini
+    - ka sigida jira seben soron
+    - residence seben keli cogo
+    - domicile seben ɲini
+    - yoro jirali seben wari joli
+
+- intent: casier_judiciaire
+  examples: |
+    - casier judiciaire
+    - bulletin numéro 3
+    - comment obtenir un casier judiciaire
+    - où faire le casier judiciaire
+    - tribunal casier judiciaire
+    - prix du casier judiciaire
+    - délai bulletin 3
+    - casier judiciaire Mali
+    - bulletin n 3
+    - extrait de casier judiciaire
+    - casier judiciaire vierge
+    - j'ai besoin d'un casier judiciaire pour un emploi
+    - casier judiciaire pour concours
+    - greffe tribunal casier
+    - tribunal la casier
+    - bulletin saba
+
+- intent: carte_nina
+  examples: |
+    - carte NINA
+    - enrôlement NINA
+    - comment obtenir la carte NINA
+    - où faire ma carte NINA
+    - numéro d'identification nationale
+    - carte NINA gratuite
+    - centre NINA
+    - NINA c'est quoi
+    - inscription NINA
+    - carte NINA pour voter
+    - carte NINA perdue
+    - NINA enrôlement centre
+    - numéro NINA
+    - NINA ɲini
+    - carte nina kɛli
+    - NINA yoro
+
+- intent: permis_conduire
+  examples: |
+    - permis de conduire
+    - auto école agréée
+    - examen permis de conduire
+    - où obtenir le permis de conduire
+    - délai permis de conduire
+    - prix permis conduire
+    - permis Mali
+    - passer le permis
+    - code de la route Mali
+    - DNTTM permis
+    - renouvellement permis de conduire
+    - permis catégorie B
+    - permis moto
+    - kondoro permis
+    - permis kɛli
+    - auto-école la permis
+    - je veux passer mon permis
+    - permis de conduire international
+    - duplicata de mon permis de conduire
+
+- intent: titre_foncier
+  examples: |
+    - titre foncier
+    - comment obtenir un titre foncier
+    - démarches du titre foncier
+    - DNDC terrain
+    - où déposer un dossier de terrain
+    - bornage terrain Mali
+    - combien de temps pour le titre foncier
+    - titre foncier Mali
+    - acheter un terrain au Mali
+    - propriété foncière
+    - régulariser mon terrain
+    - terrain sans papier
+    - cadastre terrain
+    - notaire terrain Mali
+    - dugukolo titre
+    - terrain paperasse
+    - cadastre la titre
+    - dugukolo seben
+
+- intent: assurance_maladie
+  examples: |
+    - assurance maladie
+    - CANAM
+    - CMSS
+    - RAMU
+    - comment avoir une assurance maladie au Mali
+    - couverture santé Mali
+    - assurance maladie fonctionnaire
+    - assurance maladie secteur privé
+    - cotisation assurance maladie
+    - carte CANAM
+    - sécurité sociale Mali
+    - comment se faire soigner gratuitement
+    - assurance maladie universelle
+    - bana deme
+    - bana dɛmɛ
+    - santé assurance Mali
+    - CANAM carte soron
+
+- intent: creation_entreprise
+  examples: |
+    - création d'entreprise
+    - comment créer une entreprise au Mali
+    - ouvrir une société
+    - démarches CFE
+    - RCCM et NIF
+    - immatriculation entreprise
+    - formalités entreprise Mali
+    - créer un commerce
+    - enregistrer une entreprise
+    - ouvrir un business
+    - créer une SARL au Mali
+    - guichet unique entreprise
+    - NIF comment obtenir
+    - tribunal de commerce RCCM
+    - baara yoro ke
+    - CFE la entreprise
+    - NIF ɲini
+    - baara yoro kura kɛ
+
+- intent: inscription_universitaire
+  examples: |
+    - inscription universitaire
+    - comment s'inscrire à l'université
+    - université publique Mali
+    - pièces pour inscription faculté
+    - USTTB inscription
+    - ULSHB inscription
+    - dossier université
+    - frais d'inscription université
+    - inscription fac Bamako
+    - comment entrer à l'université au Mali
+    - bourse université Mali
+    - conditions admission université
+    - inscription master Mali
+    - université la sebeni
+    - faculté inscription
+    - kalanso sanfɛ
+    - université la don
+
+- intent: attestation_reussite
+  examples: |
+    - attestation de réussite
+    - comment obtenir une attestation de réussite
+    - attestation bac
+    - attestation DEF
+    - relevé de notes et attestation
+    - où demander l'attestation de réussite
+    - diplôme université attestation
+    - attestation d'admission
+    - résultat examen attestation
+    - DNEC attestation
+    - copie diplôme
+    - duplicata diplôme
+    - kemerén seben
+    - kalan réussite paperasse
+    - BAC attestation
+    - DEF seben soron
+
+- intent: urgence
+  examples: |
+    - Numéro urgence
+    - Appeler police
+    - Samu
+    - Pompiers
+    - numero d'urgence
+    - numéro police
+    - urgence médicale
+    - passeport perdu en urgence
+    - j'ai été volé
+    - accident de route
+    - il y a un incendie
+    - j'ai besoin d'aide urgente
+    - appeler une ambulance
+    - numéro gendarmerie
+    - protection civile
+    - secours au Mali
+    - telefono dɛmɛ
+    - police wele
+    - dɛmɛ telefono
+    - dɛmɛ ka kan
+    - joona dɛmɛ
+    - deme telefono
+    - police wele telefono
+    - joona deme kan
+    - SAMU wele
+    - pompiers wele
+    - gendarmerie wele
+    - n bɛ dɛmɛ ɲini joona
+    - n be deme nini joona
+    - deme kele numoro
+    - secours numero
+    - urgence numero
+
+# ═══════════════════════════════════════════════════════
+# NOUVEAUX INTENTS
+# ═══════════════════════════════════════════════════════
+
+- intent: declaration_impots
+  examples: |
+    - comment payer mes impôts
+    - direction des impôts
+    - déclaration fiscale
+    - impôts au Mali
+    - où payer mes impôts
+    - NIF pour les impôts
+    - taxe communale
+    - patente commerce
+    - impôts sur le revenu Mali
+    - direction générale des impôts
+    - je dois payer mes impôts
+    - comment déclarer mes revenus
+    - fiscalité Mali
+    - impôt foncier
+    - TVA Mali
+    - TDRL
+    - taxe de développement régional et local
+    - impôts et taxes
+    - paiement de l'impôt
+    - comment payer la TDRL
+    - wari sara mara la
+    - impôts san wari
+    - DGI la wari sara
+    - nisongo sara cogo
+    - TDRL sara yoro
+    - wari sara ni mara ye
+    - impots wari joli ye
+    - n be mun sara mara ma
+    - n be nisongo sara wa
+    - wari sara DGI la
+
+- intent: pension_retraite
+  examples: |
+    - pension de retraite
+    - comment toucher ma retraite
+    - INPS retraite
+    - caisse de retraite Mali
+    - je suis retraité comment avoir ma pension
+    - droit à la retraite Mali
+    - âge de la retraite au Mali
+    - cotisation retraite
+    - INPS pension
+    - retraite fonctionnaire Mali
+    - dossier de retraite
+    - calcul pension retraite
+    - pension veuvage
+    - kɔrɔ wari soron
+    - retraite wari
+
+- intent: aide_juridique
+  examples: |
+    - j'ai besoin d'un avocat
+    - aide juridique gratuite
+    - assistance juridique
+    - conseil juridique Mali
+    - avocat gratuit
+    - aide légale
+    - barreau du Mali
+    - comment trouver un avocat
+    - consultation juridique
+    - je veux porter une affaire en justice
+    - tribunal première instance
+    - défenseur des droits
+    - clinique juridique
+    - sariya dɛmɛ
+    - avoka ɲini
+
+- intent: etat_civil
+  examples: |
+    - c'est quoi l'état civil
+    - centre d'état civil
+    - où se trouve l'état civil
+    - service état civil mairie
+    - état civil Bamako
+    - officier d'état civil
+    - registre d'état civil
+    - horaires état civil
+    - documents état civil
+    - correction acte état civil
+    - erreur sur mon acte
+    - rectification état civil
+    - mara seben yoro
+    - état civil yoro
+
+- intent: carte_electeur
+  examples: |
+    - carte d'électeur
+    - RAVEC inscription
+    - comment voter au Mali
+    - inscription sur la liste électorale
+    - carte biométrique RAVEC
+    - où s'inscrire pour voter
+    - carte d'électeur perdue
+    - élections Mali inscription
+    - bureau de vote
+    - RAVEC centre
+    - kalata carte
+    - vote kɛli carte
+
+- intent: visa_voyage
+  examples: |
+    - comment obtenir un visa
+    - visa Schengen
+    - visa pour la France
+    - visa de voyage
+    - ambassade visa
+    - pièces pour demande de visa
+    - visa touristique
+    - visa d'études
+    - visa de travail
+    - rendez-vous visa
+    - TLS Contact Bamako
+    - visa Mali vers Europe
+    - visa USA
+    - visa Canada
+    - comment voyager à l'étranger
+    - taa laada la visa
+    - visa ɲini
+
+- intent: legalisation_documents
+  examples: |
+    - légaliser un document
+    - légalisation de documents
+    - faire certifier un document
+    - apostille
+    - certification conforme
+    - copie certifiée conforme
+    - légalisation mairie
+    - authentification document
+    - signature légalisée
+    - tampon officiel sur document
+    - ministère des affaires étrangères légalisation
+    - seben siri
+    - seben tiɲɛ jira
+
+- intent: adoption
+  examples: |
+    - comment adopter un enfant
+    - procédure d'adoption au Mali
+    - adoption légale
+    - tribunal adoption
+    - conditions adoption Mali
+    - dossier d'adoption
+    - adoption internationale
+    - service social adoption
+    - droits de l'enfant adoption
+    - den ta ka ke i ta ye
+
+- intent: divorce
+  examples: |
+    - comment divorcer
+    - procédure de divorce au Mali
+    - tribunal divorce
+    - divorce par consentement mutuel
+    - divorce judiciaire
+    - pièces pour divorcer
+    - avocat divorce
+    - pension alimentaire divorce
+    - garde des enfants divorce
+    - droit de la femme divorce
+    - furu tɛgɛli
+    - furu bɔli
+
+- intent: nationalite
+  examples: |
+    - comment obtenir la nationalité malienne
+    - certificat de nationalité
+    - nationalité par mariage
+    - naturalisation Mali
+    - preuve de nationalité
+    - où obtenir le certificat de nationalité
+    - pièces certificat de nationalité
+    - nationalité pour enfant né au Mali
+    - double nationalité Mali
+    - Mali den ye seben
+
+- intent: aide_sociale
+  examples: |
+    - aide aux personnes vulnérables
+    - programme social Mali
+    - filets sociaux
+    - aide alimentaire
+    - allocation familiale
+    - aide aux handicapés
+    - programme de développement social
+    - ASDAP
+    - aide aux orphelins
+    - dɛsɛbagaw dɛmɛ
+    - dɛmɛ mogo jugu ye
+    - dɛsɛ banaw bɛ deni to ko ji
+    - ale ba mgɛ tɛ baow bɛ dɛmɛ yɔrɔ jir gia jiri   ji
+
+- intent: plainte
+  examples: |
+    - comment porter plainte
+    - déposer une plainte
+    - commissariat plainte
+    - gendarmerie plainte
+    - j'ai été victime d'une arnaque
+    - vol plainte
+    - agression porter plainte
+    - main courante
+    - plainte contre quelqu'un
+    - procès verbal police
+    - je veux signaler un problème
+    - plainte kɛ
+    - police la plainte
+
+- intent: horaires_services
+  examples: |
+    - à quelle heure ouvre la mairie
+    - horaires des services publics
+    - heures d'ouverture administration
+    - horaires préfecture
+    - quand est ouvert le tribunal
+    - jours ouvrables Mali
+    - administration ouverte le samedi
+    - horaires DGPN
+    - horaires consulat
+    - mairie ouverte à quelle heure
+    - mara yoro dayɛlɛ waati
+    - mairie dayɛlɛ lɛrɛ joli
+    - mara yoro dayele waati joli
+    - dayele lere joli
+    - mara dayele waati juman
+    - mara baarayoro dayɛlɛ waati
+    - administration lɛrɛ joli
+    - mairie lɛrɛ joli
+    - mairie ouvre waati juman
+    - mara yoro da na waati joli
+    - mara yoro da na woron ci
+    - mara yoro da na lere juman
+    - amaa yoro da na woron ci
+    - service public dayele waati
+    - yoro dayele waati joli
+    - baarayoro dayele lere joli
+    - mairie ka dayele lere joli ye
+    - mama yɔrɔ tan yɛnɛ wɔ an ci
+
+- intent: cout_demarche
+  examples: |
+    - liste des prix des démarches
+    - tableau des frais administratifs
+    - quels sont les tarifs des documents au Mali
+    - combien coûtent les papiers administratifs
+    - grille tarifaire des actes administratifs
+    - frais administratifs généraux
+    - donne-moi la liste des coûts
+    - tarifs des démarches officielles
+    - sariyasɛbɛn kow wari sɔngɔ listi
+    - baara dɔw wari sɔngɔ
+    - mali kɔnɔ sariyasɛbɛn wari sɔngɔw
+
+- intent: capacites_chatbot
+  examples: |
+    - que sais-tu faire
+    - tu peux m'aider avec quoi
+    - aide
+    - help
+    - quelles sont tes capacités
+    - liste des services
+    - comment tu fonctionnes
+    - tu fais quoi
+    - qu'est-ce que tu sais
+    - quels sujets tu connais
+    - de quoi tu peux parler
+    - montre moi ce que tu sais faire
+    - i bɛ se ka mun kɛ
+    - i bɛ mun dɔn
+    - dɛmɛ
+
+- intent: fallback
+  examples: |
+    - je ne comprends pas
+    - hein ?
+    - pardon ?
+    - quoi ?
+    - répète
+    - je ne vois pas
+    - explique autrement
+    - c'est pas clair
+    - je ne saisis pas
+    - n t'a faham
+    - mun ?
+    - hakɛto ?
+    - a fɔ tuguni
+    - comment ?
+    - qu'est-ce que tu racontes
+    - je n'ai pas compris ta réponse
+    - n'est-ce pas k'i dɛmɛ wa
+    - comment obtenir un permis de recherche minière
+    - permis de recherche minière
+    - permis d'exploitation minérale
+    - permis de construire une maison
+    - permis minier
+    - permis de chasse
+    - je cherche un document que tu n'as pas listé
+    - hake to
+    - a fɔ dɔɔnin
+    - n ma a faham
+    - i ka kuma dɔɔnin
+    - foyi ma diya
+    - mun ye o ye
+
+
+# ═══════════════════════════════════════════════════════
+# INTENTS DE SUIVI CONTEXTUEL
+# Ces intents sont ambigus seuls : le slot `demarche`
+# fournit le contexte nécessaire pour répondre correctement.
+# ═══════════════════════════════════════════════════════
+
+- intent: demander_documents
+  examples: |
+    - Quels documents faut-il ?
+    - Quels sont les documents nécessaires ?
+    - Quelles pièces faut-il fournir ?
+    - Quelles sont les pièces requises ?
+    - De quels documents ai-je besoin ?
+    - Il faut quels documents ?
+    - Je dois apporter quoi ?
+    - Quels papiers dois-je préparer ?
+    - Quels sont les justificatifs nécessaires ?
+    - C'est quoi les pièces à fournir ?
+    - Quels documents préparer ?
+    - Il me faut quoi comme papiers ?
+    - Seben minw bɛ nafa ?
+    - Seben minw n bɛ nafa ?
+    - Seben minw bɛ kan ?
+    - N bɛ seben jumɛn nafa ?
+    - N bɛ seben jumɛn ta ?
+    - Seben minw bɛ ɲini ?
+
+- intent: demander_cout
+  examples: |
+    - Et combien ça coûte ?
+    - C'est combien ?
+    - Ça coûte combien ?
+    - C'est gratuit ?
+    - C'est payant ?
+    - Quel est le prix ?
+    - Le tarif c'est quoi ?
+    - Le prix s'il te plaît.
+    - Donne-moi le prix de cette démarche.
+    - Combien je dois payer ?
+    - Combien ça revient ?
+    - Il y a des frais ?
+    - C'est cher ?
+    - Le coût ?
+    - A wari joli ye ?
+    - A joli ye ?
+    - Wari joli ?
+    - A joli sɔrɔ man ?
+    - N bɛ wari joli sara ?
+
+- intent: demander_delai
+  examples: |
+    - Quel est le délai ?
+    - Combien de temps ça prend ?
+    - Dans combien de temps je l'aurai ?
+    - C'est long ?
+    - Délai de traitement ?
+    - Quand est-ce que je reçois le document ?
+    - Il faut combien de temps ?
+    - C'est rapide ?
+    - Ça prend longtemps ?
+    - Sous quel délai ?
+    - Le délai c'est quoi ?
+    - A waati joli bɛ se ?
+    - A bɛ se joona ?
+    - Tile joli bɛ dɛmɛ na ?
+    - N bɛ a sɔrɔ tile joli kɔ ?
+    - A lasɔrɔ waati joli ye ?
+

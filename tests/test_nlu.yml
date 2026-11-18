@@ -1,0 +1,84 @@
+version: "3.1"
+
+nlu:
+- intent: carte_identite
+  examples: |
+    - refèr ma piece dentité
+    - je voudrais renouveler ma cni s'il vous plaît
+    - c'est où pour la carte d'identité ?
+    - N b'a fɛ ka joyoro seben kura sɔrɔ.
+    - joyoro seben ɲini cogo di ?
+    - n ka joyoro seben filila
+    - j'ai égaré ma pièce officielle et il m'en faut une autre
+
+- intent: passeport_mali
+  examples: |
+    - je veux un passeport à bamako
+    - passeport pour mon fils au mali
+    - procédure passeport malien sur place
+    - où faire le passeport ici
+    - N sigilen bɛ Bamako, pasan kura de bɛ n bolo ma.
+    - Yan Mali kɔnɔ pasipɔri kuraba bɛ sɔrɔ yɔrɔ jumɛn ?
+    - n bɛ mali la, n mako bɛ pasipɔri la
+
+- intent: passeport_etranger
+  examples: |
+    - Je suis en France et mon passeport malien est expiré.
+    - renouvellement passeport depuis le canada
+    - ambassade mali paris passeport
+    - je vis à dakar je veux refaire mon passeport
+    - N bɛ France la, pasipɔri banna.
+    - n bɛ diaspora la, n ka pasipɔri korola
+    - passeport malien a l'etranger comment faire
+
+- intent: demande_passeport
+  examples: |
+    - comment avoir le passeport ?
+    - j'ai besoin d'un passeport
+    - pasipɔri bɛ sɔrɔ cogo di ?
+    - n mako bɛ pasipɔri la
+
+- intent: demande_acte_naissance
+  examples: |
+    - acte de naissance pour ma fille
+    - où retirer l'extrait de naissance
+    - copie de mon acte de naissance
+    - wolo seben bɛ sɔrɔ yoro juman
+    - n ka wolo seben filila
+    - extrait de naissance perdu que faire
+
+- intent: acte_deces
+  examples: |
+    - comment declarer un deces a la mairie
+    - certificat de deces de mon pere
+    - somɔgɔ dɔ fatula sɛbɛn jumɛn bɛ bɔ
+    - sara seben ɲini cogo di
+
+- intent: acte_mariage
+  examples: |
+    - on va se marier comment faire a la mairie
+    - copie de l'acte de mariage
+    - furu seben ɲini cogo di
+    - mairie la furu kɛli cogo
+
+- intent: carte_nina
+  examples: |
+    - numero nina perdu
+    - enregistrement sur les listes du ravec
+    - nina nimoro bɛ sɔrɔ cogo di
+    - carte nina kura ɲini
+
+- intent: permis_conduire
+  examples: |
+    - passer le permis de conduire
+    - renouveler mon permis
+    - permis pour conduire une motocyclette
+    - permis kɛli wari joli ye
+    - auto école permis
+
+- intent: casier_judiciaire
+  examples: |
+    - bulletin numéro 3 pour concours
+    - casier judiciaire au tribunal
+    - extrait de casier sans condamnation
+    - casier judiciaire kɛli cogo di

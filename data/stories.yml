@@ -1,0 +1,289 @@
+version: "3.1"
+
+stories:
+
+  # ═══════════════════════════════════════════════════════
+  # PARCOURS DE BASE (existants)
+  # ═══════════════════════════════════════════════════════
+
+  - story: parcours francais acte naissance et cout
+    steps:
+      - intent: saluer
+      - action: action_detecter_et_gerer_salutation
+      - slot_was_set:
+          - langue: français
+      - action: utter_salutation_fr
+      - intent: demande_acte_naissance
+      - action: action_set_demarche
+      - action: utter_acte_naissance_fr
+      - intent: cout_demarche
+      - action: utter_cout_demarche_fr
+      - intent: remerciement
+      - action: utter_remerciement_fr
+
+  - story: parcours bambara carte identite
+    steps:
+      - intent: changer_langue
+      - action: action_changer_langue
+      - slot_was_set:
+          - langue: bambara
+      - action: utter_changer_langue_bm
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_bm
+      - intent: remerciement
+      - action: utter_remerciement_bm
+
+  - story: changement langue puis passeport etranger
+    steps:
+      - intent: changer_langue
+      - action: action_changer_langue
+      - slot_was_set:
+          - langue: français
+      - action: utter_changer_langue_fr
+      - intent: passeport_etranger
+      - action: action_set_demarche
+      - action: utter_passeport_etranger_fr
+
+  - story: parcours documents residence puis au revoir
+    steps:
+      - intent: certificat_residence
+      - action: action_set_demarche
+      - action: utter_certificat_residence_fr
+      - intent: au_revoir
+      - action: utter_au_revoir_fr
+
+  - story: parcours service administratif bambara
+    steps:
+      - intent: changer_langue
+      - action: action_changer_langue
+      - slot_was_set:
+          - langue: bambara
+      - action: utter_changer_langue_bm
+      - intent: casier_judiciaire
+      - action: action_set_demarche
+      - action: utter_casier_judiciaire_bm
+      - intent: au_revoir
+      - action: utter_au_revoir_bm
+
+  - story: parcours etudes et visa
+    steps:
+      - intent: inscription_universitaire
+      - action: utter_inscription_universitaire_fr
+      - intent: attestation_reussite
+      - action: utter_attestation_reussite_fr
+      - intent: visa_voyage
+      - action: utter_visa_voyage_fr
+
+  - story: parcours urgence et plainte
+    steps:
+      - intent: urgence
+      - action: utter_urgence_fr
+      - intent: plainte
+      - action: utter_plainte_fr
+      - intent: remerciement
+      - action: utter_remerciement_fr
+
+  - story: saluer, demander horaires, remercier
+    steps:
+      - intent: saluer
+      - action: action_detecter_et_gerer_salutation
+      - slot_was_set:
+          - langue: français
+      - action: utter_salutation_fr
+      - intent: horaires_services
+      - action: utter_horaires_services_fr
+      - intent: remerciement
+      - action: utter_remerciement_fr
+
+  # ═══════════════════════════════════════════════════════
+  # ÉTAPE C — STORIES CONTEXTUELLES (CNI)
+  # ═══════════════════════════════════════════════════════
+
+  - story: CNI français puis documents
+    steps:
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+
+  - story: CNI français puis coût
+    steps:
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_fr
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: CNI français puis délai
+    steps:
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_fr
+      - intent: demander_delai
+      - action: action_repondre_delai
+
+  - story: CNI français documents puis coût
+    steps:
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: CNI bambara puis documents
+    steps:
+      - slot_was_set:
+          - langue: bambara
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_bm
+      - intent: demander_documents
+      - action: action_repondre_documents
+
+  - story: CNI bambara puis coût
+    steps:
+      - slot_was_set:
+          - langue: bambara
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_bm
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: CNI bambara puis délai
+    steps:
+      - slot_was_set:
+          - langue: bambara
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_bm
+      - intent: demander_delai
+      - action: action_repondre_delai
+
+  # ═══════════════════════════════════════════════════════
+  # ÉTAPE C — STORIES CONTEXTUELLES (PASSEPORT)
+  # ═══════════════════════════════════════════════════════
+
+  - story: Passeport générique puis documents
+    steps:
+      - intent: demande_passeport
+      - action: action_set_demarche
+      - action: utter_passeport_mali_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+
+  - story: Passeport générique puis coût
+    steps:
+      - intent: demande_passeport
+      - action: action_set_demarche
+      - action: utter_passeport_mali_fr
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: Passeport générique puis délai
+    steps:
+      - intent: demande_passeport
+      - action: action_set_demarche
+      - action: utter_passeport_mali_fr
+      - intent: demander_delai
+      - action: action_repondre_delai
+
+  - story: Passeport Mali puis documents
+    steps:
+      - intent: passeport_mali
+      - action: action_set_demarche
+      - action: utter_passeport_mali_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+
+  - story: Passeport étranger puis documents
+    steps:
+      - intent: passeport_etranger
+      - action: action_set_demarche
+      - action: utter_passeport_etranger_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+
+  - story: Passeport étranger puis coût
+    steps:
+      - intent: passeport_etranger
+      - action: action_set_demarche
+      - action: utter_passeport_etranger_fr
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: Passeport étranger puis délai
+    steps:
+      - intent: passeport_etranger
+      - action: action_set_demarche
+      - action: utter_passeport_etranger_fr
+      - intent: demander_delai
+      - action: action_repondre_delai
+
+  # ═══════════════════════════════════════════════════════
+  # ÉTAPE C — STORIES CONTEXTUELLES (ACTE DE NAISSANCE)
+  # ═══════════════════════════════════════════════════════
+
+  - story: Acte naissance puis documents
+    steps:
+      - intent: demande_acte_naissance
+      - action: action_set_demarche
+      - action: utter_acte_naissance_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+
+  - story: Acte naissance puis coût
+    steps:
+      - intent: demande_acte_naissance
+      - action: action_set_demarche
+      - action: utter_acte_naissance_fr
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: Acte naissance puis délai
+    steps:
+      - intent: demande_acte_naissance
+      - action: action_set_demarche
+      - action: utter_acte_naissance_fr
+      - intent: demander_delai
+      - action: action_repondre_delai
+
+  # ═══════════════════════════════════════════════════════
+  # ÉTAPE D — STORIES CROSS-LANGUE (FR → BM → FR)
+  # ═══════════════════════════════════════════════════════
+
+  - story: CNI français puis Seben minw bambara puis coût français
+    steps:
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_fr
+      - intent: demander_documents
+      - action: action_repondre_documents
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: CNI bambara puis question français documents
+    steps:
+      - slot_was_set:
+          - langue: bambara
+      - intent: carte_identite
+      - action: action_set_demarche
+      - action: utter_carte_identite_bm
+      - intent: demander_documents
+      - action: action_repondre_documents
+      - intent: demander_cout
+      - action: action_repondre_cout
+
+  - story: Passeport générique bambara puis delai
+    steps:
+      - slot_was_set:
+          - langue: bambara
+      - intent: demande_passeport
+      - action: action_set_demarche
+      - action: utter_passeport_mali_bm
+      - intent: demander_delai
+      - action: action_repondre_delai
