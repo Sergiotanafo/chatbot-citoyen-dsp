@@ -191,6 +191,62 @@
       "cout_bm": "FCFA 500 ka bila FCFA 1 000 la kominiw kɔnɔ.",
       "delai_fr": "Délivrance immédiate le jour même.",
       "delai_bm": "O don bɛɛ (joona kosɛbɛ)."
+    },
+    {
+      "id": "acte_deces",
+      "title_fr": "Acte de décès / Déclaration de décès / Constat de mort",
+      "title_bm": "Satunsɛbɛn (Acte de décès / Saya)",
+      "questions_fr": [
+        "Comment déclarer un décès au Mali ?",
+        "Où obtenir un acte de décès ?",
+        "Quels documents pour l'acte de décès ?",
+        "Combien coûte un acte de décès ?",
+        "C'est quoi un acte de décès ?",
+        "C'est quoi la mort administrativement ?",
+        "C'est quoi la mort ?",
+        "Délai pour déclarer un décès au Mali",
+        "Je viens de perdre un proche que dois-je faire ?",
+        "Vous ne connaissez pas un acte de décès alors"
+      ],
+      "questions_bm": [
+        "Mɔgɔ satɔ sɛbɛnli bɛ kɛ cogo di ?",
+        "Satunsɛbɛn bɛ sɔrɔ cogo di mɛri la ?",
+        "Satunsɛbɛn sɔngɔ ye joli ye ?",
+        "N mɔgɔ dɔ satuna n bɛ mun kɛ ?"
+      ],
+      "answer_fr": "L'acte de décès est un document officiel d'état civil qui constate juridiquement le décès d'une personne. La déclaration de décès doit être faite à la mairie (centre d'état civil) du lieu du décès dans un délai de 30 jours. Elle est effectuée par un parent, un voisin ou toute personne ayant connaissance du décès. Pièces requises : certificat médical de décès (ou constat de décès), pièce d'identité du défunt si disponible, pièce d'identité du déclarant. L'acte de décès est nécessaire pour les démarches de succession, de pension de réversion (INPS), de modification de l'état civil des héritiers et de radiation des fichiers administratifs.",
+      "answer_bm": "Satunsɛbɛn ye mɛri ka sariya sɛbɛn ye min bɛ a jira ko mɔgɔ dɔ satuna. Mɔgɔ satɔ sɛbɛnli bɛ kɛ mɛri la tile 30 kɔnɔ satuli kɛyɔrɔ la. Mɔgɔ kelen bɛ se ka taa a fɔ : somɔgɔ, sigidamɔgɔ walima mɔgɔ o mɔgɔ min bɛ satu lɔn. Sɛbɛnw : dɔgɔtɔrɔ ka satunsɛbɛn, satumɔgɔ ka joyoro sɛbɛn n'a bɛ yen, dekɛla ka joyoro sɛbɛn. Satunsɛbɛn bɛ ɲini cikɛli kow, INPS ka sɛbɛnw ani somɔgɔ sariyasɛbɛn kura labɛnni kama.",
+      "pieces_fr": "1. Certificat médical de décès (délivré par un médecin ou un centre de santé)\n2. Pièce d'identité du défunt (CNI, NINA ou passeport) si disponible\n3. Pièce d'identité du déclarant\n4. Livret de famille si le défunt était marié.",
+      "pieces_bm": "1. Dɔgɔtɔrɔ ka satunsɛbɛn\n2. Satumɔgɔ ka joyoro sɛbɛn n'a bɛ yen\n3. Dekɛla ka joyoro sɛbɛn\n4. Furu sɛbɛn n'a tun furalen don.",
+      "cout_fr": "Gratuit (0 FCFA) si la déclaration est faite dans le délai légal de 30 jours. Au-delà, un jugement déclaratif de décès est nécessaire au tribunal (frais de 2 500 à 5 000 FCFA).",
+      "cout_bm": "A ye FU YE (0 FCFA) n'a kɛra tile 30 kɔnɔ. Tile 30 tɛmɛnen kɔ, kititigɛso sɛbɛn de bɛ ɲini (FCFA 2 500 ka taa 5 000).",
+      "delai_fr": "Délivrance immédiate (le jour même) si la déclaration est faite dans le délai légal.",
+      "delai_bm": "O don bɛɛ n'a kɛra tile 30 kɔnɔ."
+    },
+    {
+      "id": "acte_mariage",
+      "title_fr": "Acte de mariage / Certificat de mariage",
+      "title_bm": "Furu sɛbɛn (Acte de mariage)",
+      "questions_fr": [
+        "Comment obtenir un acte de mariage ?",
+        "Comment se marier civilement au Mali ?",
+        "Quels documents pour le mariage civil ?",
+        "Combien coûte le mariage à la mairie ?",
+        "C'est quoi un acte de mariage ?"
+      ],
+      "questions_bm": [
+        "Furu sɛbɛn bɛ sɔrɔ cogo di ?",
+        "Furu bɛ kɛ cogo di mɛri la Mali kɔnɔ ?",
+        "Furu sɔngɔ ye joli ye mɛri la ?"
+      ],
+      "answer_fr": "L'acte de mariage est délivré par le centre d'état civil de la mairie après la célébration du mariage civil. Le mariage civil au Mali est célébré par le Maire ou un adjoint désigné, en présence de deux témoins majeurs. Le Code des Personnes et de la Famille (Loi n°2011-087) régit le mariage au Mali. Pièces requises : extraits d'acte de naissance des deux époux, certificats de résidence, certificats de non-opposition, pièces d'identité des témoins (2 par époux). Publication des bans à la mairie pendant 10 jours avant la célébration.",
+      "answer_bm": "Furu sɛbɛn bɛ bɔ mɛri la furu kɛlen kɔ. Mali sariya (Loi 2011-087) bɛ furu kow ɲɛnabɔ. Mɛri tigi walima a nɔɔfɛla de bɛ furu kɛ seere 2 ɲɛ na. Sɛbɛnw : furumusow ni furutiguw ka wolosɛbɛn, sigiyɔrɔ sɛbɛn, seerew ka joyoro sɛbɛn. Mɛri bɛ furu kumakan bɔ tile 10 kɔnɔ sani furu ka kɛ.",
+      "pieces_fr": "1. Extraits d'acte de naissance des deux époux (moins de 3 mois)\n2. Certificats de résidence récents\n3. Certificats de non-opposition au mariage\n4. Pièces d'identité de 4 témoins (2 par époux)\n5. Certificat de visite prénuptiale (médecin).",
+      "pieces_bm": "1. Furumusow ni furutiguw ka wolosɛbɛn\n2. Sigiyɔrɔ sɛbɛnw\n3. Furu bali-tɛ sɛbɛn\n4. Seere 4 ka joyoro sɛbɛn\n5. Dɔgɔtɔrɔ ka sɛbɛn.",
+      "cout_fr": "Le mariage civil coûte entre 2 500 et 10 000 FCFA selon les communes (timbres fiscaux et frais de célébration).",
+      "cout_bm": "Furu sɔngɔ bɛ FCFA 2 500 ka taa 10 000 cɛ kominiw la.",
+      "delai_fr": "Publication des bans : 10 jours. Acte de mariage délivré le jour même de la célébration.",
+      "delai_bm": "Furu kumakan bɔli : tile 10. Furu sɛbɛn bɛ bɔ furu don."
     }
   ]
 }

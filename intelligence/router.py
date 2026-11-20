@@ -33,7 +33,7 @@ SALUTATION_FR = (
     "Je peux vous renseigner sur l'ensemble de vos démarches administratives :\n"
     "• Carte Nationale d'Identité Biométrique (CNI)\n"
     "• Passeport biométrique (adulte, mineur, autorisation parentale)\n"
-    "• Acte de naissance / Volet d'état civil\n"
+    "• Acte de naissance / Acte de décès / Acte de mariage\n"
     "• Carte NINA & RAVEC\n"
     "• Casier judiciaire (Bulletin n°3)\n"
     "• Certificat de résidence\n"
@@ -45,7 +45,7 @@ SALUTATION_BM = (
     "N bɛ se ka i dɛmɛ sariyasɛbɛn kow la :\n"
     "• Fasodenya sariyasɛbɛn (CNI)\n"
     "• Mali jamana pasan (Passeport)\n"
-    "• Wolosɛbɛn (Acte de naissance)\n"
+    "• Wolosɛbɛn / Satunsɛbɛn / Furu sɛbɛn\n"
     "• NINA nimɔrɔ ni RAVEC\n"
     "• Kititigɛso sɛbɛn (Casier judiciaire)\n"
     "• Sigiyɔrɔ sɛbɛn\n"
@@ -210,13 +210,19 @@ class HybridRouter:
                 "slots": current_slots,
             }
 
-        # D. Gestion de la frustration et mécontentement usager (Scénario 4)
+        # D. Gestion de la frustration, mécontentement et insultes usager (Scénario 4)
         is_frust_fr = any(w in lowered for w in [
             "je suis fâché", "je suis fache", "pas performant", "pas compétent", "pas competent",
             "mauvaise information", "mauvaises informations", "tu te trompes", "n'importe quoi",
-            "j'ai pas demandé ça", "jai pas demande ca", "pas ça que je voulais"
+            "j'ai pas demandé ça", "jai pas demande ca", "pas ça que je voulais",
+            "vaurien", "nul", "imbécile", "imbecile", "idiot", "incompétent", "incompetent",
+            "inutile", "connard", "abruti", "merde", "bête", "bete", "stupide", "débile",
+            "c'est bon vaurien", "c'est nul", "tu sers à rien", "tu sers a rien"
         ])
-        is_frust_bm = any(w in lowered for w in ["n dimina", "n kɔnɔ gwenna", "a ma ɲɛ", "i tɛ foyi lɔn", "kuma gansan"])
+        is_frust_bm = any(w in lowered for w in [
+            "n dimina", "n kɔnɔ gwenna", "a ma ɲɛ", "i tɛ foyi lɔn", "kuma gansan",
+            "nalonmɔgɔ", "i man ɲi", "i ka kuma man ɲi"
+        ])
 
         if is_frust_fr or is_frust_bm:
             ans_text = (
@@ -507,7 +513,8 @@ class HybridRouter:
                 "carte", "cni", "passeport", "pasan", "naissance", "wolo", "nina", "ravec",
                 "casier", "judiciaire", "résidence", "residence", "timbre", "fiscale",
                 "fiscal", "permis", "chine", "visa", "greffe", "tribunal", "suppletif",
-                "supplétif", "nationalite", "nationalité", "légalisation", "legalisation"
+                "supplétif", "nationalite", "nationalité", "légalisation", "legalisation",
+                "décès", "deces", "mort", "satun", "mariage", "furu", "divorce"
             ]
         )
 
@@ -537,7 +544,45 @@ class HybridRouter:
                         "slots": current_slots,
                     }
 
-        # ── 8. Pipeline RAG Administratif (Dense Retrieval + Mistral) ────────
+        # 8a. Gestion des requêtes sur le décès / constat de mort / acte de décès
+        if any(w in lowered for w in ["acte de deces", "acte de décès", "acte de decès", "déclaration de décès", "declaration de deces", "déclarer un décès", "declarer un deces", "constat de décès", "constat de mort", "la mort"]):
+            query_to_send = "acte de deces declaration de deces formalites mairie"
+
+        # 8b. Gestion des reformulations contextuelles de prix / négociation sur la démarche active
+        # Cas : "est ce que je peux m'arranger à avoir à 50000f?" avec passeport actif
+        active_dem = current_slots.get("demarche")
+        is_price_negociation = active_dem and any(w in lowered for w in [
+            "arranger", "m'arranger", "m arranger", "négocier", "negocier",
+            "réduire", "reduire", "moins cher", "rabais", "remise",
+            "payer moins", "avoir à", "avoir a "
+        ]) and any(c in lowered for c in [
+            "f", "fcfa", "franc", "50000", "50 000", "55000", "55 000",
+            "5000", "5 000", "1000", "1 000", "wari", "sɔngɔ"
+        ])
+        if is_price_negociation:
+            dem_title = active_dem.replace("_", " ")
+            ans_negoc = (
+                "🏛️ **Sariya Kɔlɔsili :** Sariyasɛbɛn sɔngɔw ye Mali jamana ka sariya ye. "
+                "Mɔgɔ si tɛ se ka wari cɛɲɛ sariyasɛbɛn sɔngɔw la. "
+                f"Sɔngɔ tiɲɛnen min bɛ {dem_title} kama, o de bɛ sara.\n"
+                "👉 N'i b'a fɛ ka sɔngɔ tiɲɛnen lɔn, a fɔ n ye."
+                if lang == "bambara"
+                else (
+                    f"🏛️ **Tarifs Officiels Réglementés :** Les frais relatifs à la démarche **{dem_title}** "
+                    "sont fixés par arrêté ou décret ministériel de la République du Mali. "
+                    "Ils ne sont pas négociables et sont les mêmes pour tous les citoyens sur l'ensemble du territoire national.\n\n"
+                    "👉 Si un agent vous propose un tarif différent du tarif officiel affiché, "
+                    "il s'agit d'une pratique non conforme que vous pouvez signaler au numéro vert **80 00 11 15**.\n\n"
+                    "Souhaitez-vous que je vous rappelle le tarif officiel exact ?"
+                )
+            )
+            return {
+                "answer": ans_negoc,
+                "intent": "tarif_non_negociable",
+                "confidence": 0.95,
+                "slots": current_slots,
+            }
+
         query_to_send = user_input
         if current_slots.get("demarche") and not has_explicit_topic and (is_followup_cout or is_followup_pieces or is_followup_delai):
             dem_title = current_slots["demarche"].replace("_", " ")

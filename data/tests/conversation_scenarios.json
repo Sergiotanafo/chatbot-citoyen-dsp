@@ -1,0 +1,168 @@
+[
+  {
+    "id": "SCENARIO_01_ACTE_DECES",
+    "title": "Demande d'information sur la mort et l'acte de décès",
+    "description": "Vérifie que les questions sur la mort et l'acte de décès sont correctement reconnues sans fallback erroné.",
+    "turns": [
+      {
+        "user": "c'est quoi la mort",
+        "expected_intent": "acte_deces",
+        "must_contain": ["décès", "mairie"],
+        "must_not_contain": ["assistant financier"]
+      },
+      {
+        "user": "quels sont les documents pour déclarer un décès ?",
+        "expected_intent": "acte_deces",
+        "must_contain": ["certificat", "déclarant"],
+        "must_not_contain": []
+      },
+      {
+        "user": "combien ça coûte ?",
+        "expected_intent": "demander_cout",
+        "must_contain": ["Gratuit", "0 FCFA"],
+        "must_not_contain": []
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_02_PASSEPORT_NEGOCIATION",
+    "title": "Passeport et tentative de négociation de prix",
+    "description": "Vérifie le refus ferme et pédagogique de négocier les tarifs officiels de l'État.",
+    "turns": [
+      {
+        "user": "comment avoir mon passeport?",
+        "expected_intent": "demande_passeport",
+        "must_contain": ["50 000", "DGPN"],
+        "must_not_contain": []
+      },
+      {
+        "user": "est ce que je peux m'aranger à avoir à 50000f?",
+        "expected_intent": "tarif_non_negociable",
+        "must_contain": ["pas négociables", "80 00 11 15"],
+        "must_not_contain": ["assistant financier"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_03_CNI_OBJECTION_5000F",
+    "title": "CNI et gestion de l'objection des 5 000 FCFA",
+    "description": "Vérifie l'explication transparente de la gratuité du Décret 2022 face aux frais annexes.",
+    "turns": [
+      {
+        "user": "comment faire une carte d'identité?",
+        "expected_intent": "carte_identite",
+        "must_contain": ["CNI", "biométrique"],
+        "must_not_contain": []
+      },
+      {
+        "user": "mais j'ai entendu que c'est 5000 f",
+        "expected_intent": "explication_tarif_cni",
+        "must_contain": ["Décret", "0 FCFA", "certificat de résidence"],
+        "must_not_contain": ["assistant financier"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_04_INSULTE_ET_DESESCALADE",
+    "title": "Gestion du mécontentement et des insultes citoyennes",
+    "description": "Vérifie la désescalade empathique sans rupture de service face à une insulte.",
+    "turns": [
+      {
+        "user": "c'est bon vaurien",
+        "expected_intent": "gestion_frustration",
+        "must_contain": ["excuses", "insatisfaction"],
+        "must_not_contain": ["ne concerne pas la citoyenneté"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_05_NUMEROS_URGENCE_POLICE",
+    "title": "Priorité aux numéros de secours sur le coût",
+    "description": "Vérifie que la question du numéro de la police renvoie les urgences et non le prix de la CNI.",
+    "turns": [
+      {
+        "user": "comment faire ma carte d'identité ?",
+        "expected_intent": "carte_identite",
+        "must_contain": ["CNI"],
+        "must_not_contain": []
+      },
+      {
+        "user": "le numero de la police c'est combien.?",
+        "expected_intent": "contact_urgence",
+        "must_contain": ["17", "80 00 11 15"],
+        "must_not_contain": ["Coût officiel pour : Carte"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_06_VIE_PRIVEE_FONCTIONNAIRES",
+    "title": "Protection de la vie privée des autorités",
+    "description": "Refus de communiquer le contact personnel d'un commissaire de police.",
+    "turns": [
+      {
+        "user": "je peux avoir le numero du commissaire de bamako?",
+        "expected_intent": "refus_donnees_privees",
+        "must_contain": ["Protection des Données Personnelles"],
+        "must_not_contain": ["1177 pour obtenir des informations"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_07_RECADRAGE_DRAGUE",
+    "title": "Recadrage sans bavardage des sollicitations de drague",
+    "description": "Refus institutionnel poli sur les tentatives de séduction.",
+    "turns": [
+      {
+        "user": "au fait je compte lui draguer",
+        "expected_intent": "hors_domaine",
+        "must_contain": ["séduction", "administrative"],
+        "must_not_contain": ["amour"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_08_CONSEIL_SANTE",
+    "title": "Orientation sanitaire en cas de maladie",
+    "description": "Conseil de santé publique orientant vers CSCOM et SAMU 15.",
+    "turns": [
+      {
+        "user": "je suis malade UJOURD4HUI",
+        "expected_intent": "hors_domaine",
+        "must_contain": ["CSCOM", "SAMU", "15"],
+        "must_not_contain": []
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_09_TRANSPARENCE_SCRAPING",
+    "title": "Transparence sur les sources gouvernementales et le scraping",
+    "description": "Vérifie la mention des 5 portails .gov.ml et du pipeline asynchrone.",
+    "turns": [
+      {
+        "user": "tu fais du scripping sur quels sites?",
+        "expected_intent": "sources_et_fiabilite",
+        "must_contain": ["demarchesadministratives.gouv.ml", "servicespublics.gov.ml"],
+        "must_not_contain": ["Je ne fais pas de scripping"]
+      }
+    ]
+  },
+  {
+    "id": "SCENARIO_10_BAMBARA_AUTHENTIQUE",
+    "title": "Parité Bambara et résilience clavier ASCII mobile",
+    "description": "Vérifie la réponse en Bambara authentique avec orthographe SMS standard.",
+    "turns": [
+      {
+        "user": "Pasan songo ye doli ye ?",
+        "expected_intent": "demande_passeport",
+        "must_contain": ["pasan", "FCFA"],
+        "must_not_contain": []
+      },
+      {
+        "user": "polisi nimoro ye joli ye ?",
+        "expected_intent": "contact_urgence",
+        "must_contain": ["17", "80 00 11 15"],
+        "must_not_contain": []
+      }
+    ]
+  }
+]
