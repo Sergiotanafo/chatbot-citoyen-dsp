@@ -145,6 +145,20 @@ class HybridRouter:
                 "slots": current_slots,
             }
 
+        # ── 4b. Spécification Mentor : Clarification Juridique Nationalité & Statut ──
+        nat_result = self.dialogue_engine.handle_nationality_and_status_clarification(
+            lowered=lowered,
+            lang=lang,
+            current_slots=current_slots
+        )
+        if nat_result and nat_result.handled:
+            return {
+                "answer": nat_result.answer,
+                "intent": nat_result.intent,
+                "confidence": nat_result.confidence,
+                "slots": current_slots,
+            }
+
         # ── 5. Recadrage Négociation Tarifaire Citoyenne ─────────────────────
         negoc_result = self.dialogue_engine.handle_price_negotiation_objection(
             lowered=lowered,

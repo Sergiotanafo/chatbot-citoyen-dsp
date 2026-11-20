@@ -71,8 +71,20 @@
       "bm": "🏛️ **Sariya Kɔlɔsili :** Sariyasɛbɛn sɔngɔw ye Mali jamana ka sariya ye. Mɔgɔ si tɛ se ka wari cɛɲɛ sariyasɛbɛn sɔngɔw la. Sɔngɔ tiɲɛnen min bɛ {demarche_title} kama, o de bɛ sara.\n👉 N'i b'a fɛ ka sɔngɔ tiɲɛnen lɔn, a fɔ n ye."
     },
     "refus_proposition": {
-      "fr": "Très bien ! Avez-vous une autre question concernant les documents requis, les délais ou une autre démarche administrative ?",
-      "bm": "K'a to yen ! Ni ɲininkali wɛrɛ b'i fɛ sɛbɛn wɛrɛw, sɔngɔ walima waati kow kan, n bɛ se ka i dɛmɛ."
+      "fr": "D'accord, pas de problème ! Si vous avez besoin d'aide pour une autre démarche administrative au Mali, je suis là.",
+      "bm": "N'a ma foyi kɛ ! Ni ɲininkali wɛrɛ b'i fɛ Mali sariyasɛbɛn dɔ kan, n bɛ yen i dɛmɛna."
+    },
+    "tarif_acte_deces_200f": {
+      "fr": "Pour l'acte de décès au Mali, la déclaration de décès et la première délivrance sont **strictement gratuites (0 FCFA)** au centre d'état civil dans le délai légal de 30 jours.\n\nLe montant de 200 FCFA correspond généralement au coût légal d'un **timbre fiscal communal** (ou quittance d'état civil) requis lors de la délivrance d'une copie légalisée ou d'un extrait supplémentaire, et non à un tarif que l'on peut négocier.\n\nLes tarifs officiels de l'administration ne sont **pas négociables**. Si un agent ou un intermédiaire vous réclame une somme injustifiée, vous pouvez le signaler au numéro vert officiel de la Police (**80 00 11 15**).\n\nSouhaitez-vous que je vous rappelle le tarif officiel exact ?",
+      "bm": "Mali kɔnɔ, saya sɛbɛn fɔlɔ deli ye **FU DE YE (0 FCFA)** mɛri la n'a kɛra tile 30 kɔnɔ.\n\nFCFA 200 ye mɛri ka tanburu (timbre fiscal) sɔngɔ ye kɔpi wɛrɛ deli la, o tɛ wari cɛɲɛli ye. Sariya sɔngɔ tɛ cɛɲɛ. Ni mɔgɔ dɔ b'a fɛ k'i ɲɛgɛn, i bɛ se ka wele **80 00 11 15**.\n\nI b'a fɛ n k'a sariya sɔngɔ lakika ɲɛfɔ i ye ?"
+    },
+    "clarification_nationalite": {
+      "fr": "Vous souhaitez obtenir la nationalité malienne. Il faut distinguer l'obtention de la nationalité malienne (procédure d'acquisition pour un étranger) de la délivrance d'un certificat de nationalité (qui atteste qu'une personne possède déjà la nationalité).\n\nPour vous orienter correctement :\n• Êtes-vous ressortissant d'un autre pays et souhaitez-vous acquérir la nationalité malienne ?\n• Ou êtes-vous déjà Malien et cherchez-vous un document pour prouver votre nationalité ?",
+      "bm": "I b'a fɛ ka Mali fasodenya sɔrɔ. Danfara bɛ Mali fasodenya sɔrɔli (naturalisation jamanaden wɛrɛ fɛ) ni Fasodenya sariyasɛbɛn (certificat de nationalité mɔgɔ min ye Maliden ye kaban) cɛ.\n\nWalasa n k'i dɛmɛ ka ɲɛ :\n• I ye jamanatigi wɛrɛ ye k'a fɛ ka kɛ Maliden ye wa ?\n• Walima i ye Maliden ye kaban nka sɛbɛn t'i bolo k'a jira ?"
+    },
+    "clarification_absence_pieces_etranger": {
+      "fr": "Je comprends votre situation. Si vous n'avez aucun document malien, il faut d'abord déterminer quels documents vous possédez de votre pays d'origine et quelle est votre situation au Mali.\n\nL'absence d'acte de naissance malien ne signifie pas automatiquement que vous devez demander un jugement supplétif au Mali. La procédure dépend notamment du lieu où votre naissance a été enregistrée.\n\n👉 Êtes-vous né au Mali ou dans un autre pays ?",
+      "bm": "Ne b'a faamu. Ni sɛbɛn si t'i bolo Mali kɔnɔ, fɔlɔ fɔlɔ an ka lɔn sɛbɛn minnu b'i bolo i ka bɔyɔrɔ jamana na.\n\nWolosɛbɛn tɛ i bolo, o kɔrɔ tɛ ko kititigɛso sɛbɛn de bɛ kɛ Mali kɔnɔ joona. Sira bɛ taa cogo min, o bɛ bɔ i woloyɔrɔ de la.\n\n👉 I wolola Mali de kɔnɔ wa, walima jamana wɛrɛ la ?"
     }
   }
 }

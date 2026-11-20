@@ -214,8 +214,8 @@
         "Satunsɛbɛn sɔngɔ ye joli ye ?",
         "N mɔgɔ dɔ satuna n bɛ mun kɛ ?"
       ],
-      "answer_fr": "L'acte de décès est un document officiel d'état civil qui constate juridiquement le décès d'une personne. La déclaration de décès doit être faite à la mairie (centre d'état civil) du lieu du décès dans un délai de 30 jours. Elle est effectuée par un parent, un voisin ou toute personne ayant connaissance du décès. Pièces requises : certificat médical de décès (ou constat de décès), pièce d'identité du défunt si disponible, pièce d'identité du déclarant. L'acte de décès est nécessaire pour les démarches de succession, de pension de réversion (INPS), de modification de l'état civil des héritiers et de radiation des fichiers administratifs.",
-      "answer_bm": "Satunsɛbɛn ye mɛri ka sariya sɛbɛn ye min bɛ a jira ko mɔgɔ dɔ satuna. Mɔgɔ satɔ sɛbɛnli bɛ kɛ mɛri la tile 30 kɔnɔ satuli kɛyɔrɔ la. Mɔgɔ kelen bɛ se ka taa a fɔ : somɔgɔ, sigidamɔgɔ walima mɔgɔ o mɔgɔ min bɛ satu lɔn. Sɛbɛnw : dɔgɔtɔrɔ ka satunsɛbɛn, satumɔgɔ ka joyoro sɛbɛn n'a bɛ yen, dekɛla ka joyoro sɛbɛn. Satunsɛbɛn bɛ ɲini cikɛli kow, INPS ka sɛbɛnw ani somɔgɔ sariyasɛbɛn kura labɛnni kama.",
+      "answer_fr": "Pour déclarer un décès au Mali, il faut se rendre au centre d'état civil (mairie) du lieu du décès dans un délai légal de 30 jours.\n\nLes pièces à préparer sont :\n• Le certificat médical de décès (ou constat de décès)\n• La pièce d'identité du défunt (si disponible)\n• La pièce d'identité du déclarant (parent ou proche)\n\nLa déclaration et la première délivrance sont strictement gratuites (0 FCFA) dans les 30 jours. Au-delà, un jugement déclaratif au tribunal est requis.\n\n👉 Le décès a-t-il eu lieu récemment (moins de 30 jours) ou souhaitez-vous un acte pour un décès ancien ?",
+      "answer_bm": "Mali kɔnɔ, saya sɛbɛnli bɛ kɛ dugu mɛri (centre d'état civil) la, satuli kɛyɔrɔ la tile 30 kɔnɔ.\n\nSɛbɛn minnu bɛ labɛn :\n• Dɔgɔtɔrɔ ka satunsɛbɛn (certificat médical)\n• Satubaga ka joyorosɛbɛn n'a bɛ yen\n• Laselibaga ka joyorosɛbɛn (CNI walima NINA)\n\nSaya sɛbɛn fɔlɔ deli ye FU YE (0 FCFA) tile 30 kɔnɔ.\n\n👉 Saya kɛra kabilabila don wa (tile 30 kɔnɔ), walima a kɔrɔlen kaban ?",
       "pieces_fr": "1. Certificat médical de décès (délivré par un médecin ou un centre de santé)\n2. Pièce d'identité du défunt (CNI, NINA ou passeport) si disponible\n3. Pièce d'identité du déclarant\n4. Livret de famille si le défunt était marié.",
       "pieces_bm": "1. Dɔgɔtɔrɔ ka satunsɛbɛn\n2. Satumɔgɔ ka joyoro sɛbɛn n'a bɛ yen\n3. Dekɛla ka joyoro sɛbɛn\n4. Furu sɛbɛn n'a tun furalen don.",
       "cout_fr": "Gratuit (0 FCFA) si la déclaration est faite dans le délai légal de 30 jours. Au-delà, un jugement déclaratif de décès est nécessaire au tribunal (frais de 2 500 à 5 000 FCFA).",
@@ -535,6 +535,36 @@
       "cout_bm": "Tanburu wari : FCFA 1 500 ka taa 2 500 cɛ.",
       "delai_fr": "Calendrier fixé par arrêté interministériel publié au Journal Officiel et sur les antennes de l'ORTM.",
       "delai_bm": "Waati bɛ kɛ ka bɛn gɔfɛrɛnaman ka kumakan ma."
+    },
+    {
+      "id": "acquisition_nationalite",
+      "title_fr": "Acquisition de la Nationalité Malienne (Naturalisation & Mariage)",
+      "title_bm": "Mali fasodenya sɔrɔli (Naturalisation ani Furu)",
+      "questions_fr": [
+        "Comment obtenir la nationalité malienne quand on est étranger ?",
+        "Comment devenir citoyen malien ?",
+        "Quelles sont les conditions pour avoir la nationalité malienne ?",
+        "Procédure de naturalisation au Mali",
+        "Je suis étranger et je veux la nationalité malienne",
+        "Je viens d'arriver au Mali et je veux la nationalité malienne",
+        "Je veux devenir Malien",
+        "Je viens d'arriver au Mali et je compte me procurer d'une nationalité malienne",
+        "Comment acquérir la nationalité malienne ?"
+      ],
+      "questions_bm": [
+        "Jamanatigi wɛrɛ bɛ se ka Mali fasodenya sɔrɔ cogo di ?",
+        "Naturalisation sira bɛ taa cogo di Mali kɔnɔ ?",
+        "N b'a fɛ ka kɛ Maliden ye",
+        "N nana Mali kɔnɔ n b'a fɛ ka fasodenya sɔrɔ"
+      ],
+      "answer_fr": "L'acquisition de la nationalité malienne par un étranger est régie par le Code des Personnes et de la Famille du Mali (Loi n°2011-087). Elle peut s'effectuer par naturalisation (résidence continue et régulière au Mali depuis au moins 5 ans, moralité, intégration) ou par mariage avec un(e) citoyen(ne) malien(ne). Le dossier est instruit par le Ministère de la Justice (Direction Nationale des Affaires Judiciaires et du Sceau) et la naturalisation est conférée par Décret en Conseil des Ministres. Elle est distincte du certificat de nationalité, qui atteste qu'une personne est déjà malienne.",
+      "answer_bm": "Jamanatigi wɛrɛ ka Mali fasodenya sɔrɔli (naturalisation) bɛ sariyatigɛ ni Mali sariyasun ye. A bɛ sɔrɔ n'i ye san 5 kɛ Mali kɔnɔ sariyasira fɛ, walima furu fɛ ni Maliden dɔ ye. Dosiye bɛ bila Kiritigɛ minisiriso (Ministère de la Justice) la, ka Décret sɔrɔ Gɔfɛrɛnaman bolo. O tɛ kelen ye ni certificat de nationalité ye, min bɛ di mɔgɔ ma min ye Maliden ye kaban.",
+      "pieces_fr": "1. Demande timbrée adressée au Ministre de la Justice\n2. Extrait d'acte de naissance du pays d'origine légalisé\n3. Casier judiciaire du pays d'origine et du Mali (bulletin n°3)\n4. Certificat de résidence attestant d'au moins 5 ans de séjour régulier\n5. Certificat médical attestant de l'état de santé\n6. Quittance des droits de chancellerie\n7. En cas de mariage : acte de mariage et certificat de nationalité du conjoint malien.",
+      "pieces_bm": "1. Bataki sɛbɛn kiritigɛ minisiri ma ni tanburu ye\n2. Wolosɛbɛn i ka bɔyɔrɔ jamana la lakalanen\n3. Kititigɛso sɛbɛn (casier judiciaire) bɔyɔrɔ jamana ni Mali ta\n4. Sigiyɔrɔ sɛbɛn min b'a jira ko i kɛra san 5 Mali kɔnɔ\n5. Dɔgɔtɔrɔ ka kɛnɛya sɛbɛn\n6. Sariya sara wari sɛbɛn\n7. N'a kɛra furu ye : furusɛbɛn ni furuɲɔgɔn ka fasodenya sɛbɛn.",
+      "cout_fr": "Frais de chancellerie et timbre fiscal selon le barème officiel du Ministère de la Justice.",
+      "cout_bm": "Kiritigɛ minisiriso ka sariya tanburu wari sarali.",
+      "delai_fr": "Instruction ministérielle et décret en Conseil des Ministres (plusieurs mois).",
+      "delai_bm": "Kalo damadama dosiye sɛgɛsɛgɛli kɔnɔ gɔfɛrɛnaman fɛ."
     }
   ]
 }

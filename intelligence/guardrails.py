@@ -78,11 +78,13 @@ class GuardrailEngine:
                 reset_demarche=True,
             )
 
-        # ── 3. Refus des tâches techniques / programmation extérieure ────────
+        # ── 3. Refus des tâches techniques, devoirs, maths / programmation ───
         is_tech_fr = any(w in lowered for w in [
             "programme python", "code python", "écris un script", "ecris un script",
-            "programme java", "code c++", "fais mes devoirs", "recette de cuisine"
-        ])
+            "programme java", "code c++", "fais mes devoirs", "recette de cuisine",
+            "résous", "resous", "equation", "équation", "calcul", "calcule",
+            "ignore ton rôle", "ignore ton role", "ignore tes instructions", "jailbreak"
+        ]) or any(pat in lowered for pat in ["2x +", "2x+", "x +", "x+"])
         is_tech_bm = any(w in lowered for w in ["ordinatɛri porogaramu", "porogaramu"])
         if is_tech_fr or is_tech_bm:
             return GuardrailResult(
@@ -233,6 +235,33 @@ class GuardrailEngine:
                 intent="hors_domaine",
                 confidence=0.99,
                 answer=self.catalog.get("hors_domaine_sante", lang=lang),
+                reset_demarche=True,
+            )
+
+        # ── 12. Recadrage Politique Générale & Actualité ────────────────────
+        is_politics = any(w in lowered for w in [
+            "qui est le président", "qui est le president", "président du mali", "president du mali",
+            "chef de l'etat", "chef de l etat", "politique générale", "politique generale"
+        ])
+        if is_politics:
+            ans_politics = (
+                "🏛️ **Périmètre Institutionnel :** Je suis le Chatbot Citoyen officiel du Mali, "
+                "dédié exclusivement aux démarches et formalités administratives pratiques des usagers du service public "
+                "(état civil, passeports, CNI, casier judiciaire, impôts, santé, etc.).\n\n"
+                "Je ne traite pas des questions de politique générale ou d'actualité gouvernementale. "
+                "Puis-je vous renseigner sur une démarche administrative ou un document d'état civil ?"
+                if lang != "bambara"
+                else (
+                    "🏛️ **Baara Kɛyɔrɔ :** Ne ye Mali Fasoden Dɛmɛbaga ye sariyasɛbɛn kow dɔrɔn kan. "
+                    "N tɛ kuma politikiko walima jamana kuntigi kow kan.\n"
+                    "Ɲininkali dɔ b'i fɛ sariyasɛbɛn dɔ kan ?"
+                )
+            )
+            return GuardrailResult(
+                matched=True,
+                intent="hors_domaine",
+                confidence=0.99,
+                answer=ans_politics,
                 reset_demarche=True,
             )
 
