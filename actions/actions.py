@@ -89,14 +89,18 @@ _FRENCH_PATTERNS = [
 
 def detect_language(text: str) -> str:
     """Détecte avec robustesse si le texte saisi est en Bambara ou en Français."""
-    if not text:
+    try:
+        from intelligence.language_engine import get_language_engine
+        return get_language_engine().detect_language(text)
+    except Exception:
+        if not text:
+            return "français"
+        lowered = text.lower()
+        bm_score = sum(1 for p in _BAMBARA_PATTERNS if re.search(p, lowered))
+        fr_score = sum(1 for p in _FRENCH_PATTERNS if re.search(p, lowered))
+        if bm_score > fr_score:
+            return "bambara"
         return "français"
-    lowered = text.lower()
-    bm_score = sum(1 for p in _BAMBARA_PATTERNS if re.search(p, lowered))
-    fr_score = sum(1 for p in _FRENCH_PATTERNS if re.search(p, lowered))
-    if bm_score > fr_score:
-        return "bambara"
-    return "français"
 
 
 # ─────────────────────────────────────────────────────────────
@@ -168,14 +172,20 @@ class ActionRepondreChangementLangue(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         lang = tracker.get_slot("langue") or "français"
-        if lang == "bambara":
-            dispatcher.utter_message(
-                text="Aw bisimila ! Ne bɛ kuma Bamanankan na sisan. N bɛ se ka i dɛmɛ cogo di ?"
-            )
-        else:
-            dispatcher.utter_message(
-                text="Très bien ! Je communique désormais en français. Comment puis-je vous aider ?"
-            )
+        try:
+            from intelligence.domain_templates import get_domain_catalog
+            catalog = get_domain_catalog()
+            key = "changement_langue_bm" if lang == "bambara" else "changement_langue_fr"
+            dispatcher.utter_message(text=catalog.get(key, lang=lang))
+        except Exception:
+            if lang == "bambara":
+                dispatcher.utter_message(
+                    text="Aw bisimila ! Ne bɛ kuma Bamanankan na sisan. N bɛ se ka i dɛmɛ cogo di ?"
+                )
+            else:
+                dispatcher.utter_message(
+                    text="Très bien ! Je communique désormais en français. Comment puis-je vous aider ?"
+                )
         return []
 
 

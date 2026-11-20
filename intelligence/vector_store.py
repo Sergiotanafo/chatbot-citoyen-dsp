@@ -13,6 +13,11 @@ import unicodedata
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional, Tuple
 
+try:
+    import numpy as np
+except ImportError:
+    np = None
+
 logger = logging.getLogger(__name__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -79,6 +84,7 @@ class DenseVectorStore:
         self.vectors: List[List[float]] = []
         self.vocab: Dict[str, int] = {}
         self.idf: Dict[str, float] = {}
+        self.doc_matrix = None
 
         self._init_encoder()
         self.index_knowledge_base()
@@ -275,6 +281,11 @@ class DenseVectorStore:
             norm = math.sqrt(sum(x * x for x in vec)) or 1.0
             self.vectors.append([x / norm for x in vec])
 
+        if np is not None and self.vectors:
+            self.doc_matrix = np.array(self.vectors, dtype=np.float32)
+        else:
+            self.doc_matrix = None
+
     def similarity_search(
         self,
         query: str,
@@ -304,27 +315,47 @@ class DenseVectorStore:
 
         # Calcul similarité cosinus avec filtrage linguistique
         scored_candidates: List[Tuple[float, DocumentChunk]] = []
-        for doc, doc_vec in zip(self.chunks, self.vectors):
-            if doc.language != target_lang:
-                continue
+        norm_q = normalize_text(query)
+        if self.doc_matrix is not None and not self.dense_model:
+            raw_sims = np.dot(self.doc_matrix, np.array(q_vec, dtype=np.float32))
+            for doc, sim in zip(self.chunks, raw_sims):
+                if doc.language != target_lang:
+                    continue
+                sim_val = float(sim)
+                for word in normalize_text(doc.title).split():
+                    if len(word) >= 3 and word not in FRENCH_STOPWORDS and word not in ["les", "des", "une", "par", "sur", "qui", "que"] and word in norm_q:
+                        sim_val += 0.25
 
-            sim = sum(a * b for a, b in zip(q_vec, doc_vec))
-            # Bonus si des mots clés du titre sont présents dans la requête (inclut acronymes comme CNI, AMO, NIF, DEF)
-            norm_q = normalize_text(query)
-            for word in normalize_text(doc.title).split():
-                if len(word) >= 3 and word not in FRENCH_STOPWORDS and word not in ["les", "des", "une", "par", "sur", "qui", "que"] and word in norm_q:
-                    sim += 0.25
+                doc_copy = DocumentChunk(
+                    chunk_id=doc.chunk_id,
+                    topic=doc.topic,
+                    title=doc.title,
+                    content=doc.content,
+                    language=doc.language,
+                    score=round(float(sim_val), 4),
+                    metadata=doc.metadata,
+                )
+                scored_candidates.append((sim_val, doc_copy))
+        else:
+            for doc, doc_vec in zip(self.chunks, self.vectors):
+                if doc.language != target_lang:
+                    continue
 
-            doc_copy = DocumentChunk(
-                chunk_id=doc.chunk_id,
-                topic=doc.topic,
-                title=doc.title,
-                content=doc.content,
-                language=doc.language,
-                score=round(float(sim), 4),
-                metadata=doc.metadata,
-            )
-            scored_candidates.append((sim, doc_copy))
+                sim = sum(a * b for a, b in zip(q_vec, doc_vec))
+                for word in normalize_text(doc.title).split():
+                    if len(word) >= 3 and word not in FRENCH_STOPWORDS and word not in ["les", "des", "une", "par", "sur", "qui", "que"] and word in norm_q:
+                        sim += 0.25
+
+                doc_copy = DocumentChunk(
+                    chunk_id=doc.chunk_id,
+                    topic=doc.topic,
+                    title=doc.title,
+                    content=doc.content,
+                    language=doc.language,
+                    score=round(float(sim), 4),
+                    metadata=doc.metadata,
+                )
+                scored_candidates.append((sim, doc_copy))
 
         scored_candidates.sort(key=lambda x: x[0], reverse=True)
 

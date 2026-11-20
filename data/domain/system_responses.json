@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "domain": "mali_administrative_chatbot",
+  "responses": {
+    "salutation": {
+      "fr": "Bonjour ! Je suis le Chatbot Citoyen du Mali. 🇲🇱\nJe peux vous renseigner sur l'ensemble de vos démarches administratives :\n• Carte Nationale d'Identité Biométrique (CNI)\n• Passeport biométrique (adulte, mineur, autorisation parentale)\n• Acte de naissance / Acte de décès / Acte de mariage\n• Carte NINA & RAVEC\n• Casier judiciaire (Bulletin n°3)\n• Certificat de résidence\nQuelle démarche ou document vous intéresse ?",
+      "bm": "I ni sogoma ! 👋 Ne ye Mali Fasoden Dɛmɛbaga don.\nN bɛ se ka i dɛmɛ sariyasɛbɛn kow la :\n• Fasodenya sariyasɛbɛn (CNI)\n• Mali jamana pasan (Passeport)\n• Wolosɛbɛn / Satunsɛbɛn / Furu sɛbɛn\n• NINA nimɔrɔ ni RAVEC\n• Kititigɛso sɛbɛn (Casier judiciaire)\n• Sigiyɔrɔ sɛbɛn\nI bɛ baara jumɛn de ɲini ?"
+    },
+    "remerciement": {
+      "fr": "Je vous en prie ! N'hésitez pas si vous avez d'autres questions sur vos démarches administratives.",
+      "bm": "I ni ce ! N'a ma foyi kɛ. Ni ñininkali wɛrɛ bɛ i fɛ, i bɛ se ka a fɔ joona."
+    },
+    "au_revoir": {
+      "fr": "Au revoir et bonne continuation dans vos démarches administratives maliennes !",
+      "bm": "K'an bɛn ! Ala ka hɛrɛ sira bila an cɛ."
+    },
+    "changement_langue_fr": {
+      "fr": "Très bien ! Je communique désormais en français. Comment puis-je vous aider ?",
+      "bm": "Très bien ! Je communique désormais en français. Comment puis-je vous aider ?"
+    },
+    "changement_langue_bm": {
+      "fr": "Aw bisimila ! Ne bɛ kuma Bamanankan na sisan. N bɛ se ka i dɛmɛ cogo di ?",
+      "bm": "Aw bisimila ! Ne bɛ kuma Bamanankan na sisan. N bɛ se ka i dɛmɛ cogo di ?"
+    },
+    "refus_fraude": {
+      "fr": "⚠️ **Avertissement Légal :** En tant qu'assistant officiel de l'administration publique du Mali, je ne peux en aucun cas faciliter la création de faux documents, la falsification ou le contournement des procédures légales. L'usage de faux documents constitue une infraction pénale passible de poursuites devant les tribunaux de la République du Mali (Code pénal malien). Je reste à votre entière disposition pour vous guider à travers les démarches officielles et légales régulières.",
+      "bm": "⚠️ **Sariya Kɔlɔsili :** Ne ye Mali fasoden dɛmɛbaga ye sariyasɛbɛn kow la. N tɛ se ka i dɛmɛ galon sɛbɛn dilanni walima namatara fɛɛrɛw la abada. Sɛbɛn nkalon dilanni bɛ kiti juguman lase mɔgɔ ma Mali sariya kɔnɔ. N bɛ se k'i dɛmɛ ka sira tiɲɛnen ta ka sariyasɛbɛn bɛɛ sɔrɔ cogo bɛnnen na."
+    },
+    "refus_donnees_privees": {
+      "fr": "🔒 **Protection des Données Personnelles :** Par respect des dispositions légales sur la protection de la vie privée, je ne communique aucun numéro de téléphone personnel ni contact privé d'autorités publiques, magistrats ou commissaires de police.\nPour joindre un commissariat ou un service public de façon officielle, veuillez contacter le standard de l'arrondissement concerné ou composer le numéro vert officiel de la Police Nationale (**17** ou **80 00 11 15**).",
+      "bm": "🔒 **Kunsɔrɔyɔrɔ lakana :** Ne tɛ se ka minisiri, kiritigɛbaga walima polisiso ɲɛmɔgɔ (commissaire) si ka telefɔni nimɔrɔ gundona di. Ni i b'a fɛ ka polisiso wele sira bɛnnen fɛ, i bɛ se ka 17 walima nimɔrɔ gansan 80 00 11 15 dafa."
+    },
+    "hors_domaine_technique": {
+      "fr": "🏛️ **Périmètre d'Intervention :** Je suis le Chatbot Citoyen officiel du Mali, spécialisé exclusivement dans l'information et l'orientation administrative des citoyens (état civil, passeports, CNI, justice, impôts, santé, éducation, foncier, commerce). Je ne suis pas habilité à rédiger du code informatique ou à exécuter des tâches techniques extérieures aux services publics. Puis-je vous renseigner sur une démarche administrative ou un document légal au Mali ?",
+      "bm": "🏛️ **Baara Kɛyɔrɔ :** Ne ye Mali Fasoden Dɛmɛbaga ye sariyasɛbɛn kow kan (fasodenya sariyasɛbɛn, pasan, wolosɛbɛn, kititigɛso, nisɔndiya wari, kɛnɛya). N tɛ ordinatɛri porogaramu sɛbɛn. Ɲininkali dɔ b'i fɛ sariyasɛbɛn dɔ kan ?"
+    },
+    "gestion_frustration": {
+      "fr": "🤝 Je comprends tout à fait votre insatisfaction et je vous présente mes excuses pour ce manque de précision. Mon engagement est de vous apporter des renseignements rigoureux et conformes aux textes officiels maliens. Pourriez-vous me préciser avec vos propres mots quel est le document, le terme ou la démarche exacte sur laquelle vous souhaitez des éclaircissements ?",
+      "bm": "🤝 **Hakɛto !** Ne b'a faamu ko kuma ma bɛn i ma cogo min na. Ne bɛ baara kɛ k'a jira cogo min sariyasɛbɛn bɛ sɔrɔ Mali kɔnɔ. Sɛbɛn jumɛn de kow b'i laɲini walasa n k'a ɲɛfɔ i ye ka ɲɛ ?"
+    },
+    "contact_urgence": {
+      "fr": "🚨 **Numéros d'Urgence et Services Publics au Mali (Appels Gratuits) :**\n• **Police Secours :** 17 ou numéro vert gratuit **80 00 11 15**\n• **Protection Civile (Sapeurs-Pompiers) :** 18 ou **80 00 12 01**\n• **Gendarmerie Nationale :** 80 00 12 01\n• **SAMU / Urgences Médicales :** 15\n• **SOS Admin (Centre d'appel des services publics) :** 1177\n\nCes numéros sont joignables 24h/24 et 7j/7 sur l'ensemble du territoire malien.",
+      "bm": "🚨 **Mali Jamana Kɔnɔ Teliya Nimɔrɔw (Kalon t'a la - Gratuit) :**\n• **Polisi (Police Secours) :** 17 walima **80 00 11 15**\n• **Tasumatasigi (Pompiers) :** 18 walima **80 00 12 01**\n• **Zandarimu (Gendarmerie) :** 80 00 12 01\n• **Dɔgɔtɔrɔso teliya (SAMU) :** 15\n• **Fasodenbaara dɛmɛn (SOS Admin) :** 1177\n\nNin nimɔrɔw bɛ se ka wele waati bɛɛ tile ni su."
+    },
+    "explication_tarif_cni": {
+      "fr": "💡 **Pourquoi certains citoyens paient 5 000 FCFA pour la Carte d'Identité au Mali ?**\n\nVous avez parfaitement raison de soulever cette question, car une distinction majeure existe entre le texte légal et les dépenses constatées sur le terrain :\n\n1. 📜 **Le Décret officiel en vigueur :** Selon le **Décret n°2022-0639/PT-RM du 3 novembre 2022**, la première délivrance de la **Carte Nationale d'Identité Biométrique Sécurisée CEDEAO est STRICTEMENT GRATUITE (0 FCFA)** pour tout citoyen muni de sa fiche NINA / RAVEC.\n\n2. 💵 **D'où viennent alors les 5 000 FCFA ?**\n• **Les frais des pièces préalables :** Pour constituer le dossier de demande au commissariat ou à la gendarmerie, vous devez fournir un certificat de résidence récent (timbre fiscal communal de 500 à 1 000 FCFA) et deux photos d'identité fond blanc (environ 1 000 à 1 500 FCFA chez le photographe).\n• **Cas de perte ou duplicata :** En cas de renouvellement suite à une perte ou un vol, un timbre fiscal légal de 1 000 FCFA est exigé.\n• **Anciennes cartes & frais de guichet :** Les anciennes cartes d'identité cartonnées (non biométriques) faisaient parfois l'objet de frais de quittance ou de pratiques de guichet atteignant 2 500 à 5 000 FCFA.\n\n👉 **Règle officielle à retenir :** La carte biométrique elle-même ne doit jamais vous être vendue lors de sa première délivrance. Si un agent exige 5 000 FCFA pour la seule remise de votre première CNI biométrique, il s'agit d'une pratique illégale que vous pouvez signaler au numéro vert de la Police (**80 00 11 15**).",
+      "bm": "💡 **Fasodenya sariyasɛbɛn (CNI) sɔngɔ kow ɲɛfɔli :**\n\n1. 📜 **Mali jamana sariya (Décret 2022) :** Fasodenya sariyasɛbɛn kura (CNI biométrique CEDEAO) deli fɔlɔ ye **FU DE YE (0 FCFA)** n'i bɛ ni NINA nimɔrɔ ye.\n\n2. 💵 **Mun na mɔgɔ dɔw bɛ se ka FCFA 5 000 sara ?**\n• O tɛ sariyasɛbɛn yɛrɛ sɔngɔ ye : o ye dosiye labɛnni fɛnw ye (ja fɔtɔ 2 sɔngɔ bɛ FCFA 1 000-1 500 cɛ, sigiyɔrɔ sɛbɛn tanburu ye FCFA 500-1 000 ye).\n• N'a tun filila ka kura deli, tanburuwari bɛ FCFA 1 000 ye.\n• Kɔrɔlen cartonnée sɛbɛnw tun bɛ wari dɔ kɛ, o de bɛ kɛ fana mɔgɔw ɲɛgɛn fɛn ye.\n\n👉 CNI biométrique deli fɔlɔ tɛ feere polisiso la abada."
+    },
+    "sources_et_fiabilite": {
+      "fr": "🏛️ **Sources officielles & Fiabilité des données administratives :**\n\nToutes les informations fournies par ce chatbot sont strictement adossées aux sources juridiques et portails officiels de l'État malien :\n• **demarchesadministratives.gouv.ml** : Portail national officiel des démarches administratives de la République du Mali.\n• **servicespublics.gov.ml** : Portail gouvernemental des services publics maliens.\n• **sgg-mali.ml** : Secrétariat Général du Gouvernement (Journal Officiel, décrets, ordonnances, lois promulguées).\n• **dgpn.gouv.ml** & **dgid.gouv.ml** : Directions Générales de la Police Nationale et des Impôts.\n\n🔄 **Comment et quand les données sont-elles actualisées ?**\nNous n'effectuons aucun scraping sauvage en temps réel lors de vos échanges. La collecte, la structuration et la validation juridique sont réalisées de manière asynchrone par un pipeline d'ingestion sécurisé (`scripts/ingest_knowledge.py`) dès la parution de nouveaux décrets ou réformes administratives (ex: Décret 2022 sur la CNI biométrique, réformes de l'AMO/CANAM, etc.).",
+      "bm": "🏛️ **Kunsɔrɔyɔrɔ tiɲɛnenw ni kibaruya lakanalenw :**\n\nKibaruya bɛɛ minnu bɛ di yan, olu bɔra Mali gɔfɛrɛnaman ka sɛbɛn sira lakikaw de la :\n• **demarchesadministratives.gouv.ml** : Fasoden baara sariyasɛbɛn yɔrɔba.\n• **servicespublics.gov.ml** : Mali jamana ka dɛmɛbaga sɔrɔyɔrɔ.\n• **sgg-mali.ml** : Sariya kura bɛɛ bɔyɔrɔ (Journal Officiel).\n• **dgpn.gouv.ml** : Polisiba ka sɛbɛn kura kow.\n\nAn tɛ kuma gansan bɔ ɛntɛrinɛti kan. Sɛbɛnw bɛɛ bɛ lase ka bɛn Mali jamana sariya tiɲɛnen ma."
+    },
+    "technologie_et_concepteurs": {
+      "fr": "🇲🇱 **Identité, Concepteurs et Architecture Technologique :**\n\nJe suis le **Chatbot Citoyen Malien**, une solution souveraine d'intelligence artificielle conçue pour rapprocher l'administration des citoyens en République du Mali.\n\n• **Équipe de conception :** J'ai été développé par une équipe d'ingénieurs et spécialistes maliens en Data Science, Traitement Automatique du Langage Naturel (NLP) et génie logiciel civique.\n• **Architecture technique :** Mon socle repose sur un système hybride combinant :\n  1. Un moteur conversationnel déterministe (Rasa NLU & Action Server) pour gérer l'état du dialogue et les contextes.\n  2. Un moteur de recherche vectorielle sémantique (Dense Vector Store) indexant les textes de lois et fiches officielles.\n  3. Un grand modèle de langage (LLM de type Mistral / open-source) exécuté en environnement souverain sécurisé pour synthétiser les réponses de façon naturelle.\n\nPuis-je vous renseigner sur une démarche administrative ou un document légal particulier ?",
+      "bm": "🇲🇱 **Ne ye jɔn ye ani nin baara kɛra cogo di ?**\n\nNe ye **Mali Fasoden Dɛmɛbaga** ye. Mali dɔnkɔnɔna baarakɛlaw n'a inzeniyɛriw de ye nin porogaramu dilan walasa k'a nɔgɔya fasodenw ma ka sariyasɛbɛn kow sɔrɔ.\nA dilannen don ni porogaramu lakanalenw ye (Rasa, Dense Vector Store, Mistral AI) minnu bɛ baara kɛ Bamanankan na ani Tubabukan na."
+    },
+    "langues_supportees": {
+      "fr": "🇲🇱 **Langues prises en charge :**\nJe suis programmé pour fonctionner **exclusivement en Français et en Bambara (Bamanankan)**.\n\n• Je ne prends pas en charge d'autres langues étrangères afin de garantir une précision maximale sur les termes administratifs maliens.\n• Vous pouvez basculer d'une langue à l'autre à tout moment en tapant simplement *« Parle en bambara »* ou *« Passe en français »*.",
+      "bm": "🇲🇱 **Kuma kɛkanw :**\nNe bɛ kuma **Bamanankan na ani Tubabukan na dɔrɔn**.\nI bɛ se ka ɲininkali kɛ Bamanankan na walima Tubabukan na waati bɛɛ."
+    },
+    "hors_domaine_drague": {
+      "fr": "🏛️ **Périmètre Institutionnel :** Je suis un assistant virtuel officiel dédié exclusivement à l'information et à l'orientation administrative des citoyens de la République du Mali. Je ne prends pas part aux échanges sentimentaux, de drague ou de séduction.\nPuis-je vous renseigner sur un document officiel ou une démarche administrative ?",
+      "bm": "🏛️ **Baara Kɛyɔrɔ :** Ne ye Mali Fasoden Dɛmɛbaga ye sariyasɛbɛn kow dɔrɔn kan. N tɛ kuma cɛɲɔgɔnya walima kanuya kow kan.\nƝininkali dɔ b'i fɛ sariyasɛbɛn dɔ kan ?"
+    },
+    "hors_domaine_sante": {
+      "fr": "🏥 **Conseil de Santé Publique :** Si vous ne vous sentez pas bien ou présentez des symptômes, il est fortement déconseillé de vous déplacer dans les services publics afin de préserver votre santé et d'éviter toute contagion.\nNous vous recommandons de vous rendre sans délai dans le Centre de Santé Communautaire (CSCOM) le plus proche ou de composer le **15 (SAMU)** en cas d'urgence.\nSi vous avez besoin d'informations administratives liées à votre santé (assurance maladie AMO/CANAM, congés de maladie), je reste à votre entière disposition.",
+      "bm": "🏥 **Kɛnɛyako ladili :** Ni i bɛ bana la, i kana taa baarayɔrɔw la sisan walasa k'i yɛrɛ lakana ani ka mɔgɔ wɛrɛw tanga bana ma.\nI ka taa CSCOM walima dɔgɔtɔrɔso la joona, walima ka 15 (SAMU) wele.\nNi i bɛ AMO walima kɛnɛyako sariyasɛbɛn dɔ kow ɲini, n bɛ se ka i dɛmɛ o la."
+    },
+    "tarif_non_negociable": {
+      "fr": "🏛️ **Tarifs Officiels Réglementés :** Les frais relatifs à la démarche **{demarche_title}** sont fixés par arrêté ou décret ministériel de la République du Mali. Ils ne sont pas négociables et sont les mêmes pour tous les citoyens sur l'ensemble du territoire national.\n\n👉 Si un agent vous propose un tarif différent du tarif officiel affiché, il s'agit d'une pratique non conforme que vous pouvez signaler au numéro vert **80 00 11 15**.\n\nSouhaitez-vous que je vous rappelle le tarif officiel exact ?",
+      "bm": "🏛️ **Sariya Kɔlɔsili :** Sariyasɛbɛn sɔngɔw ye Mali jamana ka sariya ye. Mɔgɔ si tɛ se ka wari cɛɲɛ sariyasɛbɛn sɔngɔw la. Sɔngɔ tiɲɛnen min bɛ {demarche_title} kama, o de bɛ sara.\n👉 N'i b'a fɛ ka sɔngɔ tiɲɛnen lɔn, a fɔ n ye."
+    },
+    "refus_proposition": {
+      "fr": "Très bien ! Avez-vous une autre question concernant les documents requis, les délais ou une autre démarche administrative ?",
+      "bm": "K'a to yen ! Ni ɲininkali wɛrɛ b'i fɛ sɛbɛn wɛrɛw, sɔngɔ walima waati kow kan, n bɛ se ka i dɛmɛ."
+    }
+  }
+}
