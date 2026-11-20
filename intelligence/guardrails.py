@@ -105,6 +105,31 @@ class GuardrailEngine:
                 reset_demarche=False,
             )
 
+        # ── 3b. Politique Anti-Hallucination : Sports, Actualités direct & Faits temporels ──
+        is_sports_or_news = any(w in lowered for w in [
+            "la can", "dernière can", "derniere can", "qui a gagné", "qui a gagne",
+            "coupe d'afrique", "coupe du monde", "football", "résultat du match", "resultat du match",
+            "ballon d'or", "score du match", "actualité politique", "actualite politique"
+        ])
+        if is_sports_or_news:
+            ans_sports = (
+                "En tant qu'assistant virtuel officiel de l'administration malienne, je suis exclusivement dédié aux démarches administratives et aux services publics (CNI, passeport, état civil, casier judiciaire, etc.).\n\n"
+                "Je ne dispose pas du suivi en direct des résultats des compétitions sportives ou des actualités événementielles.\n\n"
+                "👉 N'hésitez pas à me poser une question concernant vos démarches administratives au Mali !"
+                if lang != "bambara"
+                else (
+                    "Ne ye Mali fasoden dɛmɛbaga ye sariyasɛbɛn kow la. N tɛ tolonkɛla kibaruya walima tulon kow fɔ.\n\n"
+                    "I bɛ se ka n ɲininka CNI, pasan, wolosɛbɛn walima kititigɛso sɛbɛn kow la !"
+                )
+            )
+            return GuardrailResult(
+                matched=True,
+                intent="hors_domaine",
+                confidence=1.0,
+                answer=ans_sports,
+                reset_demarche=False,
+            )
+
         # ── 4. Gestion de la frustration et insultes ────────────────────────
         is_frust_fr = any(w in lowered for w in [
             "je suis fâché", "je suis fache", "pas performant", "pas compétent", "pas competent",

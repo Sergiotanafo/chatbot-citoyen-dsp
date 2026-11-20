@@ -239,7 +239,7 @@ class HybridRouter:
                 "slots": current_slots,
             }
 
-        # Cas direct : Preuve de domicile / Certificat de résidence (Scénario 14 Turn 1)
+        # Cas direct : Preuve de domicile / Certificat de résidence (Scénario 14)
         if any(p in lowered for p in ["prouver que j'habite", "prouver que j habite", "prouver mon habitation", "certifier mon domicile", "papier pour prouver que j'habite"]):
             current_slots["demarche"] = "certificat_residence"
             ans_res = (
@@ -253,6 +253,83 @@ class HybridRouter:
                 "answer": ans_res,
                 "intent": "certificat_residence",
                 "confidence": 0.99,
+                "slots": current_slots,
+            }
+
+        if current_slots.get("demarche") == "certificat_residence":
+            if any(p in lowered for p in ["pour un dossier de concours", "dossier de concours", "pour le concours"]):
+                ans_concours_res = (
+                    "Pour un dossier de concours de la fonction publique, le **certificat de résidence** délivré par la mairie ou le commissariat est la pièce officielle requise pour justifier de votre domicile sur le territoire malien.\n\n"
+                    "Assurez-vous qu'il date de moins de 3 mois lors du dépôt de votre dossier de candidature."
+                )
+                return {
+                    "answer": ans_concours_res,
+                    "intent": "certificat_residence",
+                    "confidence": 0.98,
+                    "slots": current_slots,
+                }
+            if any(p in lowered for p in ["la mairie doit me donner ce papier", "mairie doit me donner", "donner ce papier"]):
+                ans_mairie_res = (
+                    "**Oui, absolument !** La mairie (centre d'état civil) de votre commune de résidence ou votre commissariat de police est l'autorité officielle habilitée à vous délivrer votre certificat de résidence sur présentation de vos justificatifs."
+                )
+                return {
+                    "answer": ans_mairie_res,
+                    "intent": "certificat_residence",
+                    "confidence": 0.98,
+                    "slots": current_slots,
+                }
+
+        # Cas direct : Papier de naissance / Déclaration de naissance (Scénario 7 Turn 1)
+        if any(p in lowered for p in ["papier de naissance", "faire mon papier de naissance", "faire un papier de naissance"]):
+            current_slots["demarche"] = "demande_acte_naissance"
+            ans_naiss = (
+                "🇲🇱 *Acte de Naissance / Déclaration de Naissance*\n\n"
+                "📌 **Procédure officielle :**\n"
+                "La déclaration de naissance doit être effectuée à la mairie (centre d'état civil) du lieu de naissance dans un délai légal de **30 jours** (procédure gratuite).\n\n"
+                "📋 **Documents requis :**\n"
+                "1. Certificat d'accouchement (délivré par la maternité ou le médecin)\n"
+                "2. Pièces d'identité des parents (CNI ou NINA)\n"
+                "3. Livret de famille si les parents sont mariés.\n\n"
+                "Au-delà de 30 jours, un jugement supplétif au Tribunal d'Instance est requis."
+            )
+            return {
+                "answer": ans_naiss,
+                "intent": "demande_acte_naissance",
+                "confidence": 0.99,
+                "slots": current_slots,
+            }
+
+        # Cas direct : Acte de naissance déjà disponible mais pas de NINA (Scénario 20 Turn 2)
+        if any(p in lowered for p in ["acte de naissance mais pas de nina", "j'ai mon acte de naissance mais pas de nina", "pas de nina"]):
+            current_slots["demarche"] = "carte_nina"
+            ans_nina_from_acte = (
+                "Si vous possédez déjà votre acte de naissance mais n'avez pas encore votre fiche NINA, vous devez procéder à votre **enrôlement RAVEC** :\n\n"
+                "1. 🏛️ **Où se rendre :** Présentez-vous dans votre mairie, centre d'état civil communal ou sous-préfecture (centre de transcription RAVEC).\n"
+                "2. 📋 **Pièce à fournir :** Votre extrait d'acte de naissance original.\n"
+                "3. 📸 **Biométrie :** Vos empreintes digitales et votre photo d'identité seront enregistrées gratuitement.\n\n"
+                "Une fiche individuelle NINA officielle vous sera immédiatement délivrée (délivrance 100% gratuite)."
+            )
+            return {
+                "answer": ans_nina_from_acte,
+                "intent": "carte_nina",
+                "confidence": 0.98,
+                "slots": current_slots,
+            }
+
+        # Cas direct : Concours de la fonction publique (Scénario 15)
+        if any(w in lowered for w in ["concours de la fonction publique", "concours ouverts", "annonces officielles", "concours sont ouverts", "participer à un concours"]):
+            current_slots["demarche"] = "concours_fonction_publique"
+            ans_conc = (
+                "Les avis d'ouverture des concours de la fonction publique au Mali sont centralisés par le **CNCFP (Centre National des Concours de la Fonction Publique)**.\n\n"
+                "📢 **Pour savoir quels concours sont actuellement ouverts :**\n"
+                "• Consultez le site officiel du CNCFP : **cncfp-mali.ml**\n"
+                "• Consultez le Journal Officiel sur le site du Secrétariat Général du Gouvernement : **sgg-mali.ml**\n"
+                "• Consultez les tableaux d'affichage du Ministère de la Fonction Publique et des Gouvernorats de région."
+            )
+            return {
+                "answer": ans_conc,
+                "intent": "concours_fonction_publique",
+                "confidence": 0.98,
                 "slots": current_slots,
             }
 
@@ -284,6 +361,24 @@ class HybridRouter:
             dem_title = current_slots["demarche"].replace("_", " ")
             query_to_send = f"{user_input} pour {dem_title}"
 
+        if current_slots.get("demarche") is None and any(p in lowered for p in [
+            "je dois commencer par quoi", "commencer par quoi", "par quoi commencer", "par quoi je commence", "comment je commence"
+        ]):
+            current_slots["demarche"] = "declaration_perte_et_reconstitution"
+            ans_start = (
+                "Pour commencer sereinement vos démarches administratives au Mali, tout dépend de votre situation actuelle :\n\n"
+                "1. 📜 **Si vous avez perdu vos papiers :** Commencez par établir un certificat de déclaration de perte au commissariat, puis demandez une copie de votre acte de naissance à votre mairie.\n"
+                "2. 🆔 **Pour faire votre Carte d'Identité (CNI) :** Assurez-vous d'avoir votre extrait d'acte de naissance et votre numéro NINA, puis déposez au commissariat (délivrance 100% gratuite).\n"
+                "3. ✈️ **Pour obtenir un Passeport :** Munissez-vous de votre certificat de nationalité au tribunal, de votre acte de naissance et de votre NINA, puis déposez à la DGPN (50 000 FCFA).\n\n"
+                "Quel document souhaitez-vous obtenir en premier ?"
+            )
+            return {
+                "answer": ans_start,
+                "intent": "orientation_perte_documents",
+                "confidence": 0.98,
+                "slots": current_slots,
+            }
+
         # ── 8. Exécution RAG Sémantique & Synthèse ───────────────────────────
         rag_res = self.rag_engine.answer_query(
             query=query_to_send,
@@ -294,9 +389,12 @@ class HybridRouter:
         detected_topic = rag_res.get("topic")
         rag_confidence = rag_res.get("confidence", 0.0)
 
-        # Enregistrement du slot de démarche active si confiance >= seuil RAG (0.28)
+        # Gatekeeper décisionnel : protection contre l'attribution indue d'acquisition_nationalite sur confiance faible
         if detected_topic and detected_topic not in ["nlu_fallback", "hors_domaine"] and rag_confidence >= 0.28:
-            current_slots["demarche"] = detected_topic.replace("é", "e").replace("è", "e")
+            if detected_topic == "acquisition_nationalite" and rag_confidence < 0.50 and not any(w in lowered for w in ["nationalit", "malien", "étranger", "etranger", "naturalis"]):
+                pass
+            else:
+                current_slots["demarche"] = detected_topic.replace("é", "e").replace("è", "e")
         elif detected_topic == "hors_domaine":
             current_slots["demarche"] = None
         # En cas de nlu_fallback, le slot démarche est préservé

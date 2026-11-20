@@ -8,6 +8,7 @@ Gère :
 5. La distinction juridique (acquisition vs certificat de nationalité, perte de papiers, questions conditionnelles).
 """
 
+import re
 import logging
 from dataclasses import dataclass
 from typing import Any, Dict, Optional
@@ -472,22 +473,62 @@ class DialogueEngine:
                 slots=current_slots,
             )
 
-        # "Je fais comment ?" sur démarche active (Scénario 16 Turn 4 & Scénario 7 Turn 5)
-        if any(p in lowered for p in ["je fais comment", "je fais comment maintenant", "comment je fais", "comment faire", "je fais quoi"]):
-            if current_slots.get("demarche") == "carte_identite":
-                ans_comment_cni = (
-                    "Voici comment faire immédiatement votre carte d'identité :\n\n"
+        # "Je fais comment ?" sur démarche active (Scénarios 16, 7, 8, etc.)
+        has_new_proc_keyword = any(k in lowered for k in [
+            "passeport", "pasan", "cni", "carte d'identite", "carte d'identité",
+            "casier", "mariage", "deces", "décès", "residence", "résidence",
+            "naissance", "nina", "concours", "entreprise"
+        ])
+        is_how_to = (
+            any(p in lowered for p in ["je fais comment", "comment je fais", "je fais quoi", "faire comment", "comment procéder"])
+            or (any(p in lowered for p in ["comment faire", "faire quoi"]) and (len(lowered.split()) <= 4 or not has_new_proc_keyword))
+        )
+        if is_how_to:
+            active_d = current_slots.get("demarche") or ""
+            if active_d == "carte_identite":
+                ans_cni = (
+                    "Voici comment faire immédiatement votre carte d'identité au commissariat :\n\n"
                     "1. 📸 Préparez vos **photos d'identité** (2 photos récentes sur fond blanc).\n"
                     "2. 🆔 Munissez-vous de votre fiche ou carte **NINA** (ou récépissé RAVEC) et de votre extrait d'acte de naissance.\n"
                     "3. 🚔 Rendez-vous au **commissariat de police** ou à la brigade de gendarmerie de votre lieu de résidence pour le **dépôt** de votre dossier. La délivrance est gratuite !"
                 )
-                return DialogueResult(
-                    handled=True,
-                    intent="carte_identite",
-                    confidence=0.98,
-                    answer=ans_comment_cni,
-                    slots=current_slots,
+                return DialogueResult(handled=True, intent="carte_identite", confidence=0.98, answer=ans_cni, slots=current_slots)
+
+            if any(k in active_d for k in ["jugement", "naissance"]):
+                ans_supp = (
+                    "Pour lancer la procédure de jugement supplétif d'acte de naissance :\n\n"
+                    "1. 🏥 Obtenez un **certificat d'âge apparent** auprès d'un médecin agréé dans un centre de santé.\n"
+                    "2. 🏛️ Demandez un **certificat de non-inscription** de naissance à la mairie de votre lieu de naissance.\n"
+                    "3. ⚖️ Déposez votre requête au greffe du **Tribunal d'Instance** accompagné de **deux (2) témoins** majeurs qui attesteront de votre filiation."
                 )
+                return DialogueResult(handled=True, intent="jugement_suppletif_d_acte_de_naissance", confidence=0.98, answer=ans_supp, slots=current_slots)
+
+            if active_d == "certificat_residence":
+                ans_res = (
+                    "Pour obtenir votre certificat de résidence immédiatement :\n\n"
+                    "1. 📄 Munissez-vous de votre pièce d'identité (CNI ou NINA) et d'un justificatif (facture EDM/SOMAGEP, quittance de loyer ou attestation du chef de quartier).\n"
+                    "2. 🏛️ Rendez-vous à la **mairie de votre commune** ou au **commissariat de police** de votre arrondissement.\n"
+                    "3. 💵 Prévoyez un timbre fiscal communal de 500 à 1 000 FCFA. Il vous est délivré le jour même !"
+                )
+                return DialogueResult(handled=True, intent="certificat_residence", confidence=0.98, answer=ans_res, slots=current_slots)
+
+            if active_d == "demande_passeport":
+                ans_pass = (
+                    "Pour faire votre passeport biométrique malien :\n\n"
+                    "1. 💵 Réglez les frais officiels de 50 000 FCFA pour obtenir votre quittance du Trésor.\n"
+                    "2. 📋 Rassemblez vos pièces : extrait d'acte de naissance, fiche NINA, certificat de nationalité et 2 photos biométriques.\n"
+                    "3. 👮 Déposez votre dossier à la Direction Générale de la Police Nationale (DGPN à Hamdallaye ACI 2000)."
+                )
+                return DialogueResult(handled=True, intent="demande_passeport", confidence=0.98, answer=ans_pass, slots=current_slots)
+
+            if active_d == "casier_judiciaire":
+                ans_casier = (
+                    "Pour obtenir votre casier judiciaire (bulletin n°3) :\n\n"
+                    "1. Munissez-vous de votre extrait d'acte de naissance et d'une pièce d'identité.\n"
+                    "2. Rendez-vous au greffe du Tribunal d'Instance de votre lieu de naissance.\n"
+                    "3. Payez le timbre fiscal de 500 FCFA. Votre bulletin est disponible en 24h à 48h."
+                )
+                return DialogueResult(handled=True, intent="casier_judiciaire", confidence=0.98, answer=ans_casier, slots=current_slots)
 
         # 5. Locataire pour le certificat de résidence (Scénario 5)
         if any(p in lowered for p in ["si je suis locataire", "suis locataire"]):
@@ -872,7 +913,32 @@ class DialogueEngine:
             "je ne comprends pas", "je comprends pas", "je n'ai pas compris", "j'ai pas compris", "comprends rien"
         ]):
             active_dem = current_slots.get("demarche")
-            if active_dem:
+            if active_dem == "carte_nina":
+                if any(k in lowered for k in ["comme si je n'avais jamais fait", "comme si je n avais jamais fait", "jamais fait de démarche", "jamais fait de demarche"]):
+                    ans_simple = (
+                        "Imaginez que le **NINA**, c'est comme votre numéro de matricule citoyen unique pour toute votre vie au Mali :\n\n"
+                        "1. 🏛️ Vous allez une seule fois à la mairie ou au centre RAVEC avec votre acte de naissance.\n"
+                        "2. 📸 On prend votre photo et vos empreintes digitales.\n"
+                        "3. 📜 On vous remet gratuitement une fiche avec votre numéro NINA personnel à 14 chiffres.\n\n"
+                        "C'est **100% gratuit (0 FCFA)**, et ce numéro est indispensable pour avoir ensuite votre carte d'identité ou votre passeport !"
+                    )
+                else:
+                    ans_simple = (
+                        "Pour faire très simple : le **NINA (Numéro d'Identification Nationale)** est votre identifiant officiel dans la base de données de l'État malien.\n\n"
+                        "• C'est un numéro unique à 14 chiffres qui vous est attribué lors du recensement RAVEC.\n"
+                        "• Il est entièrement **gratuit** (0 FCFA).\n"
+                        "• Il est indispensable pour obtenir votre Carte Nationale d'Identité ou votre passeport.\n\n"
+                        "Avez-vous déjà fait votre enregistrement RAVEC à la mairie ?"
+                    )
+            elif active_dem == "carte_identite":
+                ans_simple = (
+                    "Pour obtenir votre Carte d'Identité (CNI) facilement :\n\n"
+                    "1. 🚔 Rendez-vous au commissariat de police ou à la brigade de gendarmerie de votre lieu de résidence.\n"
+                    "2. 📋 Apportez votre extrait d'acte de naissance, votre numéro NINA et 2 photos d'identité.\n"
+                    "3. 💵 La première délivrance de la carte biométrique est gratuite (0 FCFA) !\n\n"
+                    "Avez-vous déjà votre fiche NINA et vos photos ?"
+                )
+            elif active_dem:
                 dem_name = active_dem.replace("_", " ")
                 ans_simple = (
                     f"En résumé très simple pour **{dem_name}** :\n\n"
@@ -944,13 +1010,24 @@ class DialogueEngine:
         if not current_slots.get("demarche"):
             return None
 
+        tokens = set(re.findall(r'\b[\w\u00C0-\u024F\u1E00-\u1EFF]+\b', lowered))
         words_count = len(lowered.split())
         has_contact_keyword = any(k in lowered for k in ["numero", "numéro", "telephone", "téléphone", "contact", "appeler", "joindre"])
         has_delai_keyword = any(w in lowered for w in ["délai", "delai", "temps", "combien de temps", "quand", "waati", "tile", "ça prend combien", "ca prend combien", "il faut combien de temps"])
         is_followup_delai = has_delai_keyword
         is_followup_cout = any(w in lowered for w in ["combien", "prix", "cout", "coût", "tarif", "payant", "gratuit", "wari", "sɔngɔ"]) and not has_contact_keyword and not has_delai_keyword
-        is_followup_pieces = any(w in lowered for w in ["document", "documents", "piece", "pièce", "pièces", "papier", "papiers", "dossier", "seben", "sɛbɛn", "qu'est-ce qu'il me faut", "il faut quoi", "faut quoi"]) and not any(l in lowered for l in ["perdu", "perte"])
-        is_followup_lieu = any(w in lowered for w in ["où", "ou", "aller où", "aller ou", "déposer où", "deposer ou", "adresse", "quel endroit", "quel service", "bamako", "quelle ville", "yɔrɔ", "taa min", "bɛ taa min", "be taa min", "mbe taa min", "n bɛ taa min", "n be taa min"])
+        
+        has_docs_query = any(w in lowered for w in ["document", "documents", "piece", "pièce", "pièces", "dossier", "seben", "sɛbɛn", "qu'est-ce qu'il me faut", "il faut quoi", "faut quoi", "quels documents"]) or (bool(tokens & {"papier", "papiers"}) and len(tokens) <= 3)
+        is_followup_pieces = has_docs_query and not any(l in lowered for l in ["perdu", "perte", "habite", "habiter", "quartier"])
+
+        is_followup_lieu = (
+            bool(tokens & {"où", "ou", "adresse", "endroit", "service", "yɔrɔ", "min", "bamako", "commissariat", "police", "guichet"})
+            or any(p in lowered for p in [
+                "aller où", "aller ou", "déposer où", "deposer ou", "quel endroit", "quel service", "quelle ville",
+                "taa min", "bɛ taa min", "be taa min", "mbe taa min", "n bɛ taa min", "n be taa min",
+                "à bamako", "a bamako", "sur bamako", "faire la demande à", "faire la demande a", "déposer à", "deposer a"
+            ])
+        ) and "pourquoi" not in tokens and "comment" not in tokens
 
         has_explicit_topic = any(
             t in lowered
@@ -959,7 +1036,8 @@ class DialogueEngine:
                 "casier", "judiciaire", "résidence", "residence", "timbre", "fiscale",
                 "fiscal", "permis", "chine", "visa", "greffe", "tribunal", "suppletif",
                 "supplétif", "nationalite", "nationalité", "légalisation", "legalisation",
-                "décès", "deces", "mort", "satun", "mariage", "furu", "divorce", "entreprise"
+                "décès", "deces", "mort", "satun", "mariage", "furu", "divorce", "entreprise",
+                "concours", "cncfp", "habite", "habiter", "domicile", "quartier", "logement"
             ]
         )
 
