@@ -247,6 +247,294 @@
       "cout_bm": "Furu sɔngɔ bɛ FCFA 2 500 ka taa 10 000 cɛ kominiw la.",
       "delai_fr": "Publication des bans : 10 jours. Acte de mariage délivré le jour même de la célébration.",
       "delai_bm": "Furu kumakan bɔli : tile 10. Furu sɛbɛn bɛ bɔ furu don."
+    },
+    {
+      "id": "permis_conduire",
+      "title_fr": "Permis de conduire malien (Catégories A, B, C, D)",
+      "title_bm": "Mobilili sariyasɛbɛn (Permis de conduire)",
+      "questions_fr": [
+        "Comment obtenir le permis de conduire au Mali ?",
+        "Combien coûte le permis de conduire ?",
+        "Quels documents pour passer le permis ?",
+        "Où faire le permis de conduire à Bamako ?"
+      ],
+      "questions_bm": [
+        "Mobilili sariyasɛbɛn bɛ sɔrɔ cogo di ?",
+        "Permis sɔngɔ ye joli ye Mali kɔnɔ ?",
+        "Sɛbɛn jumɛn bɛ ɲini permis kama ?"
+      ],
+      "answer_fr": "Le permis de conduire est délivré par la Direction Nationale des Transports Terrestres, Maritimes et Fluviaux (DNTTMF). L'usager doit suivre une formation en auto-école agréée et réussir les examens de code et de conduite. Pièces requises : extrait d'acte de naissance, certificat de résidence, certificat médical d'aptitude visuelle et physique, 4 photos d'identité, fiche NINA. Coût global en auto-école : environ 75 000 à 125 000 FCFA selon la catégorie (A pour moto, B pour voiture légère). Frais administratifs de timbre et dossier d'examen : environ 15 000 à 25 000 FCFA.",
+      "answer_bm": "Mobilili sariyasɛbɛn (permis) bɛ sɔrɔ DNTTMF fɛ otokɔli kalanso dɔ la. Mɔgɔ bɛ kalankɛ ka sɔrɔ ka se sɔrɔ kiti la. Sɛbɛnw : wolosɛbɛn, sigiyɔrɔ sɛbɛn, dɔgɔtɔrɔ ka kɛnɛyasɛbɛn, ja fɔtɔ 4, NINA sɛbɛn. Sɔngɔ bɛɛ lajɛlen otokɔli la bɛ FCFA 75 000 ka taa 125 000 cɛ.",
+      "pieces_fr": "1. Extrait d'acte de naissance ou jugement supplétif\n2. Fiche NINA ou certificat RAVEC\n3. Certificat médical d'aptitude à la conduite\n4. Certificat de résidence\n5. Quatre (4) photos d'identité fond blanc.",
+      "pieces_bm": "1. Wolosɛbɛn\n2. NINA sɛbɛn\n3. Dɔgɔtɔrɔ ka sɛbɛn\n4. Sigiyɔrɔ sɛbɛn\n5. Ja fɔtɔ 4.",
+      "cout_fr": "Formation auto-école : ~75 000 à 120 000 FCFA. Timbres fiscaux et droits d'examen : ~20 000 FCFA.",
+      "cout_bm": "Otokɔli : FCFA 75 000-120 000. Tanburu ni dosiye : FCFA 20 000.",
+      "delai_fr": "1 à 2 mois (durée de formation et passage des épreuves de l'examen).",
+      "delai_bm": "Kalo 1 ka taa 2 kɔnɔ."
+    },
+    {
+      "id": "carte_grise",
+      "title_fr": "Carte grise et Immatriculation de véhicule",
+      "title_bm": "Mobiliseben / Carte grise",
+      "questions_fr": [
+        "Comment faire la carte grise de ma voiture ou moto ?",
+        "Combien coûte la carte grise au Mali ?",
+        "Quels documents pour immatriculer un véhicule ?"
+      ],
+      "questions_bm": [
+        "Mobilisɛbɛn (carte grise) bɛ sɔrɔ cogo di ?",
+        "Carte grise sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "La carte grise (certificat d'immatriculation) est délivrée par la Direction des Transports Terrestres. Pièces : certificat de dédouanement (quittance douane), certificat de conformité, facture d'achat ou acte de vente légalisé, pièce d'identité du propriétaire, reçu de contrôle technique. Coût officiel : varie de 15 000 à 45 000 FCFA selon la puissance fiscale (chevaux fiscaux) pour les voitures et 5 000 à 10 000 FCFA pour les motos.",
+      "answer_bm": "Mobilisɛbɛn bɛ bɔ Transports yɔrɔ la. Sɛbɛnw : dɔwani (douane) sɛbɛn, sanlisɛbɛn, tigi ka joyorosɛbɛn, visite technique sɛbɛn. Sɔngɔ bɛ FCFA 15 000 ka taa 45 000 cɛ mobili kama, nɛgɛso kama FCFA 5 000-10 000.",
+      "pieces_fr": "1. Déclaration de mise en circulation et quittance de dédouanement\n2. Acte de vente notarié ou facture d'achat légalisée\n3. Pièce d'identité officielle du propriétaire\n4. Procès-verbal de réception technique.",
+      "pieces_bm": "1. Dɔwani sɛbɛn\n2. Feereli sɛbɛn latikɛlen\n3. Tigi ka joyoro sɛbɛn\n4. Visite technique sɛbɛn.",
+      "cout_fr": "15 000 à 45 000 FCFA selon les chevaux fiscaux du véhicule (5 000 à 10 000 FCFA moto).",
+      "cout_bm": "FCFA 15 000 ka taa 45 000 cɛ mobili ma.",
+      "delai_fr": "1 à 2 semaines après dépôt du dossier complet.",
+      "delai_bm": "Dɔgɔkun 1 ka taa 2 kɔnɔ."
+    },
+    {
+      "id": "titre_foncier",
+      "title_fr": "Titre Foncier (TF) et Permis d'occuper",
+      "title_bm": "Dugukolo sɛbɛn (Titre Foncier ni Permis d'occuper)",
+      "questions_fr": [
+        "Comment obtenir un Titre Foncier au Mali ?",
+        "Quelle différence entre Permis d'occuper et Titre Foncier ?",
+        "Combien coûte la création d'un Titre Foncier ?"
+      ],
+      "questions_bm": [
+        "Dugukolo sɛbɛnba (Titre Foncier) bɛ sɔrɔ cogo di ?",
+        "Dugukolo sɛbɛn sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "Le Titre Foncier (TF) est le titre de propriété définitif, inattaquable et garanti par l'État malien. Il est établi par la Direction Nationale du Cadastre et des Domaines (DND). Le permis d'occuper (ou lettre d'attribution) n'est qu'un droit d'usage précaire révocable. Pour transformer un permis d'occuper en TF : plan de bornage par un géomètre expert agréé, paiement des droits d'enregistrement et d'immatriculation (environ 300 000 à 800 000 FCFA selon la zone et la superficie à Bamako ou région).",
+      "answer_bm": "Titre Foncier ye dugukolo sɛbɛn bɛɛ la lakanalen ye min tɛ se ka foyi tiɲɛ sariya fɛ. A bɛ bɔ Domaines yɔrɔ la. Permis d'occuper tɛ i kɛ dugutigi lakika ye. Titre Foncier kɛli kama, geometre de bɛ dugukolo sumancɛ ka sɔrɔ ka Domaines sara (FCFA 300 000 ka taa 800 000 cɛ Bamako).",
+      "pieces_fr": "1. Permis d'occuper ou lettre d'attribution originale\n2. Plan de bornage officiel visé par le Cadastre\n3. Pièce d'identité du demandeur (CNI/NINA)\n4. Quitus fiscal foncier de l'année en cours.",
+      "pieces_bm": "1. Dugukolo sɛbɛn kɔrɔ\n2. Geometre ka plan sɛbɛn\n3. Joyoro sɛbɛn\n4. Nisɔndiya sɛbɛn.",
+      "cout_fr": "Droits d'immatriculation et géomètre : 300 000 à 800 000 FCFA selon la superficie et la localisation.",
+      "cout_bm": "FCFA 300 000 ka taa 800 000 cɛ.",
+      "delai_fr": "3 à 6 mois (enquête publique de bornage et publication au Journal Officiel).",
+      "delai_bm": "Kalo 3 ka taa 6 kɔnɔ."
+    },
+    {
+      "id": "carte_amo",
+      "title_fr": "Carte AMO (Assurance Maladie Obligatoire / CANAM)",
+      "title_bm": "AMO sɛbɛn (CANAM kɛnɛya sara)",
+      "questions_fr": [
+        "Comment obtenir ma carte AMO au Mali ?",
+        "Qui a droit à l'AMO ?",
+        "Combien coûte la carte AMO ?"
+      ],
+      "questions_bm": [
+        "AMO sariyasɛbɛn bɛ sɔrɔ cogo di CANAM fɛ ?",
+        "AMO sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "La carte AMO est STRICTEMENT GRATUITE. Elle est délivrée par la Caisse Nationale d'Assurance Maladie (CANAM). Elle couvre les fonctionnaires, les salariés du privé déclarés à l'INPS, les députés, les pensionnés et leurs ayants droit (conjoints et enfants à charge). L'AMO prend en charge 70% des frais médicaux ambulatoires et 80% en hospitalisation. Dépôt : agences CANAM, directions régionales ou guichets dans les ministères. Pièces : formulaire d'adhésion d'employeur, acte de naissance, 2 photos d'identité, fiche NINA, bulletin de paie récent.",
+      "answer_bm": "AMO sɛbɛn deli sɔngɔ ye FU DE YE (0 FCFA). CANAM de bɛ a di. A bɛ dɔgɔtɔrɔso sara 70% bo 80% bo jamanadenw ye. Sɛbɛnw : baaratigi ka adhésion sɛbɛn, wolosɛbɛn, fɔtɔ 2, sara sɛbɛn kura, NINA.",
+      "pieces_fr": "1. Fiche d'engagement signée par l'employeur\n2. Extrait d'acte de naissance du travailleur et des ayants droit\n3. Deux (2) photos d'identité récentes\n4. Fiche NINA ou récépissé RAVEC\n5. Dernier bulletin de salaire.",
+      "pieces_bm": "1. Baarakɛyɔrɔ ka sɛbɛn\n2. Wolosɛbɛnw\n3. Ja fɔtɔ 2\n4. NINA sɛbɛn\n5. Sara kɔnɔna sɛbɛn.",
+      "cout_fr": "Gratuit (0 FCFA). Cotisation mensuelle prélevée directement sur le salaire.",
+      "cout_bm": "FU YE (0 FCFA). Sara bɛ bɔ baara wari la kalo o kalo.",
+      "delai_fr": "2 à 4 semaines pour la confection de la carte biométrique AMO.",
+      "delai_bm": "Dɔgɔkun 2 ka taa 4 kɔnɔ."
+    },
+    {
+      "id": "pension_inps",
+      "title_fr": "Pension de Retraite et Allocations Familiales (INPS)",
+      "title_bm": "Kɔrɔbaya sara ni Denw ka wari (INPS)",
+      "questions_fr": [
+        "Comment faire valoir ses droits à la retraite à l'INPS ?",
+        "Quels documents pour la pension de retraite au Mali ?",
+        "Où déposer le dossier de retraite INPS ?"
+      ],
+      "questions_bm": [
+        "Kɔrɔbaya sara (retraite) bɛ ɲini cogo di INPS la ?",
+        "Retraite sɛbɛnw ye jumɛn ye ?"
+      ],
+      "answer_fr": "La pension de retraite est versée par l'Institut National de Prévoyance Sociale (INPS) pour les travailleurs du secteur privé et contractuels ayant cotisé au moins 13 ans (156 mois) et atteint l'âge légal (généralement 58 à 60 ans). Pièces : demande de pension sur formulaire INPS, livret d'assurance ou cartes d'assuré, certificat de cessation d'activité, acte de naissance, relevé d'identité bancaire (RIB). Le dépôt se fait à l'agence INPS de rattachement.",
+      "answer_bm": "Kɔrɔbaya sara bɛ bɔ INPS fɛ mɔgɔ minnu ye san 13 baara kɛ ka sara bila INPS la ka se san 58-60 ma. Sɛbɛnw : INPS ka ɲinini sɛbɛn, baaraban sɛbɛn, wolosɛbɛn, banki ka RIB sɛbɛn. A bɛ dabila INPS ka biro la.",
+      "pieces_fr": "1. Formulaire de demande de liquidation de pension de vieillesse\n2. Relevé des cotisations ou cartes d'assuré INPS\n3. Certificat de travail et attestation de cessation de travail\n4. Relevé d'Identité Bancaire (RIB)\n5. Extrait d'acte de naissance du travailleur et du conjoint.",
+      "pieces_bm": "1. INPS ɲinini sɛbɛn\n2. Baaraban sɛbɛn\n3. Wolosɛbɛn\n4. Banki RIB sɛbɛn.",
+      "cout_fr": "Dépôt et traitement strictement gratuits (0 FCFA).",
+      "cout_bm": "FU YE (0 FCFA).",
+      "delai_fr": "1 à 2 mois pour le premier paiement de la pension.",
+      "delai_bm": "Kalo 1 ka taa 2 kɔnɔ."
+    },
+    {
+      "id": "diplome_def_bac",
+      "title_fr": "Attestations et Diplômes du DEF et du Baccalauréat",
+      "title_bm": "DEF ni Bacc sariyasɛbɛn (Attestations et Diplômes)",
+      "questions_fr": [
+        "Comment retirer mon diplôme du DEF ou du Baccalauréat ?",
+        "Où retirer l'attestation du Bac au Mali ?",
+        "Combien coûte le retrait d'un diplôme ?"
+      ],
+      "questions_bm": [
+        "DEF walima Bac sɛbɛn bɛ bɔ yɔrɔ jumɛn ?",
+        "Bacc sɛbɛn sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "L'attestation et le diplôme du DEF sont délivrés par le Centre d'Animation Pédagogique (CAP) ou l'Académie d'Enseignement. Le diplôme du Baccalauréat est délivré par l'Académie d'Enseignement du lieu de passage de l'examen, sous l'autorité du Centre National des Examens et Concours de l'Éducation (CNECE). Pièces requises : numéro de place d'examen, extrait d'acte de naissance, pièce d'identité (CNI/NINA), reçu de paiement des droits d'attestation ou de diplôme (timbre fiscal de 500 à 1 000 FCFA).",
+      "answer_bm": "DEF sɛbɛn bɛ bɔ CAP walima Académie la. Baccalauréat sɛbɛn bɛ bɔ Académie d'Enseignement la. Sɛbɛnw : examɛn nimɔrɔ (numéro de place), wolosɛbɛn, CNI walima NINA, tanburu FCFA 500-1 000.",
+      "pieces_fr": "1. Relevé de notes original ou numéro de place\n2. Extrait d'acte de naissance officiel\n3. Pièce d'identité biométrique (CNI, NINA ou passeport)\n4. Timbre fiscal légal (500 à 1 000 FCFA).",
+      "pieces_bm": "1. Numéro de place sɛbɛn\n2. Wolosɛbɛn\n3. Joyoro sɛbɛn\n4. Tanburu.",
+      "cout_fr": "Timbre fiscal de 500 à 1 000 FCFA selon le document.",
+      "cout_bm": "FCFA 500 ka taa 1 000 tanburu kama.",
+      "delai_fr": "Immédiat ou 24 à 72 heures selon l'affluence à l'Académie.",
+      "delai_bm": "Tile 1 ka taa 3 kɔnɔ Académie la."
+    },
+    {
+      "id": "creation_entreprise",
+      "title_fr": "Création d'Entreprise au Guichet Unique (API-Mali, RCCM, NIF)",
+      "title_bm": "Jago kura lɔli Guichet Unique la (API-Mali, RCCM, NIF)",
+      "questions_fr": [
+        "Comment créer une entreprise au Mali ?",
+        "Combien coûte la création d'une SARL ou entreprise individuelle ?",
+        "Où se trouve le Guichet Unique API-Mali ?"
+      ],
+      "questions_bm": [
+        "Jago ton walima antɛripirisi bɛ lɔ cogo di API-Mali fɛ ?",
+        "Jago lɔli sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "La création d'entreprise au Mali est centralisée au Guichet Unique de l'Agence pour la Promotion des Investissements (API-Mali) à Bamako. En 72 heures, le créateur obtient le RCCM (Registre du Commerce), le NIF (Numéro fiscal) et la déclaration d'existence. Coûts officiels : environ 13 500 FCFA pour une Entreprise Individuelle, et environ 30 000 à 50 000 FCFA de frais d'enregistrement pour une SARL (hors honoraires notariés si sous seing privé). Capital minimum pour une SARL : librement fixé (peut être de 5 000 ou 100 000 FCFA selon l'Acte OHADA).",
+      "answer_bm": "Antɛripirisi kura dilanni bɛ kɛ API-Mali Guichet Unique la tile 3 dɔrɔn kɔnɔ Bamako. Mɔgɔ bɛ RCCM ni NIF sɔrɔ o yɔrɔ kelen pe la. Sɔngɔ : FCFA 13 500 entreprise individuelle kama, SARL kama FCFA 30 000 fo 50 000.",
+      "pieces_fr": "1. Copie de la pièce d'identité des associés et gérant (CNI, NINA ou passeport)\n2. Extrait de casier judiciaire du gérant (moins de 3 mois)\n3. Statuts de la société signés (modèle type ou acte notarié)\n4. Déclaration sur l'honneur ou extrait d'acte de naissance.",
+      "pieces_bm": "1. Tigiw ka joyoro sɛbɛnw\n2. Casier judiciaire B3\n3. Jago ton ka sariyasɛbɛn\n4. Wolosɛbɛn.",
+      "cout_fr": "Entreprise individuelle : ~13 500 FCFA. Société SARL : ~35 000 à 50 000 FCFA.",
+      "cout_bm": "Mɔgɔ kelen jago : FCFA 13 500. SARL ton : FCFA 35 000-50 000.",
+      "delai_fr": "48 à 72 heures ouvrées au Guichet Unique API-Mali.",
+      "delai_bm": "Tile 2 ka taa 3 kɔnɔ (teliya kosɛbɛ)."
+    },
+    {
+      "id": "quitus_fiscal",
+      "title_fr": "Numéro NIF et Quitus Fiscal (DGI)",
+      "title_bm": "NIF nimɔrɔ ni Quitus Fiscal (Nisɔndiya sɛbɛn)",
+      "questions_fr": [
+        "Comment obtenir un Quitus fiscal au Mali ?",
+        "Qu'est-ce que le NIF et comment l'obtenir ?",
+        "Où demander le quitus fiscal à Bamako ?"
+      ],
+      "questions_bm": [
+        "Quitus fiscal bɛ sɔrɔ cogo di Impôts yɔrɔ la ?",
+        "NIF sɛbɛn ye mun ye ?"
+      ],
+      "answer_fr": "Le Numéro d'Identification Fiscale (NIF) est obligatoire pour toute activité commerciale, professionnelle ou pour soumissionner à des marchés publics au Mali. Le quitus fiscal atteste que le contribuable est à jour dans le paiement de ses impôts et taxes. Délivré par le Centre des Impôts de rattachement du contribuable (DGI). L'attribution du NIF est GRATUITE. Le quitus fiscal nécessite que tous les arriérés d'impôts (BIC, TVA, impôt foncier) soient réglés.",
+      "answer_bm": "NIF nimɔrɔ ye sariyatigi nisɔndiya sɛbɛn ye min wajibiyalen don jago bɛɛ kama. Quitus fiscal b'a jira k'i tɛ nisɔndiya dɔn don gɔfɛrɛnaman na. Impôts biro la de bɛ a di. NIF nimɔrɔ delili ye FU YE.",
+      "pieces_fr": "1. Demande timbrée adressée au Chef de Centre des Impôts\n2. Copie du RCCM ou carte professionnelle\n3. Attestation d'attribution du NIF\n4. Dernières quittances de paiement d'impôts.",
+      "pieces_bm": "1. Ɲinini sɛbɛn tanburulen\n2. RCCM sɛbɛn\n3. NIF nimɔrɔ sɛbɛn\n4. Nisɔndiya kɔnɔna resiw.",
+      "cout_fr": "Attribution du NIF : Gratuit (0 FCFA). Quitus : 0 FCFA si impôts réglés.",
+      "cout_bm": "NIF deli ye FU YE (0 FCFA).",
+      "delai_fr": "24 à 48 heures au Centre des Impôts.",
+      "delai_bm": "Tile 1 ka taa 2 kɔnɔ."
+    },
+    {
+      "id": "certificat_nationalite",
+      "title_fr": "Certificat de Nationalité Malienne",
+      "title_bm": "Malidenya sariyasɛbɛn (Certificat de nationalité)",
+      "questions_fr": [
+        "Comment obtenir un certificat de nationalité malienne ?",
+        "Où faire le certificat de nationalité ?",
+        "Combien coûte le certificat de nationalité au tribunal ?"
+      ],
+      "questions_bm": [
+        "Malidenya sɛbɛn bɛ sɔrɔ cogo di tribunal la ?",
+        "Malidenya sɛbɛn sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "Le certificat de nationalité malienne est le document juridique suprême délivré par le Président du Tribunal d'Instance (ou juge de section) attestant de la nationalité malienne d'origine ou acquise. Indispensable pour la délivrance du passeport, les concours de la fonction publique et certains examens. Dépôt : Greffe du Tribunal d'Instance du lieu de naissance. Pièces : extrait d'acte de naissance du demandeur, acte de naissance ou certificat de nationalité du père ou de la mère, pièce d'identité, timbre fiscal de 1 000 FCFA. Délai : 24 à 72 heures.",
+      "answer_bm": "Malidenya sɛbɛn bɛ bɔ Kititigɛso (tribunal) la kiritigɛba da kɔrɔ. A bɛ ɲini pasan, concours ni baara nafamaw kama. Sɛbɛnw : wolosɛbɛn, facɛ walima bamuso ka wolosɛbɛn, tanburu FCFA 1 000. A bɛ bɔ tile 1 ka taa 3 kɔnɔ.",
+      "pieces_fr": "1. Extrait d'acte de naissance du demandeur\n2. Copie de l'acte de naissance ou certificat de nationalité d'un parent (père ou mère)\n3. Demande timbrée (timbre fiscal de 1 000 FCFA)\n4. Copie de la pièce d'identité (CNI ou NINA).",
+      "pieces_bm": "1. I ka wolosɛbɛn\n2. Facɛ walima bamuso ka wolosɛbɛn\n3. Tanburu FCFA 1 000\n4. CNI walima NINA.",
+      "cout_fr": "Timbre fiscal de 1 000 FCFA (tarif officiel réglementé).",
+      "cout_bm": "Tanburu FCFA 1 000.",
+      "delai_fr": "24 heures à 72 heures ouvrées au tribunal.",
+      "delai_bm": "Tile 1 ka taa 3 kɔnɔ."
+    },
+    {
+      "id": "legalisation_documents",
+      "title_fr": "Légalisation de Signature et Copie Certifiée Conforme",
+      "title_bm": "Sɛbɛn latikɛli ni Légalisation (Mɛri la)",
+      "questions_fr": [
+        "Comment légaliser un document ou une signature au Mali ?",
+        "Où faire certifier conforme une copie ?",
+        "Combien coûte la légalisation à la mairie ou au commissariat ?"
+      ],
+      "questions_bm": [
+        "Sɛbɛn latikɛli (légalisation) bɛ kɛ cogo di mɛri la ?",
+        "Légalisation sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "La légalisation de signature atteste de l'authenticité de la signature apposée sur un acte sous seing privé. Elle est effectuée devant l'officier d'état civil à la mairie ou au commissariat de police/gendarmerie, en présence du signataire muni de sa pièce d'identité. La copie certifiée conforme atteste que la photocopie reproduit fidèlement l'original. Coût officiel : timbre fiscal municipal de 200 à 500 FCFA par document légalisé. Délivrance immédiate sur place.",
+      "answer_bm": "Sɛbɛn latikɛli (légalisation) bɛ kɛ mɛri la walima polisiso la. Mɔgɔ bɛ taa ni sɛbɛn lakika ye ni joyorosɛbɛn ye. Tanburu sɔngɔ ye FCFA 200 ka taa 500 cɛ. O yɔrɔnin bɛɛ a bɛ latikɛ ka di i ma.",
+      "pieces_fr": "1. Document original et photocopies à certifier\n2. Pièce d'identité officielle en cours de validité du signataire\n3. Timbre fiscal municipal réglementaire (200 à 500 FCFA).",
+      "pieces_bm": "1. Sɛbɛn lakika ni a kɔpiw\n2. Joyoro sɛbɛn kura\n3. Tanburu FCFA 200-500.",
+      "cout_fr": "200 à 500 FCFA de timbre fiscal par document légalisé.",
+      "cout_bm": "FCFA 200 ka taa 500 tanburu kama.",
+      "delai_fr": "Délivrance immédiate sur place (quelques minutes).",
+      "delai_bm": "O yɔrɔnin bɛɛ (miniti damadɔ)."
+    },
+    {
+      "id": "plainte_justice",
+      "title_fr": "Dépôt de Plainte (Police, Gendarmerie, Procureur)",
+      "title_bm": "Kiti ɲinini / Plainte bila (Polisi, Zandarimu, Kiritigɛso)",
+      "questions_fr": [
+        "Comment porter plainte au Mali ?",
+        "Combien coûte le dépôt d'une plainte ?",
+        "Où porter plainte pour vol, escroquerie ou agression ?"
+      ],
+      "questions_bm": [
+        "Plainte bɛ bila cogo di polisiso walima kititigɛso la ?",
+        "Plainte bila sɔngɔ ye joli ye ?"
+      ],
+      "answer_fr": "Le dépôt de plainte est STRICTEMENT GRATUIT (0 FCFA) en République du Mali. Tout citoyen victime d'une infraction (vol, escroquerie, coups et blessures, menaces, abus de confiance) peut porter plainte : 1. Auprès du commissariat de police ou de la brigade de gendarmerie la plus proche (qui dresse un procès-verbal). 2. Directement par écrit adressé au Procureur de la République près le Tribunal de Grande Instance. Aucun agent de police ne peut exiger d'argent pour enregistrer une plainte.",
+      "answer_bm": "Kiti ɲinini (plainte) bila sɔngɔ ye STRICTEMENT FU YE (0 FCFA). Mɔgɔ si kana wari ɲini i fɛ polisiso la walima zandarimuso la kiti sɛbɛnni kama ! Ni i tora sonya, kɛlɛ walima namatara kɔrɔ, taa polisiso la walima sɛbɛn ci Procureur de la République ma kititigɛso la.",
+      "pieces_fr": "1. Pièce d'identité du plaignant (CNI, NINA ou passeport)\n2. Récit détaillé des faits (date, lieu, témoins)\n3. Preuves éventuelles (certificat médical, photos, reçus, messages)\n4. Identité ou signalement de la personne visée si connue.",
+      "pieces_bm": "1. I ka joyoro sɛbɛn\n2. Kuma kɔnɔna ɲɛfɔli\n3. Seerew walima dɔgɔtɔrɔ ka sɛbɛn.",
+      "cout_fr": "STRICTEMENT GRATUIT (0 FCFA). Toute exigence de frais est illégale.",
+      "cout_bm": "STRICTEMENT FU YE (0 FCFA). Mɔgɔ si kana wari ɲini !",
+      "delai_fr": "Enregistrement immédiat du procès-verbal de plainte.",
+      "delai_bm": "O yɔrɔnin bɛɛ a bɛ sɛbɛn."
+    },
+    {
+      "id": "elections_aige",
+      "title_fr": "Carte d'Électeur Biométrique et Vote (AIGE)",
+      "title_bm": "Wotikɛ sɛbɛn ni Kalafili (AIGE)",
+      "questions_fr": [
+        "Comment obtenir la carte d'électeur biométrique au Mali ?",
+        "Où voter et comment vérifier son bureau de vote ?",
+        "Quel organe gère les élections au Mali ?"
+      ],
+      "questions_bm": [
+        "Wotikɛ sɛbɛn biométrique bɛ sɔrɔ cogo di ?",
+        "Wotikɛyɔrɔ bɛ lɔn cogo di AIGE fɛ ?"
+      ],
+      "answer_fr": "Les élections au Mali sont organisées et supervisées par l'Autorité Indépendante de Gestion des Élections (AIGE). La carte d'électeur biométrique est établie à partir des données de l'enrôlement RAVEC. Elle est STRICTEMENT GRATUITE. Elle est retirée auprès des commissions de distribution dans les mairies, écoles et centres de vote avant chaque scrutin. Tout citoyen malien âgé de 18 ans révolus et jouissant de ses droits civiques peut voter sur présentation de sa carte d'électeur ou de sa CNI biométrique.",
+      "answer_bm": "Mali wotikɛ kow bɛ ɲɛnabɔ AIGE de fɛ. Wotikɛ sɛbɛn ye FU YE (0 FCFA), a bɛ bɔ RAVEC nimɔrɔ la. Mɔgɔ bɛ se k'a ta mɛri la walima kalanso la sani kalafili don ka se. Maliden bɛɛ min ye san 18 sɔrɔ bɛ se ka woti kɛ.",
+      "pieces_fr": "1. Fiche d'enrôlement RAVEC ou numéro NINA\n2. Pièce d'identité biométrique (CNI ou passeport)\n3. Justificatif de domicile pour transfert de bureau de vote.",
+      "pieces_bm": "1. RAVEC walima NINA nimɔrɔ\n2. CNI joyoro sɛbɛn.",
+      "cout_fr": "Strictement gratuit (0 FCFA).",
+      "cout_bm": "FU YE (0 FCFA).",
+      "delai_fr": "Retrait immédiat pendant les périodes officielles de distribution de l'AIGE.",
+      "delai_bm": "A bɛ sɔrɔ AIGE ka kalafili waati la."
+    },
+    {
+      "id": "concours_fonction_publique",
+      "title_fr": "Concours de Recrutement de la Fonction Publique (CNCFP)",
+      "title_bm": "Gɔfɛrɛnaman baara konkuru (CNCFP)",
+      "questions_fr": [
+        "Comment postuler aux concours de la fonction publique au Mali ?",
+        "Quels documents pour le concours direct de la fonction publique ?",
+        "Quel est l'âge limite pour les concours au Mali ?"
+      ],
+      "questions_bm": [
+        "Fonction publique baara konkuru bɛ kɛ cogo di Mali la ?",
+        "Konkuru sɛbɛnw ye jumɛn ye ?"
+      ],
+      "answer_fr": "Les concours de recrutement dans la fonction publique d'État et des collectivités sont organisés par le Centre National des Concours de la Fonction Publique (CNCFP), sous la tutelle du Ministère du Travail et de la Fonction Publique. Conditions : nationalité malienne, jouissance des droits civiques, aptitude physique. Âge limite : généralement 18 à 40 ans selon la catégorie (A, B2, B1, C). Pièces requises : demande timbrée à 200 FCFA, copie certifiée conforme du diplôme exigé, extrait d'acte de naissance, certificat de nationalité malienne, casier judiciaire (B3 de moins de 3 mois), certificat de visite médicale, 2 photos d'identité.",
+      "answer_bm": "Gɔfɛrɛnaman baara konkuru bɛ ɲɛnabɔ CNCFP de fɛ. Sariyaw : Malidenya, san 18 ka taa 40 cɛ, kɛnɛya. Sɛbɛnw : ɲinini sɛbɛn tanburulen (FCFA 200), diplôme certifié, wolosɛbɛn, malidenya sɛbɛn, casier judiciaire B3, dɔgɔtɔrɔ ka sɛbɛn, fɔtɔ 2.",
+      "pieces_fr": "1. Demande manuscrite timbrée à 200 FCFA adressée au Ministre de la Fonction Publique\n2. Copie certifiée conforme du diplôme requis\n3. Extrait d'acte de naissance officiel\n4. Certificat de nationalité malienne\n5. Bulletin n°3 du casier judiciaire datant de moins de 3 mois\n6. Certificat de visite médicale et certificat d'aptitude physique\n7. Deux (2) photos d'identité fond blanc.",
+      "pieces_bm": "1. Ɲinini sɛbɛn tanburulen FCFA 200\n2. Diplôme kɔpi latikɛlen\n3. Wolosɛbɛn\n4. Malidenya sɛbɛn\n5. Casier judiciaire B3\n6. Dɔgɔtɔrɔ ka sɛbɛn\n7. Ja fɔtɔ 2.",
+      "cout_fr": "Frais de timbres fiscaux : environ 1 500 à 2 500 FCFA pour l'ensemble du dossier.",
+      "cout_bm": "Tanburu wari : FCFA 1 500 ka taa 2 500 cɛ.",
+      "delai_fr": "Calendrier fixé par arrêté interministériel publié au Journal Officiel et sur les antennes de l'ORTM.",
+      "delai_bm": "Waati bɛ kɛ ka bɛn gɔfɛrɛnaman ka kumakan ma."
     }
   ]
 }

@@ -164,5 +164,36 @@
         "must_not_contain": []
       }
     ]
+  },
+  {
+    "id": "SCENARIO_11_DECES_NEGOC_AFFIRM_RAPPEL",
+    "title": "Enchaînement complet : Décès, Négociation tarif, Affirmation Oui et Rappel de prix",
+    "description": "Vérifie que la réponse 'oui' après une proposition de tarif exécute le rappel de coût sans fallback, et que la relance longue sur les prix rappelle le tarif officiel.",
+    "turns": [
+      {
+        "user": "comment faire un acte de decès?",
+        "expected_intent": "acte_deces",
+        "must_contain": ["acte de décès", "mairie"],
+        "must_not_contain": []
+      },
+      {
+        "user": "est ce que je peux l'avoir à 200 f",
+        "expected_intent": "tarif_non_negociable",
+        "must_contain": ["pas négociables", "80 00 11 15"],
+        "must_not_contain": ["assistant financier"]
+      },
+      {
+        "user": "oui",
+        "expected_intent": "demander_cout",
+        "must_contain": ["Gratuit", "0 FCFA"],
+        "must_not_contain": ["Bonjour", "assistant virtuel"]
+      },
+      {
+        "user": "je te demande de me rappeler des prix",
+        "expected_intent": "demander_cout",
+        "must_contain": ["Gratuit", "0 FCFA"],
+        "must_not_contain": ["produits ou des services non administratifs"]
+      }
+    ]
   }
 ]

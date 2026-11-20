@@ -499,6 +499,60 @@ class HybridRouter:
                 "slots": current_slots,
             }
 
+        # ── 6b. Machine d'État Conversationnelle & Confirmations (Affirm / Deny) ──
+        # Gestion des affirmations (oui, d'accord, ok, awɔ, rappelle-moi)
+        is_affirm = (
+            lowered.strip() in [
+                "oui", "ouais", "d'accord", "d accord", "ok", "bien sûr", "bien sur",
+                "yes", "absolument", "exactement", "je veux bien", "vas-y", "vas y",
+                "c'est ça", "tout à fait", "tout a fait", "awɔ", "awo", "n b'a fɛ"
+            ]
+            or any(p in lowered for p in [
+                "rappelle-moi", "rappelle moi", "rappeler les prix", "rappeler des prix",
+                "rappelle les prix", "rappelle le prix", "donne le prix", "donne les prix",
+                "rappeler le tarif", "rappelle le tarif", "je te demande de me rappeler"
+            ])
+        )
+
+        is_deny = lowered.strip() in [
+            "non", "nan", "non merci", "pas la peine", "c'est pas la peine",
+            "laisse", "non c'est bon", "ayi", "n t'a fɛ", "n tɛ o fɛ"
+        ]
+
+        if is_affirm and current_slots.get("demarche"):
+            pending = current_slots.get("pending_action")
+            current_slots["pending_action"] = None
+            disp = CollectingDispatcher()
+            tracker = Tracker(slots=current_slots, latest_message={"text": user_input})
+            if pending == "rappeler_documents":
+                self.act_documents.run(disp, tracker, {})
+                intent_detected = "demander_documents"
+            else:
+                self.act_cout.run(disp, tracker, {})
+                intent_detected = "demander_cout"
+
+            if disp.messages:
+                return {
+                    "answer": disp.messages[0]["text"],
+                    "intent": intent_detected,
+                    "confidence": 0.99,
+                    "slots": current_slots,
+                }
+
+        if is_deny and current_slots.get("demarche"):
+            current_slots["pending_action"] = None
+            ans_deny = (
+                "K'a to yen ! Ni ɲininkali wɛrɛ b'i fɛ sɛbɛn wɛrɛw, sɔngɔ walima waati kow kan, n bɛ se ka i dɛmɛ."
+                if lang == "bambara"
+                else "Très bien ! Avez-vous une autre question concernant les documents requis, les délais ou une autre démarche administrative ?"
+            )
+            return {
+                "answer": ans_deny,
+                "intent": "refus_proposition",
+                "confidence": 0.99,
+                "slots": current_slots,
+            }
+
         # ── 7. Questions de suivi contextuel (Coût, Pièces, Délais) ──────────
         words_count = len(lowered.split())
         has_contact_keyword = any(k in lowered for k in ["numero", "numéro", "telephone", "téléphone", "contact", "appeler", "joindre"])
@@ -518,7 +572,8 @@ class HybridRouter:
             ]
         )
 
-        if current_slots.get("demarche") and words_count <= 7 and not has_explicit_topic:
+        # Seuil élargi à 14 mots pour capturer les relances longues du type "je te demande de me rappeler des prix"
+        if current_slots.get("demarche") and words_count <= 14 and not has_explicit_topic:
             disp = CollectingDispatcher()
             tracker = Tracker(slots=current_slots, latest_message={"text": user_input})
             intent_detected = None
@@ -576,6 +631,7 @@ class HybridRouter:
                     "Souhaitez-vous que je vous rappelle le tarif officiel exact ?"
                 )
             )
+            current_slots["pending_action"] = "rappeler_tarif"
             return {
                 "answer": ans_negoc,
                 "intent": "tarif_non_negociable",
@@ -597,12 +653,13 @@ class HybridRouter:
         detected_topic = rag_res.get("topic")
         rag_confidence = rag_res.get("confidence", 0.0)
 
-        # Enregistrement du slot de démarche active uniquement si la confiance est solide (>= 0.40)
+        # Enregistrement du slot de démarche active si la confiance est supérieure ou égale au seuil RAG (>= 0.28)
         # Évite les "stale slots" fantômes sur des questions imprécises
-        if detected_topic and detected_topic not in ["nlu_fallback", "hors_domaine"] and rag_confidence >= 0.40:
+        if detected_topic and detected_topic not in ["nlu_fallback", "hors_domaine"] and rag_confidence >= 0.28:
             current_slots["demarche"] = detected_topic
-        elif detected_topic in ["hors_domaine", "nlu_fallback"]:
+        elif detected_topic == "hors_domaine":
             current_slots["demarche"] = None
+        # En cas de nlu_fallback, le slot démarche est préservé pour ne pas briser le contexte de conversation
 
         return {
             "answer": rag_res.get("answer", ""),

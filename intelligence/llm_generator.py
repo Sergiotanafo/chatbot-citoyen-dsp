@@ -304,8 +304,20 @@ class MistralRAGGenerator:
             else:
                 clean_lines.append(ln)
 
+        intros_fr = [
+            f"🇲🇱 *{title_line}*\n\n",
+            f"🇲🇱 *{title_line}*\n*Guide officiel des démarches administratives au Mali :*\n\n",
+            f"🇲🇱 *Fiche Démarche : {title_line}*\n\n",
+        ]
+        intros_bm = [
+            f"🇲🇱 *{title_line}*\n\n",
+            f"🇲🇱 *{title_line}*\n*Mali fasoden sariyasɛbɛn sira :*\n\n",
+            f"🇲🇱 *Sariya Kunsɔrɔ : {title_line}*\n\n",
+        ]
+        v_idx = abs(hash(query)) % len(intros_fr)
+        header = intros_bm[v_idx] if lang == "bm" else intros_fr[v_idx]
         body_text = "\n\n".join(clean_lines)
-        return f"🇲🇱 *{title_line}*\n\n{body_text}"
+        return f"{header}{body_text}"
 
 
 # Singleton
