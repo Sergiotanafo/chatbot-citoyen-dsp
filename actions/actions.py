@@ -256,12 +256,14 @@ class ActionRepondreDocuments(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         lang = tracker.get_slot("langue") or "français"
-        demarche = tracker.get_slot("demarche")
+        raw_demarche = tracker.get_slot("demarche") or ""
+        demarche = raw_demarche.replace("é", "e").replace("è", "e")
 
         faq = load_faq_database()
         info = None
         for item in faq.get("categories", []):
-            if item.get("id") == demarche:
+            item_id = item.get("id", "").replace("é", "e").replace("è", "e")
+            if item_id == demarche:
                 info = item
                 break
 
@@ -272,6 +274,26 @@ class ActionRepondreDocuments(Action):
             else:
                 rep = info.get("pieces_fr") or info.get("answer_fr")
                 dispatcher.utter_message(text=f"📋 Documents à fournir pour : {info.get('title_fr', '')} :\n{rep}")
+            return []
+
+        docs_map_fr = {
+            "acte_mariage": "1. Extraits d'actes de naissance des deux futurs époux (moins de 3 mois)\n2. Certificats de célibat (ou de non-remariage)\n3. Certificats de résidence récents des époux\n4. Photocopies des pièces d'identité (CNI ou NINA) des époux et des témoins majeurs\n5. Certificat médical prénuptial.",
+            "concours_fonction_publique": "1. Demande timbrée à 120 FCFA adressée au Ministre de la Fonction Publique\n2. Copie certifiée conforme du diplôme requis (DEF, Bac, Licence, Master)\n3. Extrait d'acte de naissance\n4. Certificat de nationalité malienne\n5. Casier judiciaire (Bulletin n°3) de moins de 3 mois\n6. Certificat de visite et contre-visite médicale.",
+            "creation_entreprise": "1. Copie de la pièce d'identité (CNI ou NINA) du déclarant\n2. Déclaration sur l'honneur ou extrait de casier judiciaire (moins de 3 mois)\n3. Certificat de résidence ou contrat de bail\n4. Formulaire unique d'immatriculation de l'API-Mali dûment rempli.",
+            "jugement_suppletif_d_acte_de_naissance": "1. Certificat d'âge apparent établi par un médecin agréé\n2. Certificat de non-inscription de naissance délivré par la mairie\n3. Deux (2) témoins majeurs\n4. Demande timbrée adressée au juge du Tribunal d'Instance.",
+            "certificat_nationalite": "1. Copie d'acte de naissance du demandeur\n2. Acte de naissance ou certificat de nationalité du père (ou de la mère)\n3. Demande timbrée à 1 000 FCFA\n4. Copie de pièce d'identité.",
+        }
+        docs_map_bm = {
+            "acte_mariage": "1. Furu kɛbagaw ka wolosɛbɛnw\n2. Célibat sɛbɛn\n3. Sigisɛbɛn\n4. CNI walima NINA sɛbɛnw\n5. Dɔgɔtɔrɔso ka kɛnɛyasɛbɛn.",
+            "concours_fonction_publique": "1. Dɛli sɛbɛn tanburulen\n2. Diplôme sɛbɛn lakalanen\n3. Wolosɛbɛn\n4. Malidenya sɛbɛn\n5. Kititigɛso kasier sɛbɛn.",
+        }
+        if demarche in docs_map_fr:
+            title = demarche.replace("_", " ").capitalize()
+            rep = (docs_map_bm if lang == "bambara" else docs_map_fr).get(demarche, "")
+            if lang == "bambara":
+                dispatcher.utter_message(text=f"📋 Sɛbɛn minnu bɛ ɲini ({title}) :\n{rep}")
+            else:
+                dispatcher.utter_message(text=f"📋 Documents à fournir pour : {title} :\n{rep}")
             return []
 
         # Recherche de repli dans le magasin de connaissances
@@ -312,12 +334,14 @@ class ActionRepondreCout(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         lang = tracker.get_slot("langue") or "français"
-        demarche = tracker.get_slot("demarche")
+        raw_demarche = tracker.get_slot("demarche") or ""
+        demarche = raw_demarche.replace("é", "e").replace("è", "e")
 
         faq = load_faq_database()
         info = None
         for item in faq.get("categories", []):
-            if item.get("id") == demarche:
+            item_id = item.get("id", "").replace("é", "e").replace("è", "e")
+            if item_id == demarche:
                 info = item
                 break
 
@@ -368,12 +392,14 @@ class ActionRepondreDelai(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         lang = tracker.get_slot("langue") or "français"
-        demarche = tracker.get_slot("demarche")
+        raw_demarche = tracker.get_slot("demarche") or ""
+        demarche = raw_demarche.replace("é", "e").replace("è", "e")
 
         faq = load_faq_database()
         info = None
         for item in faq.get("categories", []):
-            if item.get("id") == demarche:
+            item_id = item.get("id", "").replace("é", "e").replace("è", "e")
+            if item_id == demarche:
                 info = item
                 break
 
@@ -384,15 +410,149 @@ class ActionRepondreDelai(Action):
             else:
                 rep = info.get("delai_fr") or info.get("answer_fr")
                 dispatcher.utter_message(text=f"⏱️ Délais d'obtention pour : {info.get('title_fr', '')} :\n{rep}")
-        else:
+            return []
+
+        delai_map_fr = {
+            "carte_identite": "Délivrance sous 24h à 48h ouvrées au commissariat ou à la brigade (délivrance d'un récépissé provisoire immédiat).",
+            "demande_passeport": "Délivrance sous 2 à 3 semaines ouvrées à la DGPN (Hamdallaye ACI 2000).",
+            "carte_nina": "Délivrance de la fiche NINA immédiate au centre de transcription ; carte physique selon production.",
+            "certificat_residence": "Délivrance immédiate le jour même ou sous 24 heures en mairie ou commissariat.",
+            "casier_judiciaire": "Délivrance sous 24h à 72h ouvrées au greffe du tribunal.",
+            "demande_acte_naissance": "Délivrance immédiate (séance tenante) ou sous 24h en mairie.",
+            "acte_deces": "Délivrance immédiate (le jour même) si la déclaration est faite dans le délai légal.",
+            "acte_mariage": "Délivrance le jour même de la célébration civile après affichage des bans (15 à 30 jours).",
+            "creation_entreprise": "Délivrance sous 72 heures ouvrées au Guichet Unique de l'API-Mali.",
+            "certificat_nationalite": "Délivrance sous 24h à 72h ouvrées au tribunal d'instance.",
+            "acquisition_nationalite": "Procédure d'instruction ministérielle suivie d'un Décret présidentiel.",
+            "jugement_suppletif_d_acte_de_naissance": "Délivrance sous 1 à 2 semaines après l'audience au tribunal.",
+            "concours_fonction_publique": "Période de dépôt fixée par l'arrêté officiel d'ouverture (généralement 30 jours).",
+        }
+        delai_map_bm = {
+            "carte_identite": "Tile 1 fo tile 2 kɔnɔ polisiso la.",
+            "demande_passeport": "Dɔgɔkun 2 fo 3 DGPN la Bamako.",
+            "carte_nina": "A bɛ sɔrɔ joona RAVEC transcription yɔrɔ la.",
+            "certificat_residence": "O don kelen na mɛri la.",
+            "casier_judiciaire": "Tile 1 fo 3 Kititigɛso la.",
+            "demande_acte_naissance": "O don kelen na mɛri la.",
+            "acte_deces": "O don kelen na mɛri la saya kɔnɔ.",
+            "acte_mariage": "Furu don yɛrɛ la mɛri la.",
+            "creation_entreprise": "Lɛrɛ 72 kɔnɔ API-Mali la.",
+        }
+
+        if demarche in delai_map_fr:
+            title = demarche.replace("_", " ").capitalize()
+            rep = (delai_map_bm if lang == "bambara" else delai_map_fr).get(demarche, "")
             if lang == "bambara":
-                dispatcher.utter_message(
-                    text="I bɛ baara jumɛn ka waati de ɲini ? (CNI, pasan, wolosɛbɛn...)"
-                )
+                dispatcher.utter_message(text=f"⏱️ Tile / Waati joli ({title}) :\n{rep}")
             else:
-                dispatcher.utter_message(
-                    text="Pour quelle démarche souhaitez-vous connaître le délai ? (Carte d'identité, passeport, acte de naissance...)"
-                )
+                dispatcher.utter_message(text=f"⏱️ Délais d'obtention pour {title} :\n{rep}")
+            return []
+
+        # Recherche de repli dans le magasin de connaissances
+        v_info = _find_info_in_knowledge_store(demarche)
+        if v_info:
+            content = v_info["content"]
+            delai_lines = [
+                l.strip() for l in content.split("\n")
+                if any(w in l.lower() for w in ["délai", "delai", "temps", "jour", "heure", "semaine", "mois", "waati", "tile"])
+            ]
+            if delai_lines:
+                dispatcher.utter_message(text=f"⏱️ Délais pour {v_info['title_fr']} :\n" + "\n".join(delai_lines))
+            else:
+                dispatcher.utter_message(text=f"⏱️ Informations délais pour {v_info['title_fr']} :\n{content}")
+            return []
+
+        if lang == "bambara":
+            dispatcher.utter_message(
+                text="I bɛ baara jumɛn ka waati de ɲini ? (CNI, pasan, wolosɛbɛn...)"
+            )
+        else:
+            dispatcher.utter_message(
+                text="Pour quelle démarche souhaitez-vous connaître le délai ? (Carte d'identité, passeport, acte de naissance...)"
+            )
+        return []
+
+
+class ActionRepondreLieu(Action):
+    """Donne le lieu de dépôt ou le service compétent pour la démarche en cours."""
+
+    def name(self) -> Text:
+        return "action_repondre_lieu"
+
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        lang = tracker.get_slot("langue") or "français"
+        raw_demarche = tracker.get_slot("demarche") or ""
+        demarche = raw_demarche.replace("é", "e").replace("è", "e")
+
+        faq = load_faq_database()
+        info = None
+        for item in faq.get("categories", []):
+            item_id = item.get("id", "").replace("é", "e").replace("è", "e")
+            if item_id == demarche:
+                info = item
+                break
+
+        lieu_map_fr = {
+            "carte_identite": "Commissariats de police d'arrondissement ou brigades de gendarmerie de votre lieu de résidence.",
+            "demande_passeport": "Direction Générale de la Police Nationale (DGPN) à Bamako (Hamdallaye ACI 2000) ou dans les ambassades et consulats du Mali à l'étranger.",
+            "carte_nina": "Centres d'état civil, mairies ou sous-préfectures (centres d'enrôlement RAVEC).",
+            "certificat_residence": "Mairie de votre commune ou commissariat de police de votre arrondissement de résidence.",
+            "casier_judiciaire": "Greffe du Tribunal d'Instance (ou Tribunal de Première Instance) de votre lieu de naissance.",
+            "demande_acte_naissance": "Centre d'état civil (mairie ou centre secondaire) du lieu de naissance.",
+            "acte_deces": "Centre d'état civil (mairie) de la commune où le décès est survenu.",
+            "acte_mariage": "Mairie principale ou centre secondaire d'état civil de la commune de célébration.",
+            "creation_entreprise": "Guichet Unique de l'Agence pour la Promotion des Investissements au Mali (API-Mali) à Bamako ou ses antennes régionales.",
+            "certificat_nationalite": "Présidence du Tribunal d'Instance du lieu de naissance du demandeur.",
+            "acquisition_nationalite": "Ministère de la Justice (Direction Nationale des Affaires Judiciaires et du Sceau) à Bamako.",
+            "jugement_suppletif_d_acte_de_naissance": "Tribunal d'Instance ou Justice de Paix à Compétence Étendue du lieu de naissance.",
+            "titre_foncier": "Bureau des Domaines et du Cadastre du cercle ou de la région concernée.",
+            "permis_conduire": "Direction Nationale des Transports Terrestres, Maritimes et Fluviaux (DNTTMF) et auto-écoles agréées.",
+            "concours_fonction_publique": "Direction Nationale des Concours de la Fonction Publique (CNCFP) et Gouvernorats de région.",
+        }
+        lieu_map_bm = {
+            "carte_identite": "Polisiso (commissariat) walima zandarimuso min bɛ i ka sigiyɔrɔ dugu kɔnɔ.",
+            "demande_passeport": "Mali polisiba ka ɲɛmɔgɔso (DGPN) Bamako Hamdallaye ACI 2000.",
+            "carte_nina": "Dugu mɛri walima sous-préfecture la, RAVEC enrôlement yɔrɔw la.",
+            "certificat_residence": "I ka dugu mɛri walima dugu polisiso la.",
+            "casier_judiciaire": "I ka woloyɔrɔ Kititigɛso (Tribunal) la.",
+            "demande_acte_naissance": "Dugu mɛri min kɔnɔ den wolola yen.",
+            "acte_deces": "Dugu mɛri min kɔnɔ saya kɛra yen.",
+            "acte_mariage": "Dugu mɛri la furu kɛyɔrɔ.",
+            "creation_entreprise": "API-Mali Guichet Unique Bamako la.",
+            "certificat_nationalite": "I ka woloyɔrɔ Kititigɛso (Tribunal) la.",
+            "acquisition_nationalite": "Kiritigɛ minisiriso (Ministère de la Justice) Bamako la.",
+            "jugement_suppletif_d_acte_de_naissance": "I ka woloyɔrɔ Kititigɛso (Tribunal) la.",
+        }
+
+        if info:
+            title = info.get("title_bm" if lang == "bambara" else "title_fr", "")
+            ans = info.get("answer_bm" if lang == "bambara" else "answer_fr", "")
+            lieu_text = (lieu_map_bm if lang == "bambara" else lieu_map_fr).get(demarche, ans)
+
+            if lang == "bambara":
+                dispatcher.utter_message(text=f"📍 Yɔrɔ min bɛ taa ({title}) :\n{lieu_text}")
+            else:
+                dispatcher.utter_message(text=f"📍 Lieu de dépôt & Service compétent pour {title} :\n{lieu_text}")
+            return []
+
+        if demarche in lieu_map_fr:
+            title = demarche.replace("_", " ").capitalize()
+            lieu_text = (lieu_map_bm if lang == "bambara" else lieu_map_fr).get(demarche, "")
+            if lang == "bambara":
+                dispatcher.utter_message(text=f"📍 Yɔrɔ min bɛ taa ({title}) :\n{lieu_text}")
+            else:
+                dispatcher.utter_message(text=f"📍 Lieu de dépôt & Service compétent pour {title} :\n{lieu_text}")
+            return []
+
+        if lang == "bambara":
+            dispatcher.utter_message(text="I bɛ baara jumɛn yɔrɔ de ɲini ? (CNI, pasan, wolosɛbɛn...)")
+        else:
+            dispatcher.utter_message(text="De quelle démarche souhaitez-vous connaître le lieu de dépôt ? (Carte d'identité, passeport, etc.)")
         return []
 
 

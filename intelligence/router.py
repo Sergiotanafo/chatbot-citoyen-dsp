@@ -145,7 +145,21 @@ class HybridRouter:
                 "slots": current_slots,
             }
 
-        # ── 4b. Spécification Mentor : Clarification Juridique Nationalité & Statut ──
+        # ── 4a. Perte de documents & Parcours de régularisation (Scénarios 3 & 20) ──
+        loss_result = self.dialogue_engine.handle_document_loss_and_sequencing(
+            lowered=lowered,
+            lang=lang,
+            current_slots=current_slots
+        )
+        if loss_result and loss_result.handled:
+            return {
+                "answer": loss_result.answer,
+                "intent": loss_result.intent,
+                "confidence": loss_result.confidence,
+                "slots": current_slots,
+            }
+
+        # ── 4b. Clarification Juridique Nationalité & Statut Étranger / Malien ──
         nat_result = self.dialogue_engine.handle_nationality_and_status_clarification(
             lowered=lowered,
             lang=lang,
@@ -156,6 +170,20 @@ class HybridRouter:
                 "answer": nat_result.answer,
                 "intent": nat_result.intent,
                 "confidence": nat_result.confidence,
+                "slots": current_slots,
+            }
+
+        # ── 4c. Notions Pédagogiques, Différences & Questions Conditionnelles ──
+        comp_result = self.dialogue_engine.handle_document_comparisons_and_conditions(
+            lowered=lowered,
+            lang=lang,
+            current_slots=current_slots
+        )
+        if comp_result and comp_result.handled:
+            return {
+                "answer": comp_result.answer,
+                "intent": comp_result.intent,
+                "confidence": comp_result.confidence,
                 "slots": current_slots,
             }
 
@@ -184,6 +212,47 @@ class HybridRouter:
                 "answer": followup_result.answer,
                 "intent": followup_result.intent,
                 "confidence": followup_result.confidence,
+                "slots": current_slots,
+            }
+
+        # ── 6b. Raccourcis Sémantiques Directs ──────────────────────────────
+        # Cas direct : Mariage civil (Scénario 13 Turn 1)
+        if any(w in lowered for w in ["marier civilement", "mariage civil", "se marier", "acte de mariage", "mariage a la mairie", "mariage à la mairie"]):
+            current_slots["demarche"] = "acte_mariage"
+            ans_mar = (
+                "🇲🇱 *Mariage civil au Mali*\n\n"
+                "📌 **Procédure officielle :**\n"
+                "Le mariage civil est célébré publiquement à la mairie du lieu de résidence de l'un des futurs époux devant l'officier d'état civil.\n\n"
+                "📋 **Documents requis :**\n"
+                "1. Extraits d'actes de naissance des deux futurs époux (datant de moins de 3 mois)\n"
+                "2. Certificats de célibat (ou de non-remariage)\n"
+                "3. Certificats de résidence des deux époux\n"
+                "4. Photocopies des pièces d'identité (CNI ou NINA) des époux et des témoins majeurs\n"
+                "5. Certificat médical prénuptial.\n\n"
+                "💵 **Tarif officiel :** Droit de timbre communal de 2 500 à 10 000 FCFA selon la commune et le jour de célébration.\n"
+                "⏱️ **Délai légal :** Dépôt du dossier au moins 15 à 30 jours avant la date de la cérémonie pour la publication des bans."
+            )
+            return {
+                "answer": ans_mar,
+                "intent": "acte_mariage",
+                "confidence": 0.99,
+                "slots": current_slots,
+            }
+
+        # Cas direct : Preuve de domicile / Certificat de résidence (Scénario 14 Turn 1)
+        if any(p in lowered for p in ["prouver que j'habite", "prouver que j habite", "prouver mon habitation", "certifier mon domicile", "papier pour prouver que j'habite"]):
+            current_slots["demarche"] = "certificat_residence"
+            ans_res = (
+                "🇲🇱 *Certificat de Résidence*\n\n"
+                "Pour prouver que vous résidez dans votre quartier au Mali, le document officiel à établir est le **Certificat de résidence** (ou d'habitation).\n\n"
+                "🏛️ **Où s'adresser :** À la mairie de votre commune ou au commissariat de police de votre arrondissement de résidence.\n"
+                "📋 **Documents requis :** Pièce d'identité (CNI ou NINA), facture EDM/SOMAGEP ou contrat de location (ou attestation signée du chef de quartier), timbre fiscal communal de 500 à 1 000 FCFA.\n"
+                "⏱️ **Délai :** Délivrance le jour même ou sous 24 heures."
+            )
+            return {
+                "answer": ans_res,
+                "intent": "certificat_residence",
+                "confidence": 0.99,
                 "slots": current_slots,
             }
 
@@ -227,7 +296,7 @@ class HybridRouter:
 
         # Enregistrement du slot de démarche active si confiance >= seuil RAG (0.28)
         if detected_topic and detected_topic not in ["nlu_fallback", "hors_domaine"] and rag_confidence >= 0.28:
-            current_slots["demarche"] = detected_topic
+            current_slots["demarche"] = detected_topic.replace("é", "e").replace("è", "e")
         elif detected_topic == "hors_domaine":
             current_slots["demarche"] = None
         # En cas de nlu_fallback, le slot démarche est préservé

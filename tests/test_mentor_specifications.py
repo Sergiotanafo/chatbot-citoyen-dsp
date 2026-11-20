@@ -4,7 +4,12 @@ Valide la fidélité juridique, la gestion de l'incertitude, la désambiguïsati
 la naturalité du ton et la robustesse du DSP conversationnel.
 """
 
+import sys
+import os
 import unittest
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from intelligence.router import get_hybrid_router
 
 

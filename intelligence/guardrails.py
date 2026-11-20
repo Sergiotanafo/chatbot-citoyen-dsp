@@ -44,12 +44,22 @@ class GuardrailEngine:
         11. Limite sanitaire : Urgence santé personnelle
         """
 
-        # ── 1. Refus de la fraude et des faux documents ─────────────────────
-        is_fraud_fr = any(w in lowered for w in ["fausse", "faux", "contourner", "tricher", "falsifier", "magouiller", "pirater"]) and any(
-            d in lowered for d in ["acte", "passeport", "carte", "attestation", "diplôme", "diplome", "résidence", "residence", "loi", "condition", "document", "naissance"]
+        # ── 1. Refus de la fraude, faux documents et contournements illégaux ──
+        is_fraud_fr = (
+            any(w in lowered for w in [
+                "contourner", "contourner ça", "contourner les règles", "tricher",
+                "falsifier", "magouiller", "pirater", "dessous de table", "pot de vin",
+                "faux document", "fausse attestation", "faux acte", "faux passeport",
+                "payer quelqu'un pour", "payer un agent", "sans les documents", "sans document"
+            ])
+            or (
+                any(w in lowered for w in ["fausse", "faux", "arrangement"])
+                and any(d in lowered for d in ["acte", "passeport", "carte", "attestation", "diplôme", "diplome", "résidence", "residence", "loi", "condition", "document", "naissance"])
+            )
         )
-        is_fraud_bm = any(w in lowered for w in ["galon", "namatara", "kalo", "wujali", "sariya tiɲɛ", "sariya tinye"]) and any(
-            d in lowered for d in ["seben", "sɛbɛn", "pasan", "cni", "wolo"]
+        is_fraud_bm = (
+            any(w in lowered for w in ["galon", "namatara", "kalo", "wujali", "sariya tiɲɛ", "sariya tinye", "sariya cɛɲɛ"])
+            or (any(w in lowered for w in ["wari di mɔgɔ ma", "ka mɔgɔ sara"]) and any(d in lowered for d in ["seben", "sɛbɛn", "pasan", "cni", "wolo"]))
         )
         if is_fraud_fr or is_fraud_bm:
             return GuardrailResult(
@@ -141,18 +151,29 @@ class GuardrailEngine:
                 reset_demarche=True,
             )
 
-        # ── 6. Objection citoyenne sur le tarif CNI (5 000 FCFA vs Gratuité) ──
+        # ── 6. Objection citoyenne sur le tarif CNI (5 000 FCFA vs Gratuité / Contestation) ──
         is_cni_5000_objection = (
-            any(v in lowered for v in ["5000", "5 000", "cinq mille"])
-            and (
-                any(w in lowered for w in [
-                    "carte", "cni", "identite", "identité", "payer", "payé", "cout", "coût",
-                    "prix", "cher", "pourquoi", "ami", "entendu", "attendu", "site"
-                ])
-                or current_slots.get("demarche") == "carte_identite"
+            (
+                any(v in lowered for v in ["5000", "5 000", "cinq mille"])
+                and (
+                    any(w in lowered for w in [
+                        "carte", "cni", "identite", "identité", "payer", "payé", "cout", "coût",
+                        "prix", "cher", "pourquoi", "ami", "entendu", "attendu", "site"
+                    ])
+                    or current_slots.get("demarche") == "carte_identite"
+                )
+            )
+            or (
+                ("gratuit" in lowered or "gratuité" in lowered)
+                and any(w in lowered for w in ["payer", "payé", "paye", "demandé de payer", "demande de payer", "faire payer"])
+            )
+            or (
+                current_slots.get("demarche") == "carte_identite"
+                and any(w in lowered for w in ["demandé de payer", "demande de payer", "on m'a fait payer", "pourquoi payer"])
             )
         )
         if is_cni_5000_objection:
+            current_slots["last_intent"] = "explication_tarif_cni"
             return GuardrailResult(
                 matched=True,
                 intent="explication_tarif_cni",
